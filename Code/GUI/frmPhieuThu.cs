@@ -16,7 +16,7 @@ namespace GUI
     public partial class frmPhieuThu : Form
     {
         #region prop
-        private BLL_DaiLy daily = new BLL_DaiLy();
+        private BLL_LoaiHang daily = new BLL_LoaiHang();
         private BLL_PhieuThu pt = new BLL_PhieuThu();
         #endregion
         #region method
@@ -59,7 +59,7 @@ namespace GUI
             }
         }
         private void loadsource() {
-            cbDaiLy.DataSource = daily.LayDanhSachDaiLy();
+            cbDaiLy.DataSource = daily.laydanhsachloaihang();
             cbDaiLy.DisplayMember = "TenDaiLy";
             cbDaiLy.ValueMember = "Id";
             txtDiaChi.DataBindings.Add(new Binding("text", cbDaiLy.DataSource, "DiaChi"));
@@ -75,8 +75,8 @@ namespace GUI
                     DataGridViewRow row = this.dataPhieuThu.Rows[index];
                     this.cbDaiLy.SelectedValue= row.Cells[2].Value;
                  
-                txtDiaChi.Text = (cbDaiLy.SelectedItem as DTO_DaiLy).DiaChi;
-                txtSDT.Text = (cbDaiLy.SelectedItem as DTO_DaiLy).Sdt;
+                //txtDiaChi.Text = (cbDaiLy.SelectedItem as DTO_LoaiHang).DiaChi;
+                //txtSDT.Text = (cbDaiLy.SelectedItem as DTO_LoaiHang).Sdt;
                 this.numSoTien.Value = uint.Parse(row.Cells[3].Value.ToString());
                 this.txtId.Text = row.Cells[0].Value.ToString();
                } catch {

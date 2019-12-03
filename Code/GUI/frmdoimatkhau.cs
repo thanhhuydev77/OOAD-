@@ -14,12 +14,15 @@ namespace GUI
 {
     public partial class frmDoiMatKhau : Form
     {
+
         #region prop
         private BLL_Account acc = new BLL_Account();
         #endregion
         #region method
-        public frmDoiMatKhau() {
+        public frmDoiMatKhau(string username) {
             InitializeComponent();
+            txtaccount.Enabled = false;
+            txtaccount.Text = username;
         }
         private void btnConfirm_Click(object sender, EventArgs e) {
             if(Validatedd())

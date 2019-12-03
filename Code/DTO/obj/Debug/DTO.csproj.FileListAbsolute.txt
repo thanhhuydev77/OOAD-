@@ -4,3 +4,9 @@ C:\Users\huy\Desktop\New folder\NMCNPM\Code\DTO\obj\Debug\DTO.csprojAssemblyRefe
 C:\Users\huy\Desktop\New folder\NMCNPM\Code\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 C:\Users\huy\Desktop\New folder\NMCNPM\Code\DTO\obj\Debug\DTO.dll
 C:\Users\huy\Desktop\New folder\NMCNPM\Code\DTO\obj\Debug\DTO.pdb
+C:\Users\huy\Desktop\New folder\OOAD-\Code\DTO\bin\Debug\DTO.dll
+C:\Users\huy\Desktop\New folder\OOAD-\Code\DTO\bin\Debug\DTO.pdb
+C:\Users\huy\Desktop\New folder\OOAD-\Code\DTO\obj\Debug\DTO.csprojAssemblyReference.cache
+C:\Users\huy\Desktop\New folder\OOAD-\Code\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\huy\Desktop\New folder\OOAD-\Code\DTO\obj\Debug\DTO.dll
+C:\Users\huy\Desktop\New folder\OOAD-\Code\DTO\obj\Debug\DTO.pdb

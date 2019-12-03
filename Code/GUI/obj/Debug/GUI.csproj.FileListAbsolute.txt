@@ -215,11 +215,9 @@ C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.csprojAssemblyRefer
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmBaoCaoCongNo.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmBaoCaoDoanhSo.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmChiTietPhieuXuat.resources
-C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmDaiLy.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmDangNhap.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmDoiMatKhau.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmDonViTinh.resources
-C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmLoaiDaiLy.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmMatHang.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmMain.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmPhieuThu.resources
@@ -234,3 +232,5 @@ C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.csproj.CoreCompileI
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.csproj.CopyComplete
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.exe
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.pdb
+C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmloaimathang.resources
+C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmMatHangKhac.resources

@@ -17,7 +17,7 @@ namespace GUI
     {
         private BLL_DonViTinh donvitinh = new BLL_DonViTinh();
         private BLL_MatHang mathang = new BLL_MatHang();
-        private BLL_LoaiDaiLy ldl = new BLL_LoaiDaiLy();
+        private BLL_MatHangKhac ldl = new BLL_MatHangKhac();
         private BLL_ChiTietPhieuXuat chitiet = new BLL_ChiTietPhieuXuat();
         private string id;
         public string Id { get => id; set => id = value; }

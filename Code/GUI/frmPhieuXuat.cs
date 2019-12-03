@@ -12,7 +12,7 @@ namespace GUI
         private string maloaidaily;
         public string MaLoaiDaiLy { get => maloaidaily; set => maloaidaily = value; }
         private BLL_PhieuXuatHang phieuxuat = new BLL_PhieuXuatHang();
-        private BLL_DaiLy daily = new BLL_DaiLy();
+        private BLL_LoaiHang daily = new BLL_LoaiHang();
         public frmPhieuXuat()
         {
             InitializeComponent();
@@ -51,7 +51,7 @@ namespace GUI
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             btnXemChiTiet.Enabled = false;
-            List<DTO_DaiLy> listDl = daily.LayDanhSachDaiLy();
+            List<DTO_LoaiHang> listDl = daily.laydanhsachloaihang();
             cbbMaDaiLy.DataSource = new BindingSource(listDl, string.Empty);
             cbbMaDaiLy.DisplayMember = "Id";
             SetDefault(false);

@@ -9,7 +9,7 @@ using DTO;
 
 namespace DAL
 {
-    public class DAL_DaiLy
+    public class DAL_LoaiHang
     {
         private string connectionString;
 
@@ -19,16 +19,16 @@ namespace DAL
             set { connectionString = value; }
         }
 
-        public DAL_DaiLy()
+        public DAL_LoaiHang()
         {
             connectionString = ConfigurationManager.AppSettings["ConnectionString"];
         }
 
-        public List<DTO_DaiLy> LayDanhSachDaiLy() {
-            List<DTO_DaiLy> ds = new List<DTO_DaiLy>();
+        public List<DTO_LoaiHang> LayDanhSachLoaiHang() {
+            List<DTO_LoaiHang> ds = new List<DTO_LoaiHang>();
 
             string query = string.Empty;
-            query = "SELECT * FROM tblDaiLy";
+            query = "SELECT * FROM tblnhomhang";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 using (SqlCommand cmd = new SqlCommand()) {
@@ -42,15 +42,9 @@ namespace DAL
 
                         if (reader.HasRows == true) {
                             while (reader.Read()) {
-                                DTO_DaiLy dl = new DTO_DaiLy();
+                                DTO_LoaiHang dl = new DTO_LoaiHang();
                                 dl.Id = long.Parse(reader["id"].ToString());
-                                dl.TenDaiLy = reader.GetString(1);
-                                dl.MaLoaiDL = long.Parse(reader["maLoaiDL"].ToString());
-                                dl.Sdt = reader.GetString(3);
-                                dl.DiaChi = reader.GetString(4);
-                                dl.MaQuan = long.Parse(reader["maQuan"].ToString());
-                                dl.NgayTiepNhan = reader.GetDateTime(6);
-                                dl.TongNo = (uint)reader.GetDecimal(7);
+                                dl.TenLoaiHang = reader.GetString(1);
                                 ds.Add(dl);
                             }
                         }
@@ -66,12 +60,12 @@ namespace DAL
             return ds;
         }
 
-        public bool ThemDaiLy(DTO_DaiLy dl)
+        public bool ThemLoaiHang(DTO_LoaiHang dl)
         {
 
             string query = string.Empty;
-            query += "INSERT INTO [tblDaiLy] ([tenDL], [maLoaiDL], [sdt], [diaChi], [maQuan], [ngayTiepNhan], [tongNo]) ";
-            query += "VALUES (@tendl, @maloaidl, @sdt, @diachi, @maquan, @ngaytiepnhan, @tongno)";
+            query += "INSERT INTO [tblnhomhang] ([ten]) ";
+            query += "VALUES (@tennh)";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -81,13 +75,7 @@ namespace DAL
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
 
-                    cmd.Parameters.AddWithValue("@tendl", dl.TenDaiLy);
-                    cmd.Parameters.AddWithValue("@maloaidl", dl.MaLoaiDL);
-                    cmd.Parameters.AddWithValue("@sdt", dl.Sdt);
-                    cmd.Parameters.AddWithValue("@diachi", dl.DiaChi);
-                    cmd.Parameters.AddWithValue("@maquan", dl.MaQuan);
-                    cmd.Parameters.AddWithValue("@ngaytiepnhan", dl.NgayTiepNhan);
-                    cmd.Parameters.AddWithValue("@tongno", Decimal.Parse(dl.TongNo.ToString()));
+                    cmd.Parameters.AddWithValue("@tennh", dl.TenLoaiHang);
 
                     try
                     {
@@ -113,10 +101,10 @@ namespace DAL
             }
         }
 
-        public bool XoaDaiLy(long id)
+        public bool XoaNhomHang(long id)
         {
             string query = string.Empty;
-            query += "DELETE FROM [tblDaiLy] WHERE [id] = @id";
+            query += "DELETE FROM [tblnhomhang] WHERE [id] = @id";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -152,11 +140,11 @@ namespace DAL
             }
         }
 
-        public bool SuaDaiLy(DTO_DaiLy dl)
+        public bool SuaLoaiHang(DTO_LoaiHang dl)
         {
             string query = string.Empty;
-            query = "UPDATE [tblDaiLy] " +
-                "SET [tenDL] = @tendl , [maLoaiDL] = @maldl, [sdt] = @sdt, [diaChi] = @diachi, [maQuan] = @maquan, [tongNo] = @tongno " +
+            query = "UPDATE [tblnhomhang] " +
+                "SET [ten] = @tendl " +
                 "WHERE [id] = @id";
             //query = "SuaDaiLy";
 
@@ -169,15 +157,10 @@ namespace DAL
                     //cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.CommandText = query;
 
-                    cmd.Parameters.AddWithValue("@tendl", dl.TenDaiLy);
-                    cmd.Parameters.AddWithValue("@maldl", dl.MaLoaiDL);
-                    cmd.Parameters.AddWithValue("@sdt", dl.Sdt);
-                    cmd.Parameters.AddWithValue("@diachi", dl.DiaChi);
-                    cmd.Parameters.AddWithValue("@maquan", dl.MaQuan);
-                    cmd.Parameters.AddWithValue("@tongno", Decimal.Parse(dl.TongNo.ToString()));
+                    cmd.Parameters.AddWithValue("@tendl", dl.TenLoaiHang);
                     cmd.Parameters.AddWithValue("@id", dl.Id);
 
-                    try
+                    //try
                     {
                         con.Open();
                         if (cmd.ExecuteNonQuery() > 0)
@@ -192,7 +175,7 @@ namespace DAL
                             return false;
                         }
                     }
-                    catch
+                    //catch
                     {
                          con.Close();
                             return false;
@@ -201,23 +184,13 @@ namespace DAL
             }
         }
 
-        public List<DTO_DaiLy> TimKiemDaiLy(string tukhoa)
+        public List<DTO_LoaiHang> TimKiemLoaiHang(string tukhoa)
         {
-            List<DTO_DaiLy> ds = new List<DTO_DaiLy>();
+            List<DTO_LoaiHang> ds = new List<DTO_LoaiHang>();
 
             string query = string.Empty;            
-            query += "SELECT * FROM [tblDaiLy]";
-            query += "WHERE [tenDL] like '%' + @tukhoa + '%' " +
-                "OR [sdt] like '%' + @tukhoa + '%' " +
-                "OR [diaChi] like '%' + @tukhoa + '%' ";
-            long tk;
-            if (long.TryParse(tukhoa, out tk))
-            {
-                query += "OR [id] like '%' + @tukhoa + '%' " +
-                    "OR[maLoaiDL] like '%' + @tukhoa + '%' " +
-                    "OR [maQuan] like '%' + @tukhoa + '%' ";
-            }
-
+            query += "SELECT * FROM [tblnhomhang]";
+            query += "WHERE [ten] like '%' + @tukhoa + '%' ";
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 using (SqlCommand cmd = new SqlCommand())
@@ -227,7 +200,6 @@ namespace DAL
                     cmd.CommandText = query;
 
                     cmd.Parameters.AddWithValue("@tukhoa", tukhoa);
-                    cmd.Parameters.AddWithValue("@tk", tk);
 
                     try
                     {
@@ -238,15 +210,9 @@ namespace DAL
                         {
                             while (reader.Read())
                             {
-                                DTO_DaiLy dl = new DTO_DaiLy();
+                                DTO_LoaiHang dl = new DTO_LoaiHang();
                                 dl.Id = long.Parse(reader["id"].ToString());
-                                dl.TenDaiLy = reader.GetString(1);
-                                dl.MaLoaiDL = long.Parse(reader["maLoaiDL"].ToString());
-                                dl.Sdt = reader.GetString(3);
-                                dl.DiaChi = reader.GetString(4);
-                                dl.MaQuan = long.Parse(reader["maQuan"].ToString());
-                                dl.NgayTiepNhan = reader.GetDateTime(6);
-                                dl.TongNo = (uint)reader.GetDecimal(7);
+                                dl.TenLoaiHang = reader.GetString(1);
                                 ds.Add(dl);
                             }
                         }

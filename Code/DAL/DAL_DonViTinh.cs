@@ -22,11 +22,11 @@ namespace DAL
             connectionString = ConfigurationManager.AppSettings["ConnectionString"];
         }
 
-        public List<DTO_DonViTinh> LayDanhSachMatHang() {
+        public List<DTO_DonViTinh> LayDanhSachDVT() {
             List<DTO_DonViTinh> ds = new List<DTO_DonViTinh>();
 
             string query = string.Empty;
-            query = "SELECT * FROM tblDonViTinh";
+            query = "SELECT * FROM tbldvt";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 using (SqlCommand cmd = new SqlCommand()) {
@@ -63,7 +63,7 @@ namespace DAL
             string ds = string.Empty;
 
             string query = string.Empty;
-            query = "SELECT * FROM tblDonViTinh WHERE [id] = @id";
+            query = "SELECT * FROM tbldvt WHERE [id] = @id";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -103,7 +103,7 @@ namespace DAL
         public bool ThemDonViTinh(DTO_DonViTinh dvt)
         {
             string query = string.Empty;
-            query += "INSERT INTO [tblDonViTinh] ([tenDVT]) ";
+            query += "INSERT INTO [tblDvt] ([ten]) ";
             query += "VALUES (@tendvt)";
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -143,7 +143,7 @@ namespace DAL
         public bool XoaDonViTinh(long id)
         {
             string query = string.Empty;
-            query += "DELETE FROM [tblDonViTinh] where [id] = @id";
+            query += "DELETE FROM [tbldvt] where [id] = @id";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -182,7 +182,7 @@ namespace DAL
         public bool SuaDonViTinh(DTO_DonViTinh dvt)
         {
             string query = string.Empty;
-            query = "UPDATE [tblDonViTinh] " + "SET [tenDVT] = @tendl " + "WHERE [id] = @id";
+            query = "UPDATE [tbldvt] " + "SET [ten] = @tendl " + "WHERE [id] = @id";
             //query = "SuaDaiLy";
 
             using (SqlConnection con = new SqlConnection(connectionString))

@@ -46,7 +46,7 @@ namespace DAL
                                 dl.MaMatHang = long.Parse(reader["id"].ToString());
                                 dl.TenMatHang = reader.GetString(1);
                                 dl.MaDVT = long.Parse(reader["maDonViTinh"].ToString());
-                                dl.Dongia = (uint)reader.GetDecimal(3);
+                                //dl.Dongia = (uint)reader.GetDecimal(3);
                                 ds.Add(dl);
                             }
                         }
@@ -116,7 +116,7 @@ namespace DAL
                     cmd.CommandText = query;
 
                     cmd.Parameters.AddWithValue("@tenMH",mh.TenMatHang);
-                    cmd.Parameters.AddWithValue("@DonGia", Decimal.Parse(mh.Dongia.ToString()));
+                    //cmd.Parameters.AddWithValue("@DonGia", Decimal.Parse(mh.Dongia.ToString()));
                     cmd.Parameters.AddWithValue("@madonvitinh", mh.MaDVT);
 
                        try {
@@ -179,7 +179,7 @@ namespace DAL
                     cmd.CommandText = query;
 
                     cmd.Parameters.AddWithValue("@tenMatHang", mh.TenMatHang);
-                    cmd.Parameters.AddWithValue("@DonGia", Decimal.Parse(mh.Dongia.ToString()));
+                    //cmd.Parameters.AddWithValue("@DonGia", Decimal.Parse(mh.Dongia.ToString()));
                     cmd.Parameters.AddWithValue("@id", mh.MaMatHang);
                     cmd.Parameters.AddWithValue("@madonvitinh", mh.MaDVT);
 
@@ -232,7 +232,7 @@ namespace DAL
                                 mh.MaMatHang = long.Parse(reader["id"].ToString());
                                 mh.TenMatHang = reader.GetString(1);
                                 mh.MaDVT = long.Parse(reader["maDonViTinh"].ToString());
-                            mh.Dongia = (uint)reader.GetDecimal(3);
+                           // mh.Dongia = (uint)reader.GetDecimal(3);
                                 list.Add(mh);
                             }
                         }

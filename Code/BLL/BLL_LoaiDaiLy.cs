@@ -8,29 +8,29 @@ using DTO;
 
 namespace BLL
 {
-    public class BLL_LoaiDaiLy
+    public class BLL_MatHangKhac
     {
-        private DAL_LoaiDaiLy ldl = new DAL_LoaiDaiLy();
+        private DAL_MatHangKhac mhk = new DAL_MatHangKhac();
 
-        public List<DTO_LoaiDaiLy> LayDanhSachLoaiDaiLy()
+        public List<DTO_MatHang> LayDanhSachMatHangKhac()
         {
-            return ldl.LayDanhSachLoaiDaiLy();
+            return mhk.LayDanhSachMatHangKhac();
         }
-        public bool ThemLoaiDaiLy(DTO_LoaiDaiLy loaidl)
+        public bool ThemMatHang(DTO_MatHang loaidl)
         {
-            return ldl.ThemLoaiDaiLy(loaidl);
+            return mhk.ThemMatHang(loaidl);
         }
-        public bool XoaLoaiDaiLy(long id)
+        public bool XoaMatHang(long id)
         {
-            return ldl.XoaLoaiDaiLy(id);
+            return mhk.XoaMatHang(id);
         }
-        public bool SuaLoaiDaiLy(DTO_LoaiDaiLy loaidl)
+        public bool SuaLoaiDaiLy(DTO_MatHang loaidl)
         {
-            return ldl.SuaLoaiDaiLy(loaidl);
+            return mhk.SuaMatHang(loaidl);
         }
-        public List<DTO_LoaiDaiLy> TimKiem(string tukhoa)
+        public List<DTO_MatHang> TimKiem(string tukhoa)
         {
-            return ldl.TimKiemLoaiDaiLy(tukhoa);
+            return mhk.TimKiemLoaiDaiLy(tukhoa);
         }
     }
 }

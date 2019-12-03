@@ -13,7 +13,7 @@ namespace BLL
 
         public List<DTO_DonViTinh> hienthidanhsach() 
         {
-            return _dvt.LayDanhSachMatHang(); ;
+            return _dvt.LayDanhSachDVT(); ;
         }
         public bool ThemDonViTinh(DTO_DonViTinh dvt)
         {

@@ -45,7 +45,7 @@
     <Compile Include="DTO_BaoCaoCongNo.cs" />
     <Compile Include="DTO_BaoCaoDoanhSo.cs" />
     <Compile Include="DTO_ChiTietPhieuXuat.cs" />
-    <Compile Include="DTO_DaiLy.cs" />
+    <Compile Include="DTO_LoaiHang.cs" />
     <Compile Include="DTO_DonViTinh.cs" />
     <Compile Include="DTO_LoaiDaiLy.cs" />
     <Compile Include="DTO_MatHang.cs" />

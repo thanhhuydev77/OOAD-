@@ -101,7 +101,7 @@ namespace GUI
                     if (KiemTra()) {
                         DTO_MatHang dl = new DTO_MatHang();
                         dl.TenMatHang = this.txtTenMatHang.Text;
-                        dl.Dongia = uint.Parse(this.txtDonGia.Text);
+                        //dl.Dongia = uint.Parse(this.txtDonGia.Text);
                         dl.MaDVT = long.Parse(this.cbDVT.SelectedValue.ToString());
                         
 
@@ -148,7 +148,7 @@ namespace GUI
                         DTO_MatHang mh = new DTO_MatHang();
                         mh.MaMatHang = long.Parse(this.txtMaMatHang.Text);
                         mh.TenMatHang = this.txtTenMatHang.Text;
-                        mh.Dongia = uint.Parse(this.txtDonGia.Text);
+                        //mh.Dongia = uint.Parse(this.txtDonGia.Text);
                         mh.MaDVT = long.Parse(this.cbDVT.SelectedValue.ToString());
 
                         if (matHang.SuaMatHang(mh)) {

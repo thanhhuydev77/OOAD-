@@ -32,7 +32,6 @@ namespace GUI
             if (acc.CheckLogin(txtTaiKhoan.Text, txtMatKhau.Text) == 1)
             {
                 user(txtTaiKhoan.Text);
-                MessageBox.Show("Đăng nhập thành công", "Xin chào", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                 this.Close();
             }
             else

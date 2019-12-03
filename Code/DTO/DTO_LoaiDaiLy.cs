@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-    public class DTO_LoaiDaiLy
+    public class DTO_MatHang1
     {
         private long id;
 
