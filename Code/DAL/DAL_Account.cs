@@ -27,7 +27,7 @@ namespace DAL
                 using (SqlCommand cmd = new SqlCommand()) {
                     cmd.Connection = con;
                     cmd.CommandType = System.Data.CommandType.Text;
-                    cmd.CommandText = "Update [dbo].[tblAccount] set passWord = '" + password + "' where userName = '"+username+"'";
+                    cmd.CommandText = "Update [dbo].[tblAccount] set passWord = '" + password + "' where userName = '" + username + "'";
                     try {
                         con.Open();
                         var reader = cmd.ExecuteNonQuery();
@@ -44,15 +44,44 @@ namespace DAL
             }
             return 0;
         }
-    
+
+        public int loadright(string data) {
+            string query = string.Empty;
+            query = "SELECT phanquyen FROM tblnhanvien a,tblaccount b where a.userid = b.id and b.userName ='" + data + "' ";
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                using (SqlCommand cmd = new SqlCommand()) {
+                    int result = 0;
+                    cmd.Connection = con;
+                    cmd.CommandText = query;
 
 
-        public int CheckLogin(string username , string password)
-        {
-            using (SqlConnection con = new SqlConnection(connectionString))
-            {
-                using (SqlCommand cmd = new SqlCommand())
-                {
+
+                    try {
+                        con.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows == true) {
+                            while (reader.Read()) {
+                                
+                                    result = (int)reader[0];
+                                }
+                        }
+                        con.Close();
+                        con.Dispose();
+                        return result;
+
+                    } catch {
+                        con.Close();
+                    }
+                }
+                return 0;
+            }
+        
+    }
+
+        public int CheckLogin(string username, string password) {
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                using (SqlCommand cmd = new SqlCommand()) {
                     cmd.Connection = con;
                     cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.CommandText = "CheckLogin";
@@ -62,18 +91,17 @@ namespace DAL
 
 
 
-                    try
+                    //try
                     {
                         con.Open();
                         SqlDataReader reader = cmd.ExecuteReader();
-                        if (reader.HasRows)
-                        {
+                        if (reader.HasRows) {
                             con.Close();
                             con.Dispose();
                             return 1;
                         }
                     }
-                    catch
+                    //catch
                     {
                         con.Close();
                     }
@@ -81,6 +109,38 @@ namespace DAL
 
             }
             return 0;
+        }
+
+        public string findstaffname(string username) {
+            string query = string.Empty;
+            query = "SELECT hoten FROM tblnhanvien a,tblaccount b where a.userid = b.id and b.userName ='"+username+"' ";
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                using (SqlCommand cmd = new SqlCommand()) {
+                    string result = "";
+                    cmd.Connection = con;
+                    cmd.CommandText = query;
+
+
+
+                    try {
+                        con.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows == true) {
+                            while (reader.Read()) {
+                                result = (string)(reader[0]);
+                            }
+                        }
+                        con.Close();
+                        con.Dispose();
+                        return result;
+
+                    } catch {
+                        con.Close();
+                    }
+                }
+                return "";
+            }
         }
     }
 }

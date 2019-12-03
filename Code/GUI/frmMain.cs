@@ -8,30 +8,42 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DevExpress.XtraBars;
+using BLL;
 
 namespace GUI
 {
     public partial class frmMain : DevExpress.XtraBars.Ribbon.RibbonForm
+    
     {
+        private BLL_Account acc = new BLL_Account();
         public frmMain()
         {
             InitializeComponent();
         }
 
-        private void SetDefaultOpen(bool status)
+        private void SetDefaultOpen(bool status,int staffright)
         {
             this.btnDangNhap.Enabled = !status;
             this.btnDangXuat.Enabled = status;
             this.btnDoiMatKhau.Enabled = status;
             this.btnQuyDinh.Enabled = status;
-
-            this.tabQuanLy.Visible = status;
             this.tabBaoCao.Visible = status;
+            if (staffright == 1) //ban hang
+            {
+                this.btnQuyDinh.Enabled = false;
+                this.tabQuanLy.Visible = false;
+            }
+            else if(staffright == 2) // chu
+            {
+                this.btnQuyDinh.Enabled = true;
+                this.tabQuanLy.Visible = true;
+            }
+            
         }
 
         private void DangNhap()
         {
-            SetDefaultOpen(false);
+            SetDefaultOpen(false,1);
             this.infoUser.Caption = "Xin chào, ";
             if (KiemTraTonTai("frmDangNhap") == null)
             {
@@ -45,19 +57,23 @@ namespace GUI
         private void frmMain_Load(object sender, EventArgs e)
         {
             DangNhap();
-
-            //ucMain uc = new ucMain();
-            //uc.Dock = DockStyle.Fill;
-            //pnlMain.Controls.Clear();
-            //pnlMain.Controls.Add(uc);
-
             pnlMain.Visible = false;
         }
 
         private void LoadUserInfo(string data)
         {
-            this.infoUser.Caption = "Xin Chào, " + data.ToUpper();
-            SetDefaultOpen(true);
+            string name = loadnamefromusername(data);
+            int right = loadright(data); 
+            this.infoUser.Caption = "Xin Chào, " + name.ToUpper();
+            SetDefaultOpen(true,right);
+        }
+
+        private int loadright(string data) {
+            return acc.loadright(data);
+        }
+
+        private string loadnamefromusername(string data) {
+             return acc.findstaffname(data);
         }
 
         private void btnĐangXuat_ItemClick(object sender, ItemClickEventArgs e)

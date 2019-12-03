@@ -17,8 +17,15 @@ namespace BLL
         {
             return acc.CheckLogin(username, password);
         }
+        public string findstaffname(string username) {
+            return acc.findstaffname(username);
+        }
         public int UpdateAccount(string username, string password) {
             return acc.UpdateAccount(username, password);
+        }
+
+        public int loadright(string data) {
+            return acc.loadright(data);
         }
         #endregion
     }

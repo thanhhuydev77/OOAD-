@@ -40,13 +40,13 @@
             this.btnQuyDinh = new DevExpress.XtraBars.BarButtonItem();
             this.btnThoat = new DevExpress.XtraBars.BarButtonItem();
             this.btnDoiMatKhau = new DevExpress.XtraBars.BarButtonItem();
-            this.btnDaiLy = new DevExpress.XtraBars.BarButtonItem();
-            this.btnLoaiDaiLy = new DevExpress.XtraBars.BarButtonItem();
-            this.btnQuan = new DevExpress.XtraBars.BarButtonItem();
+            this.btnmathangkhac = new DevExpress.XtraBars.BarButtonItem();
+            this.btnLoaiMatHang = new DevExpress.XtraBars.BarButtonItem();
+            this.btnThuoc = new DevExpress.XtraBars.BarButtonItem();
             this.btnMatHang = new DevExpress.XtraBars.BarButtonItem();
             this.btnDonViTinh = new DevExpress.XtraBars.BarButtonItem();
             this.btnBaoCaoDoanhSo = new DevExpress.XtraBars.BarButtonItem();
-            this.btnBaoCaoCongNo = new DevExpress.XtraBars.BarButtonItem();
+            this.btnBaoCaoNhapKho = new DevExpress.XtraBars.BarButtonItem();
             this.infoUser = new DevExpress.XtraBars.BarStaticItem();
             this.barEditItem1 = new DevExpress.XtraBars.BarEditItem();
             this.barEditItem2 = new DevExpress.XtraBars.BarEditItem();
@@ -109,13 +109,13 @@
             this.btnQuyDinh,
             this.btnThoat,
             this.btnDoiMatKhau,
-            this.btnDaiLy,
-            this.btnLoaiDaiLy,
-            this.btnQuan,
+            this.btnmathangkhac,
+            this.btnLoaiMatHang,
+            this.btnThuoc,
             this.btnMatHang,
             this.btnDonViTinh,
             this.btnBaoCaoDoanhSo,
-            this.btnBaoCaoCongNo,
+            this.btnBaoCaoNhapKho,
             this.infoUser,
             this.barEditItem1,
             this.barEditItem2,
@@ -199,35 +199,35 @@
             this.btnDoiMatKhau.Name = "btnDoiMatKhau";
             this.btnDoiMatKhau.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDoiMatKhau_ItemClick);
             // 
-            // btnDaiLy
+            // btnmathangkhac
             // 
-            this.btnDaiLy.Caption = "Đại Lý";
-            this.btnDaiLy.Id = 11;
-            this.btnDaiLy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDaiLy.ImageOptions.Image")));
-            this.btnDaiLy.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDaiLy.ImageOptions.LargeImage")));
-            this.btnDaiLy.LargeWidth = 80;
-            this.btnDaiLy.Name = "btnDaiLy";
-            this.btnDaiLy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDaiLy_ItemClick);
+            this.btnmathangkhac.Caption = "Mặt hàng khác";
+            this.btnmathangkhac.Id = 11;
+            this.btnmathangkhac.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnDaiLy.ImageOptions.Image")));
+            this.btnmathangkhac.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnDaiLy.ImageOptions.LargeImage")));
+            this.btnmathangkhac.LargeWidth = 80;
+            this.btnmathangkhac.Name = "btnmathangkhac";
+            this.btnmathangkhac.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnDaiLy_ItemClick);
             // 
-            // btnLoaiDaiLy
+            // btnLoaiMatHang
             // 
-            this.btnLoaiDaiLy.Caption = "Loại Đại Lý";
-            this.btnLoaiDaiLy.Id = 12;
-            this.btnLoaiDaiLy.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLoaiDaiLy.ImageOptions.Image")));
-            this.btnLoaiDaiLy.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLoaiDaiLy.ImageOptions.LargeImage")));
-            this.btnLoaiDaiLy.LargeWidth = 80;
-            this.btnLoaiDaiLy.Name = "btnLoaiDaiLy";
-            this.btnLoaiDaiLy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnLoaiDaiLy_ItemClick);
+            this.btnLoaiMatHang.Caption = "Loại Mặt Hàng";
+            this.btnLoaiMatHang.Id = 12;
+            this.btnLoaiMatHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnLoaiDaiLy.ImageOptions.Image")));
+            this.btnLoaiMatHang.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnLoaiDaiLy.ImageOptions.LargeImage")));
+            this.btnLoaiMatHang.LargeWidth = 80;
+            this.btnLoaiMatHang.Name = "btnLoaiMatHang";
+            this.btnLoaiMatHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnLoaiDaiLy_ItemClick);
             // 
-            // btnQuan
+            // btnThuoc
             // 
-            this.btnQuan.Caption = "Quận";
-            this.btnQuan.Id = 13;
-            this.btnQuan.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQuan.ImageOptions.Image")));
-            this.btnQuan.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnQuan.ImageOptions.LargeImage")));
-            this.btnQuan.LargeWidth = 80;
-            this.btnQuan.Name = "btnQuan";
-            this.btnQuan.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnQuan_ItemClick);
+            this.btnThuoc.Caption = "Thuốc";
+            this.btnThuoc.Id = 13;
+            this.btnThuoc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnQuan.ImageOptions.Image")));
+            this.btnThuoc.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnQuan.ImageOptions.LargeImage")));
+            this.btnThuoc.LargeWidth = 80;
+            this.btnThuoc.Name = "btnThuoc";
+            this.btnThuoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.BtnQuan_ItemClick);
             // 
             // btnMatHang
             // 
@@ -258,16 +258,16 @@
             this.btnBaoCaoDoanhSo.Name = "btnBaoCaoDoanhSo";
             this.btnBaoCaoDoanhSo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBaoCaoDoanhSo_ItemClick);
             // 
-            // btnBaoCaoCongNo
+            // btnBaoCaoNhapKho
             // 
-            this.btnBaoCaoCongNo.Caption = "Công Nợ";
-            this.btnBaoCaoCongNo.Id = 22;
-            this.btnBaoCaoCongNo.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBaoCaoCongNo.ImageOptions.Image")));
-            this.btnBaoCaoCongNo.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBaoCaoCongNo.ImageOptions.LargeImage")));
-            this.btnBaoCaoCongNo.LargeWidth = 80;
-            this.btnBaoCaoCongNo.Name = "btnBaoCaoCongNo";
-            this.btnBaoCaoCongNo.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
-            this.btnBaoCaoCongNo.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBaoCaoCongNo_ItemClick);
+            this.btnBaoCaoNhapKho.Caption = "Nhập Kho";
+            this.btnBaoCaoNhapKho.Id = 22;
+            this.btnBaoCaoNhapKho.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnBaoCaoCongNo.ImageOptions.Image")));
+            this.btnBaoCaoNhapKho.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnBaoCaoCongNo.ImageOptions.LargeImage")));
+            this.btnBaoCaoNhapKho.LargeWidth = 80;
+            this.btnBaoCaoNhapKho.Name = "btnBaoCaoNhapKho";
+            this.btnBaoCaoNhapKho.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonItemStyles.Large;
+            this.btnBaoCaoNhapKho.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnBaoCaoCongNo_ItemClick);
             // 
             // infoUser
             // 
@@ -355,15 +355,14 @@
             // 
             // ribbonPageGroup1
             // 
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnDaiLy);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnLoaiDaiLy);
-            this.ribbonPageGroup1.ItemLinks.Add(this.btnQuan);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnLoaiMatHang);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnmathangkhac);
+            this.ribbonPageGroup1.ItemLinks.Add(this.btnThuoc);
             this.ribbonPageGroup1.Name = "ribbonPageGroup1";
             this.ribbonPageGroup1.Text = "Đại lý";
             // 
             // ribbonPageGroup5
             // 
-            this.ribbonPageGroup5.ItemLinks.Add(this.btnMatHang);
             this.ribbonPageGroup5.ItemLinks.Add(this.btnDonViTinh);
             this.ribbonPageGroup5.Name = "ribbonPageGroup5";
             this.ribbonPageGroup5.Text = "Hàng hóa";
@@ -383,7 +382,7 @@
             // 
             // ribbonPageGroup6
             // 
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnBaoCaoCongNo);
+            this.ribbonPageGroup6.ItemLinks.Add(this.btnBaoCaoNhapKho);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
             // 
             // ribbonPage1
@@ -495,9 +494,9 @@
         private DevExpress.XtraBars.BarButtonItem btnQuyDinh;
         private DevExpress.XtraBars.BarButtonItem btnThoat;
         private DevExpress.XtraBars.BarButtonItem btnDoiMatKhau;
-        private DevExpress.XtraBars.BarButtonItem btnDaiLy;
-        private DevExpress.XtraBars.BarButtonItem btnLoaiDaiLy;
-        private DevExpress.XtraBars.BarButtonItem btnQuan;
+        private DevExpress.XtraBars.BarButtonItem btnmathangkhac;
+        private DevExpress.XtraBars.BarButtonItem btnLoaiMatHang;
+        private DevExpress.XtraBars.BarButtonItem btnThuoc;
         private DevExpress.XtraBars.BarButtonItem btnMatHang;
         private DevExpress.XtraBars.Ribbon.RibbonPage tabHeThong;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup menuGroup_1;
@@ -511,7 +510,7 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemTextEdit repositoryItemTextEdit1;
         private DevExpress.XtraBars.BarButtonItem btnDonViTinh;
         private DevExpress.XtraBars.BarButtonItem btnBaoCaoDoanhSo;
-        private DevExpress.XtraBars.BarButtonItem btnBaoCaoCongNo;
+        private DevExpress.XtraBars.BarButtonItem btnBaoCaoNhapKho;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraEditors.PanelControl pnlMain;
         private DevExpress.XtraBars.BarStaticItem infoUser;
