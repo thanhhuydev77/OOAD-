@@ -23,10 +23,17 @@ namespace BLL
         public int UpdateAccount(string username, string password) {
             return acc.UpdateAccount(username, password);
         }
-
+        public int createAccount(string username) {
+            return acc.createAccount(username);
+        }
         public int loadright(string data) {
             return acc.loadright(data);
         }
+
+        public int resetaccount(string username) {
+            return acc.loadright(username);
+        }
+
         #endregion
     }
 }

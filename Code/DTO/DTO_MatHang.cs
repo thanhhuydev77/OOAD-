@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace DTO
 {
-  public  class DTO_MatHang
+  public  class DTO_Hang
     {
         #region prop
         private long maMatHang;

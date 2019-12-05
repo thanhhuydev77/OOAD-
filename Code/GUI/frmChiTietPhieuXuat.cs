@@ -16,8 +16,8 @@ namespace GUI
     public partial class frmChiTietPhieuXuat : Form
     {
         private BLL_DonViTinh donvitinh = new BLL_DonViTinh();
-        private BLL_MatHang mathang = new BLL_MatHang();
-        private BLL_MatHangKhac ldl = new BLL_MatHangKhac();
+        private BLL_Hang mathang = new BLL_Hang();
+        private BLL_Hang ldl = new BLL_Hang();
         private BLL_ChiTietPhieuXuat chitiet = new BLL_ChiTietPhieuXuat();
         private string id;
         public string Id { get => id; set => id = value; }
@@ -62,7 +62,7 @@ namespace GUI
                 this.dataChiTietPhieuXuat.DataSource = chitiet.timkiem(txtMaPhieuXuat.Text);
 
                 List<DTO_DonViTinh> listdvt = donvitinh.hienthidanhsach();
-                List<DTO_MatHang> listmh = mathang.LayDanhSachMatHang();
+                List<DTO_Hang> listmh = mathang.LayDanhSachMatHangKhac();
 
                 if (listdvt == null || listmh == null)
                 {
@@ -346,7 +346,7 @@ namespace GUI
 
             foreach (DataGridViewRow row in dataChiTietPhieuXuat.Rows)
             {               
-                graphic.DrawString(mathang.LayDanhSachMatHang(long.Parse(row.Cells[3].Value.ToString())), font, new SolidBrush(Color.Black), startX, startY + offset);
+                //graphic.DrawString(mathang.LayDanhSachMatHangKhac(long.Parse(row.Cells[3].Value.ToString())), font, new SolidBrush(Color.Black), startX, startY + offset);
                 graphic.DrawString(donvitinh.LayDonViTinh(long.Parse(row.Cells[2].Value.ToString())), font, new SolidBrush(Color.Black), startX + 200, startY + offset);
                 graphic.DrawString(row.Cells[4].Value.ToString(), font, new SolidBrush(Color.Black), startX + 450, startY + offset);
                 graphic.DrawString(row.Cells[5].Value.ToString(), font, new SolidBrush(Color.Black), startX + 650, startY + offset);

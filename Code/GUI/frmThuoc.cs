@@ -13,13 +13,13 @@ using System.Data.SqlClient;
 
 namespace GUI
 {
-    public partial class frmMatHangKhac : Form
+    public partial class frmThuoc : Form
     {
-        private BLL_Hang mathangkhac = new BLL_Hang();
+        private BLL_Hang thuoc = new BLL_Hang();
         private BLL_DonViTinh donvitinh = new BLL_DonViTinh();
         Font bigfont = new Font("Times New Roman", 16f);
         Font smallfont = new Font("Times New Roman", 8.25f);
-        public frmMatHangKhac() {
+        public frmThuoc() {
             InitializeComponent();
         }
         private void SetDefault(bool status) {
@@ -49,16 +49,15 @@ namespace GUI
             this.txtXuatXu.Text = string.Empty;
         }
 
-        private void FrmLoaiDaiLy_Load(object sender, EventArgs e) {
+        private void FrmThuoc_Load(object sender, EventArgs e) {
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             List<DTO_DonViTinh> listdvt = donvitinh.hienthidanhsach();
 
-            if (mathangkhac.LayDanhSachMatHangKhac() != null && listdvt != null) {
-                this.dataMatHang.DataSource = mathangkhac.LayDanhSachMatHangKhac();
+            if (thuoc.LayDanhSachMatHangKhac() != null && listdvt != null) {
+                this.dataMatHang.DataSource = thuoc.LayDanhSachThuoc();
                 this.dataMatHang.Columns["maNhomHang"].Visible = false;
                 this.dataMatHang.Columns["maDVT"].Visible = false;
-
                 this.cbDVT.DataSource = listdvt;
                 this.cbDVT.DisplayMember = "ten";
                 this.cbDVT.ValueMember = "id";
@@ -107,61 +106,9 @@ namespace GUI
             return true;
         }
 
-        private void BtnThem_Click(object sender, EventArgs e) {
-            if (btnThem.Text == "Thêm Mặt Hàng") {
-                ResetValue();
-                SetDefault(true);
-
-                btnThem.Text = "Lưu";
-                btnSua.Enabled = false;
-                btnXoa.Text = "Hủy";
-                btnXoa.Enabled = true;
-                btnThem.Enabled = true;
-                txtTenMatHang.Focus();
-            } else {
-                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thêm hàng hóa", "THÊM MẶT HÀNG", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.OK) {
-                    if (KiemTra()) {
-                        DTO_Hang ldl = new DTO_Hang();
-                        ldl.TenMatHang = this.txtTenMatHang.Text;
-                        ldl.MaDVT = (long)this.cbDVT.SelectedValue;
-                        ldl.CongDung = this.txtCongDung.Text;
-                        ldl.ThanhPhan = this.txtThanhPhan.Text;
-                        ldl.XuatXu = this.txtXuatXu.Text;
-                        ldl.SoLuong = int.Parse(this.numSoLuong.Text);
-                        ldl.GiaNhap = double.Parse(this.numGiaNhap.Text);
-                        ldl.GiaBan = double.Parse(this.numGiaBan.Text);
-                        ldl.MaNhomHang = 2;
-                        if (mathangkhac.ThemMatHang(ldl)) {
-                            btnThem.Text = "Thêm Mặt Hàng";
-                            btnXoa.Text = "Xóa";
-
-                            dataMatHang.DataSource = mathangkhac.LayDanhSachMatHangKhac();
-                            CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
-                            myCurrencyManager.Refresh();
-
-                            SetDefault(false);
-                            ResetValue();
-
-                            if (string.IsNullOrEmpty(txtMaMatHang.Text)) {
-                                btnXoa.Enabled = false;
-                            }
-
-                            MessageBox.Show("Thêm mặt hàng thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        } else {
-                            MessageBox.Show("Vui lòng kiểm tra lại quy định và dữ liệu", "Thêm mặt hàng thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-
-
-                    }
-                }
-
-            }
-        }
-
         private void BtnSua_Click(object sender, EventArgs e) {
             if (string.IsNullOrEmpty(txtMaMatHang.Text)) {
-                MessageBox.Show("Vui lòng chọn loại đại lý để cập nhật", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Vui lòng chọn thuốc để cập nhật", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 SetDefault(true);
             } else {
                 if (btnSua.Text == "Sửa") {
@@ -175,7 +122,7 @@ namespace GUI
                         if (!KiemTra()) { return; }
                         DTO_Hang ldl = new DTO_Hang();
                         ldl.TenMatHang = this.txtTenMatHang.Text;
-                        ldl.MaNhomHang = 2;
+                        ldl.MaNhomHang = 1;
                         ldl.MaDVT = (long)this.cbDVT.SelectedValue;
                         ldl.MaMatHang = long.Parse(this.txtMaMatHang.Text);
                         ldl.CongDung = this.txtCongDung.Text;
@@ -185,20 +132,20 @@ namespace GUI
                         ldl.GiaNhap = double.Parse(this.numGiaNhap.Text);
                         ldl.GiaBan = double.Parse(this.numGiaBan.Text);
 
-                        if (mathangkhac.SuaMatHang(ldl)) {
+                        if (thuoc.SuaMatHang(ldl)) {
                             btnSua.Text = "Sửa";
                             btnXoa.Text = "Xóa";
                             btnThem.Enabled = true;
 
-                            dataMatHang.DataSource = mathangkhac.LayDanhSachMatHangKhac();
+                            dataMatHang.DataSource = thuoc.LayDanhSachThuoc();
                             CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
                             myCurrencyManager.Refresh();
 
-                            MessageBox.Show("Cập nhật mặt hàng thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            MessageBox.Show("Cập nhật thuốc thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             SetDefault(false);
                             ResetValue();
                         } else {
-                            MessageBox.Show("Vui lòng kiểm tra lại quy định và dữ liệu", "Cập nhật mặt hàng thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Vui lòng kiểm tra lại quy định và dữ liệu", "Cập nhật thuốc thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -207,23 +154,23 @@ namespace GUI
 
         private void BtnXoa_Click(object sender, EventArgs e) {
             if (btnXoa.Text == "Xóa") {
-                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa mặt hàng", "XÓA MẶT HÀNG", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa thuốc", "XÓA THUỐC", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK) {
-                    if (mathangkhac.XoaMatHang(long.Parse(txtMaMatHang.Text))) {
-                        dataMatHang.DataSource = mathangkhac.LayDanhSachMatHangKhac();
+                    if (thuoc.XoaMatHang(long.Parse(txtMaMatHang.Text))) {
+                        dataMatHang.DataSource = thuoc.LayDanhSachMatHangKhac();
 
                         CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
                         myCurrencyManager.Refresh();
 
-                        MessageBox.Show("Xóa mặt hàng thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        MessageBox.Show("Xóa thuốc thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                     } else {
-                        MessageBox.Show("Xóa mặt hàng thất bại", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Xóa thuốc thất bại", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             } else {
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn hủy", "HỦY THAO TÁC", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK) {
-                    btnThem.Text = "Thêm Mặt Hàng";
+                    btnThem.Text = "Thêm Thuốc";
                     btnSua.Text = "Sửa";
                     btnXoa.Text = "Xóa";
                     //btnSua.Enabled = true;
@@ -238,8 +185,24 @@ namespace GUI
             }
         }
 
-        private void DataLoaiDaiLy_CellClick(object sender, DataGridViewCellEventArgs e) {
-            if (btnThem.Text == "Thêm Mặt Hàng" && btnSua.Text == "Sửa") {
+        private void panel1_Paint(object sender, PaintEventArgs e) {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e) {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e) {
+
+        }
+
+        private void numGiaNhap_ValueChanged(object sender, EventArgs e) {
+
+        }
+
+        private void dataMatHang_CellClick(object sender, DataGridViewCellEventArgs e) {
+            if (btnThem.Text == "Thêm Thuốc" && btnSua.Text == "Sửa") {
                 try {
                     int index = e.RowIndex;
                     DataGridViewRow row = this.dataMatHang.Rows[index];
@@ -258,7 +221,7 @@ namespace GUI
             }
         }
 
-        private void TxtMaLoaiDaiLy_TextChanged(object sender, EventArgs e) {
+        private void txtMaMatHang_TextChanged(object sender, EventArgs e) {
             if (string.IsNullOrEmpty(txtMaMatHang.Text)) {
                 btnSua.Enabled = false;
                 btnXoa.Enabled = false;
@@ -268,53 +231,107 @@ namespace GUI
             }
         }
 
-        private void scTimKiem_TextChanged(object sender, EventArgs e) {
-            
-            scTimKiem.Font = bigfont;
+        private void btnThem_Click(object sender, EventArgs e) {
+            if (btnThem.Text == "Thêm Thuốc") {
+                ResetValue();
+                SetDefault(true);
 
+                btnThem.Text = "Lưu";
+                btnSua.Enabled = false;
+                btnXoa.Text = "Hủy";
+                btnXoa.Enabled = true;
+                btnThem.Enabled = true;
+                txtTenMatHang.Focus();
+            } else {
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thêm thuốc", "THÊM THUỐC", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK) {
+                    if (KiemTra()) {
+                        DTO_Hang ldl = new DTO_Hang();
+                        ldl.TenMatHang = this.txtTenMatHang.Text;
+                        ldl.MaDVT = (long)this.cbDVT.SelectedValue;
+                        ldl.CongDung = this.txtCongDung.Text;
+                        ldl.ThanhPhan = this.txtThanhPhan.Text;
+                        ldl.XuatXu = this.txtXuatXu.Text;
+                        ldl.SoLuong = int.Parse(this.numSoLuong.Text);
+                        ldl.GiaNhap = double.Parse(this.numGiaNhap.Text);
+                        ldl.GiaBan = double.Parse(this.numGiaBan.Text);
+                        ldl.MaNhomHang = 1;
+                        if (thuoc.ThemMatHang(ldl)) {
+                            btnThem.Text = "Thêm Thuốc";
+                            btnXoa.Text = "Xóa";
+
+                            dataMatHang.DataSource = thuoc.LayDanhSachThuoc();
+                            CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
+                            myCurrencyManager.Refresh();
+
+                            SetDefault(false);
+                            ResetValue();
+
+                            if (string.IsNullOrEmpty(txtMaMatHang.Text)) {
+                                btnXoa.Enabled = false;
+                            }
+
+                            MessageBox.Show("Thêm thuốc thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        } else {
+                            MessageBox.Show("Vui lòng kiểm tra lại quy định và dữ liệu", "Thêm thuốc thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+
+
+                    }
+                }
+
+            }
+        }
+
+        private void searchControl1_TextChanged(object sender, EventArgs e) {
+            Font font = new Font("Times New Roman", 16.0f,
+                        FontStyle.Bold );
+            scTimKiem.Font = font;
             if (string.IsNullOrEmpty(scTimKiem.Text)) {
-                dataMatHang.DataSource = mathangkhac.LayDanhSachMatHangKhac();
+                dataMatHang.DataSource = thuoc.LayDanhSachThuoc();
                 CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
                 myCurrencyManager.Refresh();
             } else {
-                dataMatHang.DataSource = mathangkhac.TimKiem(scTimKiem.Text, 2);
+                dataMatHang.DataSource = thuoc.TimKiem(scTimKiem.Text, 1);
                 CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
                 myCurrencyManager.Refresh();
             }
         }
-        private void scTimKiem_MouseLeave(object sender, EventArgs e) {
-            
-            scTimKiem.Font = smallfont;
-        }
 
         private void scTimKiem_MouseEnter(object sender, EventArgs e) {
-            
-            scTimKiem.Font = bigfont;
+            Font font = new Font("Times New Roman", 16.0f,
+                        FontStyle.Bold );
+            scTimKiem.Font = font;
             scTimKiem.Focus();
         }
 
+        private void scTimKiem_MouseLeave(object sender, EventArgs e) {
+            Font font = new Font("Times New Roman", 8.25f,
+                        FontStyle.Bold );
+            scTimKiem.Font = font;
+        }
         private void txtMaMatHang_MouseEnter(object sender, EventArgs e) {
-            
+
             txtMaMatHang.Font = bigfont;
         }
 
         private void txtTenMatHang_MouseEnter(object sender, EventArgs e) {
-            
+
             txtTenMatHang.Font = bigfont;
         }
 
         private void txtCongDung_MouseEnter(object sender, EventArgs e) {
-            
+
             txtCongDung.Font = bigfont;
         }
 
         private void txtThanhPhan_MouseEnter(object sender, EventArgs e) {
-            
+
             txtThanhPhan.Font = bigfont;
         }
 
         private void txtXuatXu_MouseEnter(object sender, EventArgs e) {
-            
+
             txtXuatXu.Font = bigfont;
         }
 

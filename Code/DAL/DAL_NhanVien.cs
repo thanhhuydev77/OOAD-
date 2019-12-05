@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DAL
 {
-  public  class DAL_Mathang
+  public  class DAL_NhanVien
     {
         #region prop
         private string connectionString;
@@ -20,15 +20,16 @@ namespace DAL
         }
         #endregion
         #region method
-        public DAL_Mathang() {
+        public DAL_NhanVien() {
             connectionString = ConfigurationManager.AppSettings["ConnectionString"];
         }
        
-        public List<DTO_MatHang> LayDanhSachMatHang() {
-            List<DTO_MatHang> ds = new List<DTO_MatHang>();
+
+        public List<DTO_NhanVien> LayDanhSachNhanVien() {
+            List<DTO_NhanVien> ds = new List<DTO_NhanVien>();
 
             string query = string.Empty;
-            query = "SELECT * FROM tblMatHang";
+            query = "SELECT * FROM tblnhanvien";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 using (SqlCommand cmd = new SqlCommand()) {
@@ -36,23 +37,32 @@ namespace DAL
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
 
-                    try{
+                    try
+                        {
                         con.Open();
                         SqlDataReader reader = cmd.ExecuteReader();
 
                         if (reader.HasRows == true) {
                             while (reader.Read()) {
-                                DTO_MatHang dl = new DTO_MatHang();
-                                dl.MaMatHang = long.Parse(reader["id"].ToString());
-                                dl.TenMatHang = reader.GetString(1);
-                                dl.MaDVT = long.Parse(reader["maDonViTinh"].ToString());
-                                //dl.Dongia = (uint)reader.GetDecimal(3);
+                                DTO_NhanVien dl = new DTO_NhanVien();
+                                dl.Id = long.Parse(reader["id"].ToString());
+                                dl.TenNhanVien = reader.GetString(1);
+                                dl.ChucVu = reader.GetString(2);
+                                dl.GioiTinh = (bool)reader.GetBoolean(3);
+                                dl.Tuoi = int.Parse(reader["tuoi"].ToString());
+                                dl.DiaChi = reader.GetString(5);
+                                dl.Email = reader.GetString(6);
+                                dl.SDT = reader.GetString(7);
+                                dl.PhanQuyen = int.Parse(reader["phanquyen"].ToString());
+                                dl.TaiKhoan = long.Parse(reader["userid"].ToString());
                                 ds.Add(dl);
                             }
                         }
                         con.Close();
                         con.Dispose();
-                         } catch {
+                         } 
+                    catch
+                        {
                         con.Close();
                         return null;
                     }
@@ -62,12 +72,48 @@ namespace DAL
             return ds;
         }
 
-        public string LayDanhSachMatHang(long id)
-        {
-            string ds = string.Empty;
+        public List<DTO_Right> LayDanhSachQuyen() {
+            List<DTO_Right> ds = new List<DTO_Right>();
 
             string query = string.Empty;
-            query = "SELECT * FROM tblMatHang WHERE [id] = @id";
+            query = "SELECT * FROM tblright";
+
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                using (SqlCommand cmd = new SqlCommand()) {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+
+                    try {
+                        con.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows == true) {
+                            while (reader.Read()) {
+                                DTO_Right dl = new DTO_Right();
+                                dl.Id = int.Parse(reader["id"].ToString());
+                                dl.Name = reader.GetString(1);
+                                
+                                ds.Add(dl);
+                            }
+                        }
+                        con.Close();
+                        con.Dispose();
+                    } catch {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+
+            return ds;
+        }
+        public string timTaiKhoan(string tenNhanVIen)
+        {
+            string result  = string.Empty;
+
+            string query = string.Empty;
+            query = "select username from tblaccount a,tblnhanvien b where a.id = b.userId and b.hoten = @ten";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -77,7 +123,7 @@ namespace DAL
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
 
-                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@ten", tenNhanVIen);
                     try
                     {
                         con.Open();
@@ -87,7 +133,7 @@ namespace DAL
                         {
                             while (reader.Read())
                             {
-                                ds = reader.GetString(1);
+                                result = reader.GetString(0);
                             }
                         }
                         con.Close();
@@ -101,25 +147,30 @@ namespace DAL
                 }
             }
 
-            return ds;
+            return result;
         }
 
-        public bool ThemMatHang(DTO_MatHang mh) {
+        public bool ThemNhanVien(DTO_NhanVien mh) {
             string query = string.Empty;
-            query += "INSERT INTO tblMatHang ([tenMatHang],[DonGia],[maDonViTinh]) ";
-            query += " VALUES (@tenMH, @DonGia, @madonvitinh)";
+            query += "INSERT INTO tblNhanVien ([hoten],[chucvu],[gioitinh],[tuoi],[diachi],[email],[sdt],[phanquyen],[userid]) ";
+            query += " VALUES (@hoten, @chucvu, @gioitinh,@tuoi,@diachi,@email,@sdt,@phanquyen,@userid)";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 using (SqlCommand cmd = new SqlCommand()) {
                     cmd.Connection = con;
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
-
-                    cmd.Parameters.AddWithValue("@tenMH",mh.TenMatHang);
-                    //cmd.Parameters.AddWithValue("@DonGia", Decimal.Parse(mh.Dongia.ToString()));
-                    cmd.Parameters.AddWithValue("@madonvitinh", mh.MaDVT);
-
-                       try {
+                    
+                    cmd.Parameters.AddWithValue("@hoten",mh.TenNhanVien);
+                    cmd.Parameters.AddWithValue("@chucvu",mh.ChucVu);
+                    cmd.Parameters.AddWithValue("@gioitinh", mh.GioiTinh);
+                    cmd.Parameters.AddWithValue("@tuoi", mh.Tuoi);
+                    cmd.Parameters.AddWithValue("@diachi", mh.DiaChi);
+                    cmd.Parameters.AddWithValue("@email", mh.Email);
+                    cmd.Parameters.AddWithValue("@sdt", mh.SDT);
+                    cmd.Parameters.AddWithValue("@phanquyen", mh.PhanQuyen);
+                    cmd.Parameters.AddWithValue("@userid", mh.TaiKhoan);
+                    try {
                     con.Open();
                         if (cmd.ExecuteNonQuery() > 0) {
                             con.Close();
@@ -137,9 +188,9 @@ namespace DAL
             }
         }
 
-        public bool XoaMatHang(long id) {
+        public bool XoaNhanVien(long id) {
             string query = string.Empty;
-            query += "DELETE FROM [tblMatHang] where [id] = @id";
+            query += "DELETE FROM [tblNhanvien] where [id] = @id";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 using (SqlCommand cmd = new SqlCommand()) {
@@ -167,21 +218,28 @@ namespace DAL
             }
         }
 
-        public bool SuaMatHang(DTO_MatHang mh) {
+        public bool SuaNhanVien(DTO_NhanVien mh) {
             string query = string.Empty;
-            query = "UPDATE [tblMatHang] " +
-                "SET [tenMatHang] = @tenMatHang ,[maDonViTinh] = @madonvitinh, [DonGia] = @DonGia WHERE [Id] = @id";
+            query = "UPDATE [tblNhanvien] " +
+                "SET [hoten] = @hoten,[chucvu] = @chucvu,[gioitinh] = @gioitinh,[tuoi] = @tuoi,[diachi] = @diachi,[email] = @email,[sdt] = @sdt,[phanquyen] = @phanquyen " +
+                " " +
+                "WHERE [Id] = @id";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 using (SqlCommand cmd = new SqlCommand()) {
                     cmd.Connection = con;
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
-
-                    cmd.Parameters.AddWithValue("@tenMatHang", mh.TenMatHang);
-                    //cmd.Parameters.AddWithValue("@DonGia", Decimal.Parse(mh.Dongia.ToString()));
-                    cmd.Parameters.AddWithValue("@id", mh.MaMatHang);
-                    cmd.Parameters.AddWithValue("@madonvitinh", mh.MaDVT);
+                    cmd.Parameters.AddWithValue("@id", mh.Id);
+                    cmd.Parameters.AddWithValue("@hoten", mh.TenNhanVien);
+                    cmd.Parameters.AddWithValue("@chucvu", mh.ChucVu);
+                    cmd.Parameters.AddWithValue("@gioitinh", mh.GioiTinh);
+                    cmd.Parameters.AddWithValue("@tuoi", mh.Tuoi);
+                    cmd.Parameters.AddWithValue("@diachi", mh.DiaChi);
+                    cmd.Parameters.AddWithValue("@email", mh.Email);
+                    cmd.Parameters.AddWithValue("@sdt", mh.SDT);
+                    cmd.Parameters.AddWithValue("@phanquyen", mh.PhanQuyen);
+                    
 
                     try {
                         con.Open();
@@ -201,12 +259,12 @@ namespace DAL
             }
         }
 
-        public List<DTO_MatHang> TimKiemMatHang(string tukhoa) {
-            List<DTO_MatHang> list = new List<DTO_MatHang>();
+        public List<DTO_NhanVien> TimKiemNhanVien(string tukhoa) {
+            List<DTO_NhanVien> list = new List<DTO_NhanVien>();
 
             string query = string.Empty;
-            query += "SELECT * FROM [tblMatHang]";
-            query += "WHERE [tenMatHang] like '%' + @tukhoa + '%'";
+            query += "SELECT * FROM [tblNhanVien]";
+            query += "WHERE [hoten] like '%' + @tukhoa + '%'";
                 
             long tk;
             if (long.TryParse(tukhoa, out tk)) {
@@ -222,23 +280,32 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@tukhoa", tukhoa);
                     cmd.Parameters.AddWithValue("@tk", tk);
 
-                    try {
+                    try
+                        {
                         con.Open();
                         SqlDataReader reader = cmd.ExecuteReader();
 
                         if (reader.HasRows == true) {
                             while (reader.Read()) {
-                                DTO_MatHang mh = new DTO_MatHang();
-                                mh.MaMatHang = long.Parse(reader["id"].ToString());
-                                mh.TenMatHang = reader.GetString(1);
-                                mh.MaDVT = long.Parse(reader["maDonViTinh"].ToString());
-                           // mh.Dongia = (uint)reader.GetDecimal(3);
-                                list.Add(mh);
+                                DTO_NhanVien dl = new DTO_NhanVien();
+                                dl.Id = long.Parse(reader["id"].ToString());
+                                dl.TenNhanVien = reader.GetString(1);
+                                dl.ChucVu = reader.GetString(2);
+                                dl.GioiTinh = (bool)reader.GetBoolean(3);
+                                dl.Tuoi = int.Parse(reader["tuoi"].ToString());
+                                dl.DiaChi = reader.GetString(5);
+                                dl.Email = reader.GetString(6);
+                                dl.SDT = reader.GetString(7);
+                                dl.PhanQuyen = int.Parse(reader["phanquyen"].ToString());
+                                dl.TaiKhoan = long.Parse(reader["userid"].ToString());
+                                list.Add(dl);
                             }
                         }
                         con.Close();
                         con.Dispose();
-                    } catch {
+                    } 
+                    catch 
+                        {
                         con.Close();
                         return null;
                     }

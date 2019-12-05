@@ -112,17 +112,7 @@ namespace GUI
             }
         }
 
-        private void btnMatHang_ItemClick(object sender, ItemClickEventArgs e) {
-            if (KiemTraTonTai("frmmathang") == null) {
-                foreach (Form frm1 in MdiChildren) {
-                    frm1.Close();
-                }
-                frmMatHang frm = new frmMatHang();
-
-                frm.MdiParent = this;
-                frm.Show();
-            }
-        }
+        
 
         private void btnBaoCaoDoanhSo_ItemClick(object sender, ItemClickEventArgs e) {
             if (KiemTraTonTai("frmbaocaodoanhso") == null) {
@@ -161,11 +151,11 @@ namespace GUI
         }
 
         private void BtnQuan_ItemClick(object sender, ItemClickEventArgs e) {
-            if (KiemTraTonTai("frmQuan") == null) {
+            if (KiemTraTonTai("frmThuoc") == null) {
                 foreach (Form frm1 in MdiChildren) {
                     frm1.Close();
                 }
-                frmQuan frm = new frmQuan();
+                frmThuoc frm = new frmThuoc();
 
                 frm.MdiParent = this;
                 frm.Show();
@@ -236,6 +226,17 @@ namespace GUI
                 frm.MdiParent = this;
                 frm.Show();
             }
+        }
+
+        private void btnNhanvien_ItemClick(object sender, ItemClickEventArgs e) {
+                if (KiemTraTonTai("frmNhanVien") == null) {
+                    foreach (Form frm1 in MdiChildren) {
+                        frm1.Close();
+                    }
+                    frmNhanVien frm = new frmNhanVien();
+                    frm.MdiParent = this;
+                    frm.Show();
+                }
         }
     }
 }

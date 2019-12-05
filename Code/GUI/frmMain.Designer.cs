@@ -241,7 +241,6 @@
             this.btnMatHang.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnMatHang.ImageOptions.LargeImage")));
             this.btnMatHang.LargeWidth = 80;
             this.btnMatHang.Name = "btnMatHang";
-            this.btnMatHang.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMatHang_ItemClick);
             // 
             // btnDonViTinh
             // 
@@ -342,6 +341,7 @@
             this.btnNhanvien.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnNhanvien.ImageOptions.Image")));
             this.btnNhanvien.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnNhanvien.ImageOptions.LargeImage")));
             this.btnNhanvien.Name = "btnNhanvien";
+            this.btnNhanvien.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnNhanvien_ItemClick);
             // 
             // tabHeThong
             // 
@@ -391,6 +391,7 @@
             // 
             // ribbonPageGroup4
             // 
+            this.ribbonPageGroup4.AllowTextClipping = false;
             this.ribbonPageGroup4.ItemLinks.Add(this.btnNhanvien);
             this.ribbonPageGroup4.Name = "ribbonPageGroup4";
             this.ribbonPageGroup4.Text = "Nhân viên";

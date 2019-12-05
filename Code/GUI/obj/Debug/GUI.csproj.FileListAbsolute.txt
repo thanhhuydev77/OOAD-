@@ -218,11 +218,9 @@ C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmChiTietPhieuXuat
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmDangNhap.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmDoiMatKhau.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmDonViTinh.resources
-C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmMatHang.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmMain.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmPhieuThu.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmPhieuXuat.resources
-C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmQuan.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmQuyDinh.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.Properties.Resources.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.ucMain.resources
@@ -234,3 +232,5 @@ C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.exe
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.pdb
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmloaimathang.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmMatHangKhac.resources
+C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmThuoc.resources
+C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmNhanVien.resources

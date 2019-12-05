@@ -14,19 +14,19 @@ using System.Drawing;
 
 namespace DAL
 {
-    public class DAL_MatHangKhac
+    public class DAL_Hang
     {
         private string connectionString;
         public string ConnectionString { get => connectionString; set => connectionString = value; }
 
-        public DAL_MatHangKhac()
+        public DAL_Hang()
         {
             connectionString = ConfigurationManager.AppSettings["ConnectionString"];
         }
 
-        public List<DTO_MatHang> LayDanhSachMatHangKhac()
+        public List<DTO_Hang> LayDanhSachMatHangKhac()
         {
-            List<DTO_MatHang> ls = new List<DTO_MatHang>();
+            List<DTO_Hang> ls = new List<DTO_Hang>();
 
             string query = "SELECT * FROM tblhang where manhom = 2 ";
 
@@ -47,7 +47,7 @@ namespace DAL
                         {
                             while(reader.Read())
                             {
-                                DTO_MatHang ldl = new DTO_MatHang();
+                                DTO_Hang ldl = new DTO_Hang();
                                 ldl.MaMatHang = long.Parse(reader["id"].ToString());
                                 ldl.TenMatHang = reader.GetString(2);
                                 ldl.MaNhomHang = long.Parse(reader["manhom"].ToString());
@@ -75,11 +75,55 @@ namespace DAL
 
             return ls;
         }
-        public bool ThemMatHang(DTO_MatHang ldl)
+
+        public List<DTO_Hang> LayDanhSachThuoc() {
+            List<DTO_Hang> ls = new List<DTO_Hang>();
+
+            string query = "SELECT * FROM tblhang where manhom = 1 ";
+
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                using (SqlCommand cmd = new SqlCommand()) {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+
+                    try {
+                        con.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows == true) {
+                            while (reader.Read()) {
+                                DTO_Hang ldl = new DTO_Hang();
+                                ldl.MaMatHang = long.Parse(reader["id"].ToString());
+                                ldl.TenMatHang = reader.GetString(2);
+                                ldl.MaNhomHang = long.Parse(reader["manhom"].ToString());
+                                ldl.CongDung = reader.GetString(3);
+                                ldl.ThanhPhan = reader.GetString(4);
+                                ldl.MaDVT = long.Parse(reader["dvt"].ToString());
+                                ldl.XuatXu = reader.GetString(6);
+                                ldl.SoLuong = int.Parse(reader["soluong"].ToString());
+                                ldl.GiaNhap = (uint)reader.GetDecimal(8);
+                                ldl.GiaBan = (uint)reader.GetDecimal(9);
+                                ls.Add(ldl);
+                            }
+                        }
+                        con.Close();
+                        con.Dispose();
+                    } catch {
+                        con.Close();
+                        return null;
+                    }
+                }
+
+            }
+
+            return ls;
+        }
+        public bool ThemMatHang(DTO_Hang ldl)
         {
             string query = string.Empty;
             query += "INSERT INTO [tblhang] ([manhom],[ten],[congdung],[thanhphan],[dvt],[xuatxu], [soluong],[gianhap],[giaban]) ";
-            query += "VALUES (3, @ten, @congdung, @thanhphan, @dvt, @xuatxu, @soluong, @gianhap, @giaban)";
+            query += "VALUES (@manhom, @ten, @congdung, @thanhphan, @dvt, @xuatxu, @soluong, @gianhap, @giaban)";
             
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -121,7 +165,7 @@ namespace DAL
                 }
             }
         }
-        public bool SuaMatHang(DTO_MatHang ldl)
+        public bool SuaMatHang(DTO_Hang ldl)
         {
             string query = string.Empty;
             query = "UPDATE [tblhang] " +
@@ -210,14 +254,14 @@ namespace DAL
                 }
             }
         }
-        public List<DTO_MatHang> TimKiemLoaiDaiLy(string tukhoa)
+        public List<DTO_Hang> TimKiemHang(string tukhoa,int loai)
         {
-            List<DTO_MatHang> ds = new List<DTO_MatHang>();
+            List<DTO_Hang> ds = new List<DTO_Hang>();
             
             string query = string.Empty;
             
                 query += "SELECT * FROM [tblhang]";
-                query += "WHERE [ten] = @tukhoa or [congdung] like '%' + @tukhoa + '%' ";
+                query += "WHERE [manhom] = "+loai+ " and ([ten] like '%' + @tukhoa + '%'  or [congdung] like '%' + @tukhoa + '%' )";
             
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -239,7 +283,7 @@ namespace DAL
                         {
                             while (reader.Read())
                             {
-                                DTO_MatHang ldl = new DTO_MatHang();
+                                DTO_Hang ldl = new DTO_Hang();
                                 ldl.MaMatHang = long.Parse(reader["id"].ToString());
                                 ldl.TenMatHang = reader.GetString(2);
                                 ldl.MaNhomHang = long.Parse(reader["manhom"].ToString());

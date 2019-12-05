@@ -62,9 +62,9 @@ namespace DAL
 
                         if (reader.HasRows == true) {
                             while (reader.Read()) {
-                                
-                                    result = (int)reader[0];
-                                }
+
+                                result = (int)reader[0];
+                            }
                         }
                         con.Close();
                         con.Dispose();
@@ -76,8 +76,8 @@ namespace DAL
                 }
                 return 0;
             }
-        
-    }
+
+        }
 
         public int CheckLogin(string username, string password) {
             using (SqlConnection con = new SqlConnection(connectionString)) {
@@ -113,7 +113,7 @@ namespace DAL
 
         public string findstaffname(string username) {
             string query = string.Empty;
-            query = "SELECT hoten FROM tblnhanvien a,tblaccount b where a.userid = b.id and b.userName ='"+username+"' ";
+            query = "SELECT hoten FROM tblnhanvien a,tblaccount b where a.userid = b.id and b.userName ='" + username + "' ";
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 using (SqlCommand cmd = new SqlCommand()) {
                     string result = "";
@@ -140,6 +140,72 @@ namespace DAL
                     }
                 }
                 return "";
+            }
+        }
+
+        public int findid(string username) {
+            string query = string.Empty;
+            query = "SELECT id FROM tblaccount where userName ='" + username + "' ";
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                using (SqlCommand cmd = new SqlCommand()) {
+                    int result = 0;
+                    cmd.Connection = con;
+                    cmd.CommandText = query;
+
+
+
+                    try {
+                        con.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows == true) {
+                            while (reader.Read()) {
+                                result = int.Parse(reader[0].ToString());
+                            }
+                        }
+                        con.Close();
+                        con.Dispose();
+                        return result;
+
+                    } catch {
+                        con.Close();
+                    }
+                }
+                return 0;
+            }
+        }
+        // cmd.CommandText = "";
+        public int createAccount(string username) {
+            string query = string.Empty;
+            query = "INSERT [dbo].[tblAccount] ([userName], [passWord]) VALUES (N'" + username + "', N'1')";
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                using (SqlCommand cmd = new SqlCommand()) {
+                    int result = 0;
+                    cmd.Connection = con;
+                    cmd.CommandText = query;
+
+
+
+                    try 
+                        {
+                        con.Open();
+                        var reader = cmd.ExecuteNonQuery();
+                       
+
+                        if (reader > 0) {
+                            result = findid(username);
+                        }
+                        con.Close();
+                        con.Dispose();
+                        return result;
+
+                    } 
+                    catch 
+                        {
+                        con.Close();
+                    }
+                }
+                return 0;
             }
         }
     }
