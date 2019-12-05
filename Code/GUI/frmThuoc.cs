@@ -58,6 +58,7 @@ namespace GUI
                 this.dataMatHang.DataSource = thuoc.LayDanhSachThuoc();
                 this.dataMatHang.Columns["maNhomHang"].Visible = false;
                 this.dataMatHang.Columns["maDVT"].Visible = false;
+                this.dataMatHang.Columns["soluong"].Visible = false;
                 this.cbDVT.DataSource = listdvt;
                 this.cbDVT.DisplayMember = "ten";
                 this.cbDVT.ValueMember = "id";

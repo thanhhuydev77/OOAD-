@@ -26,16 +26,26 @@ namespace GUI
             this.btnDangXuat.Enabled = status;
             this.btnDoiMatKhau.Enabled = status;
             this.btnQuyDinh.Enabled = status;
-            this.tabBaoCao.Visible = status;
+            tabBaoCao.Visible = false;
+            tabPhieu.Visible = false;
             if (staffright == 1) //ban hang
             {
                 this.btnQuyDinh.Enabled = false;
-                this.tabQuanLy.Visible = false;
+                btnNhanvien.Enabled = false;
+                this.tabBaoCao.Visible = false;
+                tabBaoCao.Visible = true;
+                tabPhieu.Visible = true;
+
             } else if (staffright == 2) // chu
               {
                 this.btnQuyDinh.Enabled = true;
-                this.tabQuanLy.Visible = true;
+                btnNhanvien.Enabled = true;
+                this.tabBaoCao.Visible = true;
+                tabBaoCao.Visible = true;
+                tabPhieu.Visible = true;
             }
+           
+                
 
         }
 
@@ -182,18 +192,6 @@ namespace GUI
             }
         }
 
-        private void btnQuyDinh_ItemClick(object sender, ItemClickEventArgs e) {
-            if (KiemTraTonTai("frmQuyDinh") == null) {
-                foreach (Form frm1 in MdiChildren) {
-                    frm1.Close();
-                }
-                frmQuyDinh frm = new frmQuyDinh();
-
-                frm.MdiParent = this;
-                frm.Show();
-            }
-        }
-
         private void btnBaoCaoCongNo_ItemClick(object sender, ItemClickEventArgs e) {
             if (KiemTraTonTai("frmBaoCaoCongNo") == null) {
                 foreach (Form frm1 in MdiChildren) {
@@ -204,17 +202,6 @@ namespace GUI
                 frm.MdiParent = this;
                 frm.Show();
             }
-        }
-
-        private void BtnLoaimathang_ItemClick(object sender, ItemClickEventArgs e) {
-                if (KiemTraTonTai("frmloaimathang") == null) {
-                    foreach (Form frm1 in MdiChildren) {
-                        frm1.Close();
-                    }
-                    frmloaimathang frm = new frmloaimathang();
-                    frm.MdiParent = this;
-                    frm.Show();
-                }
         }
 
         private void btnmathangkhac_ItemClick(object sender, ItemClickEventArgs e) {
@@ -237,6 +224,17 @@ namespace GUI
                     frm.MdiParent = this;
                     frm.Show();
                 }
+        }
+
+        private void btnKho_ItemClick(object sender, ItemClickEventArgs e) {
+            if (KiemTraTonTai("frmKho") == null) {
+                foreach (Form frm1 in MdiChildren) {
+                    frm1.Close();
+                }
+                frmKho frm = new frmKho();
+                frm.MdiParent = this;
+                frm.Show();
+            }
         }
     }
 }

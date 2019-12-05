@@ -14,7 +14,7 @@ namespace GUI
 {
     public partial class frmBaoCaoCongNo : Form
     {
-        private BLL_LoaiHang dl = new BLL_LoaiHang();
+        
         private BLL_PhieuThu ptb = new BLL_PhieuThu();
         private BLL_PhieuXuatHang pxb = new BLL_PhieuXuatHang();
         private BLL_ThoiGian thoigian = new BLL_ThoiGian();
@@ -27,7 +27,7 @@ namespace GUI
 
         private void frmBaoCaoCongNo_Load(object sender, EventArgs e)
         {
-            cbDaiLy.DataSource = new BindingSource(dl.laydanhsachloaihang(), String.Empty);
+            //cbDaiLy.DataSource = new BindingSource(dl.laydanhsachloaihang(), String.Empty);
             cbDaiLy.DisplayMember = "TenDaiLy";
             cbDaiLy.ValueMember = "Id";
 

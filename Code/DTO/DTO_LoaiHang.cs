@@ -9,17 +9,17 @@ namespace DTO
 {
     public class DTO_LoaiHang
     {
-        
+
         private long id;
 
-        private string tenLoaiHang;
+        private string ten;
 
         [DisplayName("Mã Loại Hàng")]
         public long Id { get => id; set => id = value; }
 
         [DisplayName("Tên Loại Hàng")]
-        public string TenLoaiHang { get => tenLoaiHang; set => tenLoaiHang = value; }
+        public string TenLoaiHang { get => ten; set => ten = value; }
 
-       
+
     }
 }

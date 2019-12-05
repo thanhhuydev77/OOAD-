@@ -16,7 +16,7 @@ namespace GUI
     public partial class frmPhieuThu : Form
     {
         #region prop
-        private BLL_LoaiHang daily = new BLL_LoaiHang();
+        //private BLL_LoaiHang daily = new BLL_LoaiHang();
         private BLL_PhieuThu pt = new BLL_PhieuThu();
         #endregion
         #region method
@@ -59,7 +59,7 @@ namespace GUI
             }
         }
         private void loadsource() {
-            cbDaiLy.DataSource = daily.laydanhsachloaihang();
+            //cbDaiLy.DataSource = daily.laydanhsachloaihang();
             cbDaiLy.DisplayMember = "TenDaiLy";
             cbDaiLy.ValueMember = "Id";
             txtDiaChi.DataBindings.Add(new Binding("text", cbDaiLy.DataSource, "DiaChi"));

@@ -19,6 +19,9 @@ namespace BLL
         public List<DTO_Hang> LayDanhSachThuoc() {
             return mhk.LayDanhSachThuoc();
         }
+        public List<DTO_Hang> LayDanhSachKho() {
+            return mhk.LayDanhSachKho();
+        }
         public bool ThemMatHang(DTO_Hang loaidl)
         {
             return mhk.ThemMatHang(loaidl);
@@ -30,6 +33,9 @@ namespace BLL
         public bool SuaMatHang(DTO_Hang loaidl)
         {
             return mhk.SuaMatHang(loaidl);
+        }
+        public bool SuaKho(DTO_Hang loaidl) {
+            return mhk.SuaKho(loaidl);
         }
         public List<DTO_Hang> TimKiem(string tukhoa,int loai)
         {
