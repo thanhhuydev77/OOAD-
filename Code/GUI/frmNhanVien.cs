@@ -10,13 +10,22 @@ using System.Windows.Forms;
 using BLL;
 using DTO;
 using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace GUI
 {
+    
     public partial class frmNhanVien : Form
     {
+        public static bool isValidEmail(string email) {
+            Regex rx = new Regex(
+            @"^[-!#$%&'*+/0-9=?A-Z^_a-z{|}~](\.?[-!#$%&'*+/0-9=?A-Z^_a-z{|}~])*@[a-zA-Z](-?[a-zA-Z0-9])*(\.[a-zA-Z](-?[a-zA-Z0-9])*)+$");
+            return rx.IsMatch(email);
+        }
         private BLL_NhanVien nhanvien = new BLL_NhanVien();
         private BLL_Account taikhoan = new BLL_Account();
+        Font bigfont = new Font("Times New Roman", 16f,FontStyle.Bold);
+        Font smallfont = new Font("Times New Roman", 10f, FontStyle.Bold);
 
         public frmNhanVien() {
             InitializeComponent();
@@ -87,24 +96,31 @@ namespace GUI
                 txtChucVu.Focus();
                 return false;
             }
-            if (string.IsNullOrEmpty(numSDT.Text.Trim()) || numSDT.Value <= 0) {
-                MessageBox.Show("Bạn phải nhập số điện thoại", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                numSDT.Focus();
-                return false;
-            }
             if (string.IsNullOrEmpty(numTuoi.Text.Trim()) || numTuoi.Value <= 0) {
                 MessageBox.Show("Bạn phải nhập tuổi", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 numTuoi.Focus();
                 return false;
             }
+
             if (string.IsNullOrEmpty(txtDiaChi.Text.Trim())) {
                 MessageBox.Show("Bạn phải nhập địa chỉ", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtDiaChi.Focus();
                 return false;
             }
+
             if (string.IsNullOrEmpty(txtEmail.Text.Trim())) {
                 MessageBox.Show("Bạn phải nhập email", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtEmail.Focus();
+                return false;
+            }
+            if (!isValidEmail(txtEmail.Text)) {
+                MessageBox.Show("Bạn phải nhập đúng định dạng email", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtEmail.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(numSDT.Text.Trim()) || numSDT.Text.Length < 9) {
+                MessageBox.Show("Bạn phải nhập số điện thoại", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                numSDT.Focus();
                 return false;
             }
             if (string.IsNullOrEmpty(txtTaikhoan.Text.Trim())) {
@@ -183,6 +199,7 @@ namespace GUI
                     btnXoa.Text = "Hủy";
                     btnThem.Enabled = false;
                     SetDefault(true);
+                    txtTenNhanVien.Focus();
                 } else {
                     DialogResult result = MessageBox.Show("Bạn chắc chắn muốn cập nhật", "THÔNG BÁO", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.OK) {
@@ -257,6 +274,7 @@ namespace GUI
                     {
                     int index = e.RowIndex;
                     DataGridViewRow row = this.dataMatHang.Rows[index];
+                    
                     this.txtMaNhanVien.Text = row.Cells[0].Value.ToString();
                     this.txtTenNhanVien.Text = row.Cells[1].Value.ToString();
                     this.txtChucVu.Text = row.Cells[2].Value.ToString();
@@ -275,35 +293,12 @@ namespace GUI
             }
         }
 
-        private void BtnTimKiem_Click(object sender, EventArgs e) {
-            if (string.IsNullOrEmpty(txtTimKiem.Text)) {
-                dataMatHang.DataSource = nhanvien.LayDanhSachNhanVien();
-                CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
-                myCurrencyManager.Refresh();
-            } else {
-                dataMatHang.DataSource = nhanvien.TimKiemNhanVien(txtTimKiem.Text);
-                CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
-                myCurrencyManager.Refresh();
-            }
-        }
+        
 
-        private void BtnTatCa_Click(object sender, EventArgs e) {
-            txtTimKiem.Text = string.Empty;
-            dataMatHang.DataSource = nhanvien.LayDanhSachNhanVien();
-            CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
-            myCurrencyManager.Refresh();
-        }
+       
 
         private void TxtMaLoaiDaiLy_TextChanged(object sender, EventArgs e) {
-            if (string.IsNullOrEmpty(txtMaNhanVien.Text)) {
-                btnSua.Enabled = false;
-                btnXoa.Enabled = false;
-                btnresetaccount.Enabled = false;
-            } else {
-                btnSua.Enabled = true;
-                btnXoa.Enabled = true;
-                btnresetaccount.Enabled = true;
-            }
+
         }
 
         private void btnthemTaiKhoan_Click(object sender, EventArgs e) {
@@ -330,6 +325,123 @@ namespace GUI
             catch {
                 MessageBox.Show("Vui lòng kiểm tra lại quy định và dữ liệu", "Cập nhật tài khoản thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void ScTimKiem_TextChanged(object sender, EventArgs e) {
+            ScTimKiem.Font = bigfont;
+        }
+
+        private void txtTenNhanVien_TextChanged(object sender, EventArgs e) {
+            txtTenNhanVien.Font = bigfont;
+        }
+
+        private void txtChucVu_TextChanged(object sender, EventArgs e) {
+            txtChucVu.Font = bigfont;
+        }
+
+        private void numTuoi_ValueChanged(object sender, EventArgs e) {
+            numTuoi.Font = bigfont;
+        }
+
+        private void cbGioiTinh_SelectedIndexChanged(object sender, EventArgs e) {
+            cbGioiTinh.Font = bigfont;
+        }
+
+        private void txtDiaChi_TextChanged(object sender, EventArgs e) {
+            txtDiaChi.Font = bigfont;
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e) {
+            txtEmail.Font = bigfont;
+        }
+
+        private void numSDT_ValueChanged(object sender, EventArgs e) {
+            numSDT.Font = bigfont;
+        }
+
+        private void cbQuyen_SelectedIndexChanged(object sender, EventArgs e) {
+            cbQuyen.Font = bigfont;
+        }
+
+        private void txtTaikhoan_TextChanged(object sender, EventArgs e) {
+            txtTaikhoan.Font = bigfont;
+        }
+
+        private void txtMaNhanVien_MouseLeave(object sender, EventArgs e) {
+            txtMaNhanVien.Font = smallfont;
+        }
+
+        private void txtTenNhanVien_Leave(object sender, EventArgs e) {
+            txtTenNhanVien.Font = smallfont;
+        }
+
+        private void txtChucVu_Leave(object sender, EventArgs e) {
+            txtChucVu.Font = smallfont;
+        }
+
+        private void numTuoi_Leave(object sender, EventArgs e) {
+            numTuoi.Font = smallfont;
+        }
+
+        private void cbGioiTinh_Leave(object sender, EventArgs e) {
+            cbGioiTinh.Font = smallfont;
+        }
+
+        private void txtDiaChi_Leave(object sender, EventArgs e) {
+            txtDiaChi.Font = smallfont;
+        }
+
+        private void txtEmail_Leave(object sender, EventArgs e) {
+            txtEmail.Font = smallfont;
+        }
+
+        private void numSDT_Leave(object sender, EventArgs e) {
+            numSDT.Font = smallfont;
+        }
+
+        private void cbQuyen_Leave(object sender, EventArgs e) {
+            cbQuyen.Font = smallfont;
+        }
+
+        private void txtTaikhoan_Leave(object sender, EventArgs e) {
+            txtTaikhoan.Font = smallfont;
+        }
+
+        private void numSDT_Enter(object sender, EventArgs e) {
+            numSDT.Font = bigfont;
+        }
+
+        private void txtMaNhanVien_TextChanged(object sender, EventArgs e) {
+            if (string.IsNullOrEmpty(txtMaNhanVien.Text)) {
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnresetaccount.Enabled = false;
+            } else {
+                btnSua.Enabled = true;
+                btnXoa.Enabled = true;
+                btnresetaccount.Enabled = true;
+            }
+        }
+
+        private void ScTimKiem_Leave(object sender, EventArgs e) {
+            ScTimKiem.Font = smallfont;
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e) {
+            DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thoát", "THOÁT", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK) {
+                this.Close();
+            }
+        }
+
+        private void frmNhanVien_KeyPress(object sender, KeyPressEventArgs e) {
+            if (e.KeyChar == 's' || e.KeyChar == 'S')
+                ScTimKiem.Focus();
+        }
+
+        private void frmNhanVien_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.F1)
+                ScTimKiem.Focus();
         }
     }
 }

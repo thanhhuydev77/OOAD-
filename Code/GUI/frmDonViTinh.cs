@@ -15,6 +15,8 @@ namespace GUI
     public partial class frmDonViTinh : Form
     {
         private BLL_DonViTinh donvitinh = new BLL_DonViTinh();
+        Font bigfont = new Font("Times New Roman", 16f);
+        Font smallfont = new Font("Times New Roman", 8.25f);
         public frmDonViTinh()
         {
             InitializeComponent();
@@ -116,6 +118,7 @@ namespace GUI
             {
                 MessageBox.Show("Vui lòng chọn đơn vị tính để cập nhật", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 SetDefault(true);
+                txtTenDonViTinh.Focus();
             }
             else
             {
@@ -141,7 +144,7 @@ namespace GUI
                             btnSua.Text = "Sửa";
                             btnXoa.Text = "Xóa";
                             btnSua.Enabled = true;
-
+                            txtTenDonViTinh.Focus();
                             dataDonViTinh.DataSource = donvitinh.hienthidanhsach();
                             CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataDonViTinh.DataSource];
                             myCurrencyManager.Refresh();
@@ -245,6 +248,21 @@ namespace GUI
                     return;
                 }
             }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e) {
+            DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thoát", "THOÁT", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (result == DialogResult.OK) {
+                this.Close();
+            }
+        }
+
+        private void txtTenDonViTinh_Enter(object sender, EventArgs e) {
+            txtTenDonViTinh.Font = bigfont;
+        }
+
+        private void txtTenDonViTinh_Leave(object sender, EventArgs e) {
+            txtTenDonViTinh.Font = smallfont;
         }
     }
 }

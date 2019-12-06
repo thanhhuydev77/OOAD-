@@ -32,8 +32,7 @@ namespace GUI
             {
                 this.btnQuyDinh.Enabled = false;
                 btnNhanvien.Enabled = false;
-                this.tabBaoCao.Visible = false;
-                tabBaoCao.Visible = true;
+                tabBaoCao.Visible = false;
                 tabPhieu.Visible = true;
 
             } else if (staffright == 2) // chu

@@ -26,24 +26,22 @@ namespace GUI
             this.txtMaMatHang.Enabled = false;
             this.txtCongDung.Enabled = status;
             this.cbDVT.Enabled = status;
-            this.numGiaBan.Enabled = status;
-            this.numGiaNhap.Enabled = status;
-            this.numSoLuong.Enabled = status;
+            
+            //this.numSoLuong.Enabled = status;
             this.txtTenMatHang.Enabled = status;
             this.txtThanhPhan.Enabled = status;
             this.txtXuatXu.Enabled = status;
             this.btnSua.Enabled = status;
-            this.btnThem.Enabled = !status;
-            this.btnXoa.Enabled = status;
+            //this.btnThem.Enabled = !status;
+            this.btnXoa.Enabled = true;
             this.dataMatHang.Enabled = !status;
         }
         private void ResetValue() {
             this.txtMaMatHang.Text = string.Empty;
             this.txtCongDung.Text = string.Empty;
             this.cbDVT.Text = string.Empty;
-            this.numGiaBan.Text = string.Empty;
-            this.numGiaNhap.Text = string.Empty;
-            this.numSoLuong.Text = string.Empty;
+           
+            //this.numSoLuong.Text = string.Empty;
             this.txtTenMatHang.Text = string.Empty;
             this.txtThanhPhan.Text = string.Empty;
             this.txtXuatXu.Text = string.Empty;
@@ -59,6 +57,8 @@ namespace GUI
                 this.dataMatHang.Columns["maNhomHang"].Visible = false;
                 this.dataMatHang.Columns["maDVT"].Visible = false;
                 this.dataMatHang.Columns["soluong"].Visible = false;
+                this.dataMatHang.Columns["gianhap"].Visible = false;
+                this.dataMatHang.Columns["giaban"].Visible = false;
                 this.cbDVT.DataSource = listdvt;
                 this.cbDVT.DisplayMember = "ten";
                 this.cbDVT.ValueMember = "id";
@@ -79,21 +79,12 @@ namespace GUI
                 txtCongDung.Focus();
                 return false;
             }
-            if (string.IsNullOrEmpty(numGiaBan.Text.Trim()) || numGiaBan.Value <= 0) {
-                MessageBox.Show("Bạn phải nhập giá bán", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtTenMatHang.Focus();
-                return false;
-            }
-            if (string.IsNullOrEmpty(numGiaNhap.Text.Trim()) || numGiaNhap.Value <= 0) {
-                MessageBox.Show("Bạn phải nhập giá nhập", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtTenMatHang.Focus();
-                return false;
-            }
-            if (string.IsNullOrEmpty(numSoLuong.Text.Trim()) || numSoLuong.Value <= 0) {
-                MessageBox.Show("Bạn phải nhập số lượng", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtTenMatHang.Focus();
-                return false;
-            }
+            
+            //if (string.IsNullOrEmpty(numSoLuong.Text.Trim()) || numSoLuong.Value <= 0) {
+            //    MessageBox.Show("Bạn phải nhập số lượng", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    txtTenMatHang.Focus();
+            //    return false;
+            //}
             if (string.IsNullOrEmpty(txtThanhPhan.Text.Trim())) {
                 MessageBox.Show("Bạn phải nhập thành phần", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtTenMatHang.Focus();
@@ -107,57 +98,57 @@ namespace GUI
             return true;
         }
 
-        private void BtnThem_Click(object sender, EventArgs e) {
-            if (btnThem.Text == "Thêm Mặt Hàng") {
-                ResetValue();
-                SetDefault(true);
+        //private void BtnThem_Click(object sender, EventArgs e) {
+        //    if (btnThem.Text == "Thêm Mặt Hàng") {
+        //        ResetValue();
+        //        SetDefault(true);
 
-                btnThem.Text = "Lưu";
-                btnSua.Enabled = false;
-                btnXoa.Text = "Hủy";
-                btnXoa.Enabled = true;
-                btnThem.Enabled = true;
-                txtTenMatHang.Focus();
-            } else {
-                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thêm hàng hóa", "THÊM MẶT HÀNG", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.OK) {
-                    if (KiemTra()) {
-                        DTO_Hang ldl = new DTO_Hang();
-                        ldl.TenMatHang = this.txtTenMatHang.Text;
-                        ldl.MaDVT = (long)this.cbDVT.SelectedValue;
-                        ldl.CongDung = this.txtCongDung.Text;
-                        ldl.ThanhPhan = this.txtThanhPhan.Text;
-                        ldl.XuatXu = this.txtXuatXu.Text;
-                        ldl.SoLuong = int.Parse(this.numSoLuong.Text);
-                        ldl.GiaNhap = double.Parse(this.numGiaNhap.Text);
-                        ldl.GiaBan = double.Parse(this.numGiaBan.Text);
-                        ldl.MaNhomHang = 2;
-                        if (mathangkhac.ThemMatHang(ldl)) {
-                            btnThem.Text = "Thêm Mặt Hàng";
-                            btnXoa.Text = "Xóa";
+        //        btnThem.Text = "Lưu";
+        //        btnSua.Enabled = false;
+        //        btnXoa.Text = "Hủy";
+        //        btnXoa.Enabled = true;
+        //        btnThem.Enabled = true;
+        //        txtTenMatHang.Focus();
+        //    } else {
+        //        DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thêm hàng hóa", "THÊM MẶT HÀNG", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        //        if (result == DialogResult.OK) {
+        //            if (KiemTra()) {
+        //                DTO_Hang ldl = new DTO_Hang();
+        //                ldl.TenMatHang = this.txtTenMatHang.Text;
+        //                ldl.MaDVT = (long)this.cbDVT.SelectedValue;
+        //                ldl.CongDung = this.txtCongDung.Text;
+        //                ldl.ThanhPhan = this.txtThanhPhan.Text;
+        //                ldl.XuatXu = this.txtXuatXu.Text;
+        //                ldl.SoLuong = int.Parse(this.numSoLuong.Text);
+        //                ldl.GiaNhap = double.Parse(this.numGiaNhap.Text);
+        //                ldl.GiaBan = double.Parse(this.numGiaBan.Text);
+        //                ldl.MaNhomHang = 2;
+        //                if (mathangkhac.ThemMatHang(ldl)) {
+        //                    btnThem.Text = "Thêm Mặt Hàng";
+        //                    btnXoa.Text = "Xóa";
 
-                            dataMatHang.DataSource = mathangkhac.LayDanhSachMatHangKhac();
-                            CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
-                            myCurrencyManager.Refresh();
+        //                    dataMatHang.DataSource = mathangkhac.LayDanhSachMatHangKhac();
+        //                    CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
+        //                    myCurrencyManager.Refresh();
 
-                            SetDefault(false);
-                            ResetValue();
+        //                    SetDefault(false);
+        //                    ResetValue();
 
-                            if (string.IsNullOrEmpty(txtMaMatHang.Text)) {
-                                btnXoa.Enabled = false;
-                            }
+        //                    if (string.IsNullOrEmpty(txtMaMatHang.Text)) {
+        //                        btnXoa.Enabled = false;
+        //                    }
 
-                            MessageBox.Show("Thêm mặt hàng thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                        } else {
-                            MessageBox.Show("Vui lòng kiểm tra lại quy định và dữ liệu", "Thêm mặt hàng thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
+        //                    MessageBox.Show("Thêm mặt hàng thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        //                } else {
+        //                    MessageBox.Show("Vui lòng kiểm tra lại quy định và dữ liệu", "Thêm mặt hàng thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                }
 
 
-                    }
-                }
+        //            }
+        //        }
 
-            }
-        }
+        //    }
+        //}
 
         private void BtnSua_Click(object sender, EventArgs e) {
             if (string.IsNullOrEmpty(txtMaMatHang.Text)) {
@@ -167,8 +158,9 @@ namespace GUI
                 if (btnSua.Text == "Sửa") {
                     btnSua.Text = "Cập nhật";
                     btnXoa.Text = "Hủy";
-                    btnThem.Enabled = false;
+                    //btnThem.Enabled = false;
                     SetDefault(true);
+                    txtTenMatHang.Focus();
                 } else {
                     DialogResult result = MessageBox.Show("Bạn chắc chắn muốn cập nhật", "THÔNG BÁO", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.OK) {
@@ -181,14 +173,13 @@ namespace GUI
                         ldl.CongDung = this.txtCongDung.Text;
                         ldl.ThanhPhan = this.txtThanhPhan.Text;
                         ldl.XuatXu = this.txtXuatXu.Text;
-                        ldl.SoLuong = int.Parse(this.numSoLuong.Text);
-                        ldl.GiaNhap = double.Parse(this.numGiaNhap.Text);
-                        ldl.GiaBan = double.Parse(this.numGiaBan.Text);
+                        //ldl.SoLuong = int.Parse(this.numSoLuong.Text);
+                        
 
                         if (mathangkhac.SuaMatHang(ldl)) {
                             btnSua.Text = "Sửa";
-                            btnXoa.Text = "Xóa";
-                            btnThem.Enabled = true;
+                            btnXoa.Text = "Thoát";
+                            //btnThem.Enabled = true;
 
                             dataMatHang.DataSource = mathangkhac.LayDanhSachMatHangKhac();
                             CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
@@ -206,28 +197,19 @@ namespace GUI
         }
 
         private void BtnXoa_Click(object sender, EventArgs e) {
-            if (btnXoa.Text == "Xóa") {
-                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa mặt hàng", "XÓA MẶT HÀNG", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (btnXoa.Text == "Thoát") {
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thoát", "THOÁT", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK) {
-                    if (mathangkhac.XoaMatHang(long.Parse(txtMaMatHang.Text))) {
-                        dataMatHang.DataSource = mathangkhac.LayDanhSachMatHangKhac();
-
-                        CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
-                        myCurrencyManager.Refresh();
-
-                        MessageBox.Show("Xóa mặt hàng thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    } else {
-                        MessageBox.Show("Xóa mặt hàng thất bại", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    this.Close();
                 }
             } else {
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn hủy", "HỦY THAO TÁC", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK) {
-                    btnThem.Text = "Thêm Mặt Hàng";
+                    //btnThem.Text = "Thêm Mặt Hàng";
                     btnSua.Text = "Sửa";
-                    btnXoa.Text = "Xóa";
+                    btnXoa.Text = "Thoát";
                     //btnSua.Enabled = true;
-                    btnThem.Enabled = true;
+                    //btnThem.Enabled = true;
                     if (string.IsNullOrEmpty(txtMaMatHang.Text)) {
                         btnXoa.Enabled = false;
                     }
@@ -239,16 +221,15 @@ namespace GUI
         }
 
         private void DataLoaiDaiLy_CellClick(object sender, DataGridViewCellEventArgs e) {
-            if (btnThem.Text == "Thêm Mặt Hàng" && btnSua.Text == "Sửa") {
+            if (btnSua.Text == "Sửa") {
                 try {
                     int index = e.RowIndex;
                     DataGridViewRow row = this.dataMatHang.Rows[index];
                     this.txtMaMatHang.Text = row.Cells[0].Value.ToString();
                     this.txtTenMatHang.Text = row.Cells[1].Value.ToString();
                     this.txtCongDung.Text = row.Cells[4].Value.ToString();
-                    this.numGiaBan.Text = row.Cells[9].Value.ToString();
-                    this.numGiaNhap.Text = row.Cells[8].Value.ToString();
-                    this.numSoLuong.Text = row.Cells[7].Value.ToString();
+                    
+                    //this.numSoLuong.Text = row.Cells[7].Value.ToString();
                     this.txtThanhPhan.Text = row.Cells[5].Value.ToString();
                     this.txtXuatXu.Text = row.Cells[6].Value.ToString();
                     this.cbDVT.SelectedValue = row.Cells[2].Value;
@@ -261,26 +242,13 @@ namespace GUI
         private void TxtMaLoaiDaiLy_TextChanged(object sender, EventArgs e) {
             if (string.IsNullOrEmpty(txtMaMatHang.Text)) {
                 btnSua.Enabled = false;
-                btnXoa.Enabled = false;
             } else {
                 btnSua.Enabled = true;
-                btnXoa.Enabled = true;
             }
         }
 
         private void scTimKiem_TextChanged(object sender, EventArgs e) {
-            
-            scTimKiem.Font = bigfont;
 
-            if (string.IsNullOrEmpty(scTimKiem.Text)) {
-                dataMatHang.DataSource = mathangkhac.LayDanhSachMatHangKhac();
-                CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
-                myCurrencyManager.Refresh();
-            } else {
-                dataMatHang.DataSource = mathangkhac.TimKiem(scTimKiem.Text, 2);
-                CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
-                myCurrencyManager.Refresh();
-            }
         }
         private void scTimKiem_MouseLeave(object sender, EventArgs e) {
             
@@ -344,6 +312,12 @@ namespace GUI
 
         private void cbDVT_MouseLeave(object sender, EventArgs e) {
             cbDVT.Font = smallfont;
+        }
+
+        private void frmMatHangKhac_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.F1)
+                scTimKiem.Focus();
+
         }
     }
 }

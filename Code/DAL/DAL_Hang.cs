@@ -210,10 +210,10 @@ namespace DAL
         public bool SuaMatHang(DTO_Hang ldl)
         {
             string query = string.Empty;
-            query = "UPDATE [tblhang] " +
-                "SET [manhom] = @manhom,[ten] = @ten ,[congdung] = @congdung ,[thanhphan] = @thanhphan ,[dvt] = @dvt ,[xuatxu] = @xuatxu , [soluong] = @soluong ,[gianhap] = @gianhap ,[giaban] =  @giaban " +
-                "WHERE [id] = @id";
-            //query = "SuaDaiLy";
+            
+                query = "UPDATE [tblhang] " +
+                    "SET [manhom] = @manhom,[ten] = @ten ,[congdung] = @congdung ,[thanhphan] = @thanhphan ,[dvt] = @dvt ,[xuatxu] = @xuatxu " +
+                    "WHERE [id] = @id";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -230,9 +230,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@thanhphan", ldl.ThanhPhan);
                     cmd.Parameters.AddWithValue("@dvt", ldl.MaDVT);
                     cmd.Parameters.AddWithValue("@xuatxu", ldl.XuatXu);
-                    cmd.Parameters.AddWithValue("@soluong", ldl.SoLuong);
-                    cmd.Parameters.AddWithValue("@gianhap", decimal.Parse(ldl.GiaNhap.ToString()));
-                    cmd.Parameters.AddWithValue("@giaban", decimal.Parse(ldl.GiaBan.ToString()));
+
                     cmd.Parameters.AddWithValue("@id", ldl.MaMatHang);
 
                     //try
@@ -359,7 +357,7 @@ namespace DAL
         public bool SuaKho(DTO_Hang ldl) {
             string query = string.Empty;
             query = "UPDATE [tblhang] " +
-                "SET [manhom] = @manhom,[ten] = @ten , [dvt] = @dvt ,[xuatxu] = @xuatxu , [soluong] = @soluong WHERE [id] = @id";
+                "SET [manhom] = @manhom,[ten] = @ten , [dvt] = @dvt ,[xuatxu] = @xuatxu , [soluong] = @soluong , [gianhap] = @gianhap , [giaban] = @giaban WHERE [id] = @id";
             //query = "SuaDaiLy";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
@@ -371,7 +369,8 @@ namespace DAL
 
                     cmd.Parameters.AddWithValue("@manhom", ldl.MaNhomHang);
                     cmd.Parameters.AddWithValue("@ten", ldl.TenMatHang);
-                    
+                    cmd.Parameters.AddWithValue("@gianhap", decimal.Parse(ldl.GiaNhap.ToString()));
+                    cmd.Parameters.AddWithValue("@giaban", decimal.Parse(ldl.GiaBan.ToString()));
                     cmd.Parameters.AddWithValue("@dvt", ldl.MaDVT);
                     cmd.Parameters.AddWithValue("@xuatxu", ldl.XuatXu);
                     cmd.Parameters.AddWithValue("@soluong", ldl.SoLuong);

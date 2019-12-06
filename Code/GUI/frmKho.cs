@@ -30,17 +30,20 @@ namespace GUI
             this.cbLoaiMatHang.Enabled = status;
             this.numSoLuong.Enabled = status;
             this.txtTenMatHang.Enabled = status;
-            
+            this.numGiaBan.Enabled = status;
+            this.numGiaNhap.Enabled = status;
             this.txtXuatXu.Enabled = status;
             this.btnSua.Enabled = status;
            
-            this.btnXoa.Enabled = status;
+            this.btnXoa.Enabled = true;
             this.dataMatHang.Enabled = !status;
         }
         private void ResetValue() {
             this.txtMaMatHang.Text = string.Empty;
             this.cbLoaiMatHang.Text = string.Empty;
             this.cbDVT.Text = string.Empty;
+            this.numGiaBan.Text = string.Empty;
+            this.numGiaNhap.Text = string.Empty;
             this.numSoLuong.Text = string.Empty;
             this.txtTenMatHang.Text = string.Empty;
             this.txtXuatXu.Text = string.Empty;
@@ -51,9 +54,11 @@ namespace GUI
                 SetDefault(true);
             } else {
                 if (btnSua.Text == "Sửa") {
+                    
                     btnSua.Text = "Cập nhật";
                     btnXoa.Text = "Hủy";
                     SetDefault(true);
+                    txtTenMatHang.Focus();
                 } else {
                     DialogResult result = MessageBox.Show("Bạn chắc chắn muốn cập nhật", "THÔNG BÁO", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                     if (result == DialogResult.OK) {
@@ -63,13 +68,14 @@ namespace GUI
                         ldl.MaNhomHang = (long)(cbLoaiMatHang.SelectedValue);
                         ldl.MaDVT = (long)this.cbDVT.SelectedValue;
                         ldl.MaMatHang = long.Parse(this.txtMaMatHang.Text);
-                        
+                        ldl.GiaNhap = double.Parse(this.numGiaNhap.Text);
+                        ldl.GiaBan = double.Parse(this.numGiaBan.Text);
                         ldl.XuatXu = this.txtXuatXu.Text;
                         ldl.SoLuong = int.Parse(this.numSoLuong.Text);
 
                         if (mathang.SuaKho(ldl)) {
                             btnSua.Text = "Sửa";
-                            btnXoa.Text = "Xóa";
+                            btnXoa.Text = "Thoát";
                             dataMatHang.DataSource = mathang.LayDanhSachKho();
                             CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
                             myCurrencyManager.Refresh();
@@ -97,8 +103,7 @@ namespace GUI
                 this.dataMatHang.Columns["maDVT"].Visible = false;
                 this.dataMatHang.Columns["congdung"].Visible = false;
                 this.dataMatHang.Columns["thanhphan"].Visible = false;
-                this.dataMatHang.Columns["gianhap"].Visible = false;
-                this.dataMatHang.Columns["giaban"].Visible = false;
+
                 this.cbDVT.DataSource = listdvt;
                 this.cbDVT.DisplayMember = "ten";
                 this.cbDVT.ValueMember = "id";
@@ -128,6 +133,16 @@ namespace GUI
                 txtTenMatHang.Focus();
                 return false;
             }
+            if (string.IsNullOrEmpty(numGiaBan.Text.Trim()) || numGiaBan.Value <= 0) {
+                MessageBox.Show("Bạn phải nhập giá bán", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTenMatHang.Focus();
+                return false;
+            }
+            if (string.IsNullOrEmpty(numGiaNhap.Text.Trim()) || numGiaNhap.Value <= 0) {
+                MessageBox.Show("Bạn phải nhập giá nhập", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtTenMatHang.Focus();
+                return false;
+            }
             return true;
         }
         private void btnXoa_Click(object sender, EventArgs e) {
@@ -150,7 +165,7 @@ namespace GUI
                 if (result == DialogResult.OK) {
                    
                     btnSua.Text = "Sửa";
-                    btnXoa.Text = "Xóa";
+                    btnXoa.Text = "Thoát";
                     //btnSua.Enabled = true;
                    
                     if (string.IsNullOrEmpty(txtMaMatHang.Text)) {
@@ -173,6 +188,8 @@ namespace GUI
                     cbLoaiMatHang.SelectedValue = row.Cells[3].Value;
                     this.numSoLuong.Text = row.Cells[7].Value.ToString();
                     this.txtXuatXu.Text = row.Cells[6].Value.ToString();
+                    this.numGiaBan.Text = row.Cells[9].Value.ToString();
+                    this.numGiaNhap.Text = row.Cells[8].Value.ToString();
                     this.cbDVT.SelectedValue = row.Cells[2].Value;
                 } catch {
                     return;
@@ -183,16 +200,12 @@ namespace GUI
         private void txtMaMatHang_TextChanged(object sender, EventArgs e) {
             if (string.IsNullOrEmpty(txtMaMatHang.Text)) {
                 btnSua.Enabled = false;
-                btnXoa.Enabled = false;
             } else {
                 btnSua.Enabled = true;
-                btnXoa.Enabled = true;
             }
         }
 
         private void scTimKiem_TextChanged(object sender, EventArgs e) {
-
-            scTimKiem.Font = bigfont;
 
             if (string.IsNullOrEmpty(scTimKiem.Text)) {
                 dataMatHang.DataSource = mathang.LayDanhSachKho();
@@ -256,6 +269,39 @@ namespace GUI
 
         private void cbLoaiMatHang_MouseEnter(object sender, EventArgs e) {
             cbLoaiMatHang.Font = bigfont;
+        }
+
+        private void numSoLuong_Enter(object sender, EventArgs e) {
+            numSoLuong.Font = bigfont;
+        }
+
+        private void numSoLuong_Leave(object sender, EventArgs e) {
+            numSoLuong.Font = smallfont;
+        }
+
+        private void numGiaNhap_Enter(object sender, EventArgs e) {
+            numGiaNhap.Font = bigfont;
+        }
+
+        private void numGiaNhap_Leave(object sender, EventArgs e) {
+            numGiaNhap.Font = smallfont;
+        }
+
+        private void numGiaBan_Leave(object sender, EventArgs e) {
+            numGiaBan.Font = smallfont;
+        }
+
+        private void numGiaBan_Enter(object sender, EventArgs e) {
+            numGiaBan.Font = bigfont;
+        }
+
+        private void numGiaBan_ValueChanged(object sender, EventArgs e) {
+
+        }
+
+        private void frmKho_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.F1)
+                scTimKiem.Focus();
         }
     }
 }
