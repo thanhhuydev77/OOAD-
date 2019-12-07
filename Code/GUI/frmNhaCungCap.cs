@@ -219,6 +219,7 @@ namespace GUI
         }
 
         private void frmNhaCungCap_KeyPress(object sender, KeyEventArgs e) {
+            if(e.KeyCode == Keys.F1)
             scTimKiem.Focus();
         }
     }

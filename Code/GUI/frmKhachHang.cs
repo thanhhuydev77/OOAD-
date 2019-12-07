@@ -199,7 +199,8 @@ namespace GUI
         }
 
         private void frmKhachHang_KeyDown(object sender, KeyEventArgs e) {
-            scTimKiem.Focus();
+            if (e.KeyCode == Keys.F1)
+                scTimKiem.Focus();
         }
     }
 }

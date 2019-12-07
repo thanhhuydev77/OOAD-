@@ -26,7 +26,7 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhaCungCap));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.txtEmail = new System.Windows.Forms.TextBox();
@@ -37,18 +37,18 @@
             this.txtTenNCC = new System.Windows.Forms.TextBox();
             this.lbTenLoaiDaiLy = new System.Windows.Forms.Label();
             this.lbMaLoaiDaiLy = new System.Windows.Forms.Label();
-            this.scTimKiem = new DevExpress.XtraEditors.SearchControl();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.txtDiaChi = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.numSDT = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtDiaChi = new System.Windows.Forms.TextBox();
+            this.scTimKiem = new DevExpress.XtraEditors.SearchControl();
             ((System.ComponentModel.ISupportInitialize)(this.dataMatHang)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.scTimKiem.Properties)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSDT)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scTimKiem.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // btnXoa
@@ -98,6 +98,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label2.Location = new System.Drawing.Point(24, 182);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(42, 15);
@@ -124,8 +125,8 @@
             this.dataMatHang.Location = new System.Drawing.Point(366, 75);
             this.dataMatHang.Name = "dataMatHang";
             this.dataMatHang.ReadOnly = true;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataMatHang.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataMatHang.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dataMatHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataMatHang.Size = new System.Drawing.Size(560, 452);
             this.dataMatHang.TabIndex = 12;
@@ -156,6 +157,7 @@
             // 
             this.lbTenLoaiDaiLy.AutoSize = true;
             this.lbTenLoaiDaiLy.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTenLoaiDaiLy.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbTenLoaiDaiLy.Location = new System.Drawing.Point(24, 115);
             this.lbTenLoaiDaiLy.Name = "lbTenLoaiDaiLy";
             this.lbTenLoaiDaiLy.Size = new System.Drawing.Size(106, 15);
@@ -166,26 +168,12 @@
             // 
             this.lbMaLoaiDaiLy.AutoSize = true;
             this.lbMaLoaiDaiLy.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMaLoaiDaiLy.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.lbMaLoaiDaiLy.Location = new System.Drawing.Point(24, 82);
             this.lbMaLoaiDaiLy.Name = "lbMaLoaiDaiLy";
             this.lbMaLoaiDaiLy.Size = new System.Drawing.Size(102, 15);
             this.lbMaLoaiDaiLy.TabIndex = 0;
             this.lbMaLoaiDaiLy.Text = "Mã nhà cung cấp:";
-            // 
-            // scTimKiem
-            // 
-            this.scTimKiem.Location = new System.Drawing.Point(7, 33);
-            this.scTimKiem.Name = "scTimKiem";
-            this.scTimKiem.Properties.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.scTimKiem.Properties.Appearance.Options.UseFont = true;
-            this.scTimKiem.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Repository.ClearButton(),
-            new DevExpress.XtraEditors.Repository.SearchButton()});
-            this.scTimKiem.Size = new System.Drawing.Size(308, 22);
-            this.scTimKiem.TabIndex = 0;
-            this.scTimKiem.TextChanged += new System.EventHandler(this.scTimKiem_TextChanged);
-            this.scTimKiem.Enter += new System.EventHandler(this.scTimKiem_Enter);
-            this.scTimKiem.Leave += new System.EventHandler(this.scTimKiem_Leave);
             // 
             // panel2
             // 
@@ -219,6 +207,27 @@
             this.panel1.Size = new System.Drawing.Size(366, 519);
             this.panel1.TabIndex = 10;
             // 
+            // txtDiaChi
+            // 
+            this.txtDiaChi.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDiaChi.Location = new System.Drawing.Point(150, 208);
+            this.txtDiaChi.Name = "txtDiaChi";
+            this.txtDiaChi.Size = new System.Drawing.Size(178, 22);
+            this.txtDiaChi.TabIndex = 30;
+            this.txtDiaChi.Enter += new System.EventHandler(this.txtDiaChi_Enter);
+            this.txtDiaChi.Leave += new System.EventHandler(this.txtDiaChi_Leave);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label1.Location = new System.Drawing.Point(24, 216);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(50, 15);
+            this.label1.TabIndex = 29;
+            this.label1.Text = "Địa chỉ:";
+            // 
             // numSDT
             // 
             this.numSDT.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -238,31 +247,25 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label5.Location = new System.Drawing.Point(24, 149);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(35, 15);
             this.label5.TabIndex = 27;
             this.label5.Text = "SĐT:";
             // 
-            // label1
+            // scTimKiem
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(24, 216);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(50, 15);
-            this.label1.TabIndex = 29;
-            this.label1.Text = "Địa chỉ:";
-            // 
-            // txtDiaChi
-            // 
-            this.txtDiaChi.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDiaChi.Location = new System.Drawing.Point(150, 208);
-            this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(178, 22);
-            this.txtDiaChi.TabIndex = 30;
-            this.txtDiaChi.Enter += new System.EventHandler(this.txtDiaChi_Enter);
-            this.txtDiaChi.Leave += new System.EventHandler(this.txtDiaChi_Leave);
+            this.scTimKiem.Location = new System.Drawing.Point(0, 34);
+            this.scTimKiem.Name = "scTimKiem";
+            this.scTimKiem.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Repository.ClearButton(),
+            new DevExpress.XtraEditors.Repository.SearchButton()});
+            this.scTimKiem.Size = new System.Drawing.Size(264, 20);
+            this.scTimKiem.TabIndex = 1;
+            this.scTimKiem.TextChanged += new System.EventHandler(this.scTimKiem_TextChanged);
+            this.scTimKiem.Enter += new System.EventHandler(this.scTimKiem_Enter);
+            this.scTimKiem.Leave += new System.EventHandler(this.scTimKiem_Leave);
             // 
             // frmNhaCungCap
             // 
@@ -275,7 +278,8 @@
             this.Controls.Add(this.dataMatHang);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
-            this.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ForeColor = System.Drawing.Color.Black;
             this.KeyPreview = true;
             this.Name = "frmNhaCungCap";
             this.Text = "frmNhaCungCap";
@@ -283,11 +287,11 @@
             this.Load += new System.EventHandler(this.frmNhaCungCap_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmNhaCungCap_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.dataMatHang)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.scTimKiem.Properties)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSDT)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.scTimKiem.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -304,12 +308,12 @@
         private System.Windows.Forms.TextBox txtTenNCC;
         private System.Windows.Forms.Label lbTenLoaiDaiLy;
         private System.Windows.Forms.Label lbMaLoaiDaiLy;
-        private DevExpress.XtraEditors.SearchControl scTimKiem;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.NumericUpDown numSDT;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtDiaChi;
+        private DevExpress.XtraEditors.SearchControl scTimKiem;
     }
 }
