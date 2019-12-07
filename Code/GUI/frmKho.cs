@@ -146,19 +146,10 @@ namespace GUI
             return true;
         }
         private void btnXoa_Click(object sender, EventArgs e) {
-            if (btnXoa.Text == "Xóa") {
-                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa mặt hàng", "XÓA MẶT HÀNG", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+            if (btnXoa.Text == "Thoát") {
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thoát", "THOÁT", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK) {
-                    if (mathang.XoaMatHang(long.Parse(txtMaMatHang.Text))) {
-                        dataMatHang.DataSource = mathang.LayDanhSachKho();
-
-                        CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
-                        myCurrencyManager.Refresh();
-
-                        MessageBox.Show("Xóa mặt hàng thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                    } else {
-                        MessageBox.Show("Xóa mặt hàng thất bại", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
+                    this.Close();
                 }
             } else {
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn hủy", "HỦY THAO TÁC", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);

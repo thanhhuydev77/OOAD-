@@ -17,7 +17,7 @@ namespace GUI
         
         private BLL_PhieuThu ptb = new BLL_PhieuThu();
         private BLL_PhieuXuatHang pxb = new BLL_PhieuXuatHang();
-        private BLL_ThoiGian thoigian = new BLL_ThoiGian();
+        private BLL_NhaCungCap thoigian = new BLL_NhaCungCap();
         private BLL_BaoCaoCongNo cn = new BLL_BaoCaoCongNo();
 
         public frmBaoCaoCongNo()
@@ -31,7 +31,7 @@ namespace GUI
             cbDaiLy.DisplayMember = "TenDaiLy";
             cbDaiLy.ValueMember = "Id";
 
-            cbThoiGian.DataSource = new BindingSource(thoigian.LayDanhSachThoiGian(), String.Empty);
+            //cbThoiGian.DataSource = new BindingSource(thoigian.LayDanhSachThoiGian(), String.Empty);
             cbThoiGian.DisplayMember = "ThoiGian";
             cbThoiGian.ValueMember = "Id";
 
@@ -275,7 +275,7 @@ namespace GUI
                 try
                 {
                     string[] arrListStr = txtTimKiem.Text.Split('/');
-                    dataCongNo.DataSource = cn.TimKiemCongNo(thoigian.LayMaThoiGian(int.Parse(arrListStr[0]), int.Parse(arrListStr[1])), 1);
+                   // dataCongNo.DataSource = cn.TimKiemCongNo(thoigian.LayMaThoiGian(int.Parse(arrListStr[0]), int.Parse(arrListStr[1])), 1);
                 }
                 catch
                 {

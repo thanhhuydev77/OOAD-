@@ -75,8 +75,10 @@
             this.dataMatHang.DefaultCellStyle = dataGridViewCellStyle1;
             this.dataMatHang.Location = new System.Drawing.Point(328, 71);
             this.dataMatHang.Name = "dataMatHang";
+            this.dataMatHang.ReadOnly = true;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataMatHang.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataMatHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataMatHang.Size = new System.Drawing.Size(406, 410);
             this.dataMatHang.TabIndex = 5;
             this.dataMatHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataLoaiDaiLy_CellClick);

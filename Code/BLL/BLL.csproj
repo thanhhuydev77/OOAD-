@@ -48,11 +48,12 @@
     <Compile Include="BLL_DonViTinh.cs" />
     <Compile Include="BLL_Hang.cs" />
     <Compile Include="BLL_LoaiHang.cs" />
+    <Compile Include="BLL_KhachHang.cs" />
     <Compile Include="BLL_NhanVien.cs" />
     <Compile Include="BLL_PhieuThu.cs" />
     <Compile Include="BLL_PhieuXuatHang.cs" />
     <Compile Include="BLL_Quan.cs" />
-    <Compile Include="BLL_ThoiGian.cs" />
+    <Compile Include="BLL_NhaCungCap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

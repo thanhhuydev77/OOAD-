@@ -308,6 +308,8 @@
             this.dataMatHang.Location = new System.Drawing.Point(337, 78);
             this.dataMatHang.Margin = new System.Windows.Forms.Padding(4);
             this.dataMatHang.Name = "dataMatHang";
+            this.dataMatHang.ReadOnly = true;
+            this.dataMatHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataMatHang.Size = new System.Drawing.Size(532, 391);
             this.dataMatHang.TabIndex = 8;
             this.dataMatHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMatHang_CellClick);

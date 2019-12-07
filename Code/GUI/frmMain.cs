@@ -235,5 +235,27 @@ namespace GUI
                 frm.Show();
             }
         }
+
+        private void btnNhaCungCap_ItemClick(object sender, ItemClickEventArgs e) {
+            if (KiemTraTonTai("frmNhaCungCap") == null) {
+                foreach (Form frm1 in MdiChildren) {
+                    frm1.Close();
+                }
+                frmNhaCungCap frm = new frmNhaCungCap();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+        }
+
+        private void btnKhachHang_ItemClick(object sender, ItemClickEventArgs e) {
+            if (KiemTraTonTai("frmKhachHang") == null) {
+                foreach (Form frm1 in MdiChildren) {
+                    frm1.Close();
+                }
+                frmKhachHang frm = new frmKhachHang();
+                frm.MdiParent = this;
+                frm.Show();
+            }
+        }
     }
 }

@@ -443,5 +443,18 @@ namespace GUI
             if (e.KeyCode == Keys.F1)
                 ScTimKiem.Focus();
         }
+
+        private void ScTimKiem_TextChanged_1(object sender, EventArgs e) {
+
+            if (string.IsNullOrEmpty(ScTimKiem.Text)) {
+                dataMatHang.DataSource = nhanvien.LayDanhSachNhanVien();
+                CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
+                myCurrencyManager.Refresh();
+            } else {
+                dataMatHang.DataSource = nhanvien.TimKiemNhanVien(ScTimKiem.Text);
+                CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
+                myCurrencyManager.Refresh();
+            }
+        }
     }
 }

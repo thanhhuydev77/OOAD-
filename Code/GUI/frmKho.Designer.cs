@@ -26,7 +26,7 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKho));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.scTimKiem = new DevExpress.XtraEditors.SearchControl();
             this.panel2 = new System.Windows.Forms.Panel();
             this.numSoLuong = new System.Windows.Forms.NumericUpDown();
@@ -353,8 +353,10 @@
             this.dataMatHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataMatHang.Location = new System.Drawing.Point(308, 56);
             this.dataMatHang.Name = "dataMatHang";
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataMatHang.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataMatHang.ReadOnly = true;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataMatHang.RowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataMatHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataMatHang.Size = new System.Drawing.Size(480, 392);
             this.dataMatHang.TabIndex = 9;
             this.dataMatHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMatHang_CellClick);

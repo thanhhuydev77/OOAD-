@@ -233,3 +233,5 @@ C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmMatHangKhac.reso
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmThuoc.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmNhanVien.resources
 C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmKho.resources
+C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmNhaCungCap.resources
+C:\Users\huy\Desktop\New folder\OOAD-\Code\GUI\obj\Debug\GUI.frmKhachHang.resources

@@ -190,9 +190,11 @@
             this.dataDonViTinh.Location = new System.Drawing.Point(320, 0);
             this.dataDonViTinh.Margin = new System.Windows.Forms.Padding(2);
             this.dataDonViTinh.Name = "dataDonViTinh";
+            this.dataDonViTinh.ReadOnly = true;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataDonViTinh.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataDonViTinh.RowTemplate.Height = 24;
+            this.dataDonViTinh.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataDonViTinh.Size = new System.Drawing.Size(513, 366);
             this.dataDonViTinh.TabIndex = 4;
             this.dataDonViTinh.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataDonViTinh_CellClick);
