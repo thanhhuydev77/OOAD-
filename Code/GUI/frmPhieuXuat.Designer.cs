@@ -37,10 +37,8 @@
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.btnThemPhieu = new DevExpress.XtraEditors.SimpleButton();
             this.dNgayTiepNhan = new System.Windows.Forms.DateTimePicker();
-            this.cbbMaDaiLy = new System.Windows.Forms.ComboBox();
             this.txtMaPhieuXuat = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -60,7 +58,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(667, 540);
             this.panel3.TabIndex = 16;
-            this.panel3.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel3_Paint);
             // 
             // dataPhieuXuat
             // 
@@ -70,11 +67,11 @@
             this.dataPhieuXuat.Location = new System.Drawing.Point(0, 0);
             this.dataPhieuXuat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataPhieuXuat.Name = "dataPhieuXuat";
+            this.dataPhieuXuat.RowHeadersWidth = 51;
             this.dataPhieuXuat.RowTemplate.Height = 24;
             this.dataPhieuXuat.Size = new System.Drawing.Size(667, 540);
             this.dataPhieuXuat.TabIndex = 2;
             this.dataPhieuXuat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataPhieuXuat_CellClick);
-            this.dataPhieuXuat.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataPhieuXuat_CellContentClick);
             // 
             // txtTongTriGia
             // 
@@ -84,7 +81,6 @@
             this.txtTongTriGia.Size = new System.Drawing.Size(220, 22);
             this.txtTongTriGia.TabIndex = 15;
             this.txtTongTriGia.Text = "0";
-            this.txtTongTriGia.TextChanged += new System.EventHandler(this.TxtTongTriGia_TextChanged);
             // 
             // label9
             // 
@@ -94,7 +90,6 @@
             this.label9.TabIndex = 21;
             this.label9.Text = "Tổng trị giá:";
             this.label9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label9.Click += new System.EventHandler(this.Label9_Click);
             // 
             // btnXoa
             // 
@@ -133,27 +128,15 @@
             // 
             this.dNgayTiepNhan.CustomFormat = "MM/dd/yyyy hh:mm:ss";
             this.dNgayTiepNhan.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dNgayTiepNhan.Location = new System.Drawing.Point(149, 164);
+            this.dNgayTiepNhan.Location = new System.Drawing.Point(147, 131);
             this.dNgayTiepNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dNgayTiepNhan.Name = "dNgayTiepNhan";
             this.dNgayTiepNhan.Size = new System.Drawing.Size(219, 22);
             this.dNgayTiepNhan.TabIndex = 17;
-            this.dNgayTiepNhan.ValueChanged += new System.EventHandler(this.DNgayTiepNhan_ValueChanged);
-            // 
-            // cbbMaDaiLy
-            // 
-            this.cbbMaDaiLy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbbMaDaiLy.FormattingEnabled = true;
-            this.cbbMaDaiLy.Location = new System.Drawing.Point(147, 80);
-            this.cbbMaDaiLy.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbbMaDaiLy.Name = "cbbMaDaiLy";
-            this.cbbMaDaiLy.Size = new System.Drawing.Size(220, 24);
-            this.cbbMaDaiLy.TabIndex = 10;
-            this.cbbMaDaiLy.SelectedIndexChanged += new System.EventHandler(this.CbbMaDaiLy_SelectedIndexChanged);
             // 
             // txtMaPhieuXuat
             // 
-            this.txtMaPhieuXuat.Location = new System.Drawing.Point(149, 124);
+            this.txtMaPhieuXuat.Location = new System.Drawing.Point(147, 68);
             this.txtMaPhieuXuat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMaPhieuXuat.Name = "txtMaPhieuXuat";
             this.txtMaPhieuXuat.Size = new System.Drawing.Size(220, 22);
@@ -162,33 +145,21 @@
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(21, 166);
+            this.label8.Location = new System.Drawing.Point(21, 130);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(120, 23);
             this.label8.TabIndex = 7;
             this.label8.Text = "Ngày tiếp nhận";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label8.Click += new System.EventHandler(this.Label8_Click);
-            // 
-            // label4
-            // 
-            this.label4.Location = new System.Drawing.Point(24, 80);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 23);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "Mã đại lý:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label4.Click += new System.EventHandler(this.Label4_Click);
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(21, 124);
+            this.label2.Location = new System.Drawing.Point(21, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(120, 23);
             this.label2.TabIndex = 1;
             this.label2.Text = "Mã phiếu xuất:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.label2.Click += new System.EventHandler(this.Label2_Click);
             // 
             // label1
             // 
@@ -200,7 +171,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "PHIẾU XUẤT HÀNG";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.label1.Click += new System.EventHandler(this.Label1_Click);
             // 
             // panel1
             // 
@@ -212,10 +182,8 @@
             this.panel1.Controls.Add(this.btnSua);
             this.panel1.Controls.Add(this.btnThemPhieu);
             this.panel1.Controls.Add(this.dNgayTiepNhan);
-            this.panel1.Controls.Add(this.cbbMaDaiLy);
             this.panel1.Controls.Add(this.txtMaPhieuXuat);
             this.panel1.Controls.Add(this.label8);
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -224,12 +192,11 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(400, 540);
             this.panel1.TabIndex = 17;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel1_Paint);
             // 
             // btnTimPhieu
             // 
             this.btnTimPhieu.Location = new System.Drawing.Point(27, 429);
-            this.btnTimPhieu.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTimPhieu.Margin = new System.Windows.Forms.Padding(4);
             this.btnTimPhieu.Name = "btnTimPhieu";
             this.btnTimPhieu.Size = new System.Drawing.Size(162, 65);
             this.btnTimPhieu.TabIndex = 23;
@@ -240,7 +207,7 @@
             // btnXemChiTiet
             // 
             this.btnXemChiTiet.Location = new System.Drawing.Point(204, 429);
-            this.btnXemChiTiet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnXemChiTiet.Margin = new System.Windows.Forms.Padding(4);
             this.btnXemChiTiet.Name = "btnXemChiTiet";
             this.btnXemChiTiet.Size = new System.Drawing.Size(163, 65);
             this.btnXemChiTiet.TabIndex = 22;
@@ -255,7 +222,7 @@
             this.ClientSize = new System.Drawing.Size(1067, 540);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "frmPhieuXuat";
             this.Text = "PHIẾU XUẤT";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -278,10 +245,8 @@
         private DevExpress.XtraEditors.SimpleButton btnSua;
         private DevExpress.XtraEditors.SimpleButton btnThemPhieu;
         private System.Windows.Forms.DateTimePicker dNgayTiepNhan;
-        private System.Windows.Forms.ComboBox cbbMaDaiLy;
         private System.Windows.Forms.TextBox txtMaPhieuXuat;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;

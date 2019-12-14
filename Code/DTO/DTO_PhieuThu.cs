@@ -11,15 +11,18 @@ namespace DTO
     {
         #region prop
         private long id;
+        private long maNV;
         private DateTime ngaythu;
-        private long maDL;
+        private long maNCC;
         private uint sotien;
         [DisplayName("Mã phiếu thu")]
-        public long Id { get => id; set => id = value; }
+        public long Id { get => id; set => id = value; }    
+        [DisplayName("Mã nhân viên")]
+        public long MaNV { get => maNV; set => maNV = value; }
         [DisplayName("Ngày thu")]
         public DateTime Ngaythu { get => ngaythu; set => ngaythu = value; }
-        [DisplayName("Mã đại lý")]
-        public long MaDL { get => maDL; set => maDL = value; }
+        [DisplayName("Mã nhà cung cấp")]
+        public long MaNCC { get => maNCC; set => maNCC = value; }
         [DisplayName("Số tiền")]
         public uint Sotien { get => sotien; set => sotien = value; }
         #endregion

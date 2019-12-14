@@ -372,5 +372,10 @@ namespace GUI
             offset = offset + (int)FontHeight + 25; //make the spacing consistent              
             graphic.DrawString("Trân thành cảm ơn quý khách hàng!", font, new SolidBrush(Color.Black), startX, startY + offset);
         }
+
+        private void cbbMaMatHang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

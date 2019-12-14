@@ -31,7 +31,7 @@ namespace GUI
             cbDaiLy.DisplayMember = "TenDaiLy";
             cbDaiLy.ValueMember = "Id";
 
-            //cbThoiGian.DataSource = new BindingSource(thoigian.LayDanhSachThoiGian(), String.Empty);
+           // cbThoiGian.DataSource = new BindingSource(thoigian.LayDanhSachThoiGian(), String.Empty);
             cbThoiGian.DisplayMember = "ThoiGian";
             cbThoiGian.ValueMember = "Id";
 

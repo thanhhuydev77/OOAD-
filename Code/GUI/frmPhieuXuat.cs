@@ -36,12 +36,9 @@ namespace GUI
         }
         private bool KiemTra()
         {
-            if (string.IsNullOrEmpty(cbbMaDaiLy.Text.Trim()))
-            {
-                MessageBox.Show("Bạn phải nhập Mã Phiếu xuất", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            MessageBox.Show("Bạn phải nhập Mã Phiếu xuất", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtMaPhieuXuat.Focus();
                 return false;
-            }
 
             return true;
         }
@@ -51,9 +48,9 @@ namespace GUI
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             btnXemChiTiet.Enabled = false;
-            //List<DTO_LoaiHang> listDl = daily.laydanhsachloaihang();
+           // List<DTO_LoaiHang> listDl = daily.laydanhsachloaihang();
             //cbbMaDaiLy.DataSource = new BindingSource(listDl, string.Empty);
-            cbbMaDaiLy.DisplayMember = "Id";
+           // cbbMaDaiLy.DisplayMember = "Id";
             SetDefault(false);
         }
 
@@ -61,7 +58,7 @@ namespace GUI
         {
             if (phieuxuat.TimKiem(txtMaPhieuXuat.Text) != null)
             {
-                dataPhieuXuat.DataSource = phieuxuat.TimKiem(cbbMaDaiLy.Text);
+                dataPhieuXuat.DataSource = phieuxuat.TimKiem(txtMaPhieuXuat.Text);
 
                 CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataPhieuXuat.DataSource];
                 myCurrencyManager.Refresh();
@@ -94,7 +91,7 @@ namespace GUI
                     {
                         DTO_PhieuXuatHang pxh = new DTO_PhieuXuatHang();
 
-                        pxh.MaDl = long.Parse(this.cbbMaDaiLy.Text);
+                        //pxh.MaDl = long.Parse(this.cbbMaDaiLy.Text);
                         pxh.NgayLapPhieu = this.dNgayTiepNhan.Value;
                         pxh.TongTriGia = uint.Parse(this.txtTongTriGia.Text);
 
@@ -147,7 +144,7 @@ namespace GUI
                     {
                         DTO_PhieuXuatHang pxh = new DTO_PhieuXuatHang();
                         pxh.Id = long.Parse(this.txtMaPhieuXuat.Text);
-                        pxh.MaDl = long.Parse(this.cbbMaDaiLy.Text);
+                       // pxh.MaDl = long.Parse(this.cbbMaDaiLy.Text);
                         pxh.TongTriGia = uint.Parse(this.txtTongTriGia.Text);
 
                         if (phieuxuat.SuaPhieuXuat(pxh))
@@ -260,61 +257,6 @@ namespace GUI
                 btnXoa.Enabled = true;
                 btnXemChiTiet.Enabled = true;
             }
-        }
-
-        private void Panel3_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void TxtTongTriGia_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label9_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void DataPhieuXuat_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void DNgayTiepNhan_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void CbbMaDaiLy_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label8_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

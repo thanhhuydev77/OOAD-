@@ -26,20 +26,21 @@ namespace DAL
         public bool ThemPhieuThu(DTO_PhieuThu pt) {
 
             string query = string.Empty;
-            query += "INSERT INTO tblPhieuThu ([ngayThu],[maDL],[soTienThu]) ";
-            query += " VALUES (@ngaythu, @madl, @sotien)";
+            query += "INSERT INTO tblhoadonnhap ([manv],[ngayTiepNhan],[mancc],[tongtien]) ";
+            query += " VALUES (@manv, @ngaythu, @mancc, @sotien)";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 using (SqlCommand cmd = new SqlCommand()) {
                     cmd.Connection = con;
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
-
+                    cmd.Parameters.AddWithValue("@manv", pt.MaNCC);
                     cmd.Parameters.AddWithValue("@ngaythu", pt.Ngaythu);
-                    cmd.Parameters.AddWithValue("@madl",pt.MaDL);
+                    cmd.Parameters.AddWithValue("@mancc",pt.MaNCC);
                     cmd.Parameters.AddWithValue("@sotien", decimal.Parse(pt.Sotien.ToString()));
 
-                    try {
+                    //try 
+                    {
                     con.Open();
                     if (cmd.ExecuteNonQuery() > 0) {
                         con.Close();
@@ -49,7 +50,9 @@ namespace DAL
                         con.Close();
                         return false;
                     }
-                    } catch {
+                    }
+                    //catch 
+                    {
                     con.Close();
                     return false;
                 }
@@ -61,7 +64,7 @@ namespace DAL
             List<DTO_PhieuThu> ds = new List<DTO_PhieuThu>();
 
             string query = string.Empty;
-            query = "SELECT * FROM tblPhieuThu";
+            query = "SELECT * FROM tblhoadonnhap";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 using (SqlCommand cmd = new SqlCommand()) {
@@ -69,7 +72,8 @@ namespace DAL
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
 
-                    try {
+                    try 
+                    {
                         con.Open();
                         SqlDataReader reader = cmd.ExecuteReader();
 
@@ -77,15 +81,18 @@ namespace DAL
                             while (reader.Read()) {
                                 DTO_PhieuThu pt = new DTO_PhieuThu();
                                 pt.Id = long.Parse(reader["id"].ToString());
-                                pt.Ngaythu = DateTime.Parse(reader["Ngaythu"].ToString());
-                                pt.MaDL = long.Parse(reader["maDL"].ToString());
-                                pt.Sotien = (uint)reader.GetDecimal(3);
+                                pt.MaNV = long.Parse(reader["manv"].ToString());
+                                pt.Ngaythu = DateTime.Parse(reader["ngayTiepNhan"].ToString());
+                                pt.MaNCC = long.Parse(reader["mancc"].ToString());
+                                pt.Sotien = (uint)reader.GetDecimal(4);
                                 ds.Add(pt);
                             }
                         }
                         con.Close();
                         con.Dispose();
-                    } catch {
+                    }
+                    catch
+                    {
                         con.Close();
                         return null;
                     }
@@ -96,7 +103,7 @@ namespace DAL
 
         public bool XoaPhieuThu(long id) {
             string query = string.Empty;
-            query += "DELETE FROM [tblPhieuThu] where [id] = @id";
+            query += "DELETE FROM [tblhoadonnhap] where [id] = @id";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 using (SqlCommand cmd = new SqlCommand()) {
@@ -126,8 +133,8 @@ namespace DAL
 
         public bool SuaPhieuThu(DTO_PhieuThu pt) {
             string query = string.Empty;
-            query = "UPDATE [tblPhieuThu] " +
-                "SET [soTienThu] = @sotien " +
+            query = "UPDATE [tblhoadonnhap] " +
+                "SET [tongtien] = @sotien " +
                 "WHERE [id] = @id";
             
 

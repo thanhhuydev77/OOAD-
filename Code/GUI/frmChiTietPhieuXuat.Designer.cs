@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmChiTietPhieuXuat));
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnXuatFile = new DevExpress.XtraEditors.SimpleButton();
             this.txtMaChiTiet = new System.Windows.Forms.TextBox();
             this.cbbMaMatHang = new System.Windows.Forms.ComboBox();
             this.cbbMaDonViTinh = new System.Windows.Forms.ComboBox();
@@ -48,7 +49,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataChiTietPhieuXuat = new System.Windows.Forms.DataGridView();
-            this.btnXuatFile = new DevExpress.XtraEditors.SimpleButton();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataChiTietPhieuXuat)).BeginInit();
@@ -80,6 +80,17 @@
             this.panel1.Size = new System.Drawing.Size(391, 554);
             this.panel1.TabIndex = 19;
             // 
+            // btnXuatFile
+            // 
+            this.btnXuatFile.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatFile.ImageOptions.Image")));
+            this.btnXuatFile.Location = new System.Drawing.Point(202, 341);
+            this.btnXuatFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnXuatFile.Name = "btnXuatFile";
+            this.btnXuatFile.Size = new System.Drawing.Size(165, 65);
+            this.btnXuatFile.TabIndex = 30;
+            this.btnXuatFile.Text = "Xuất File";
+            this.btnXuatFile.Click += new System.EventHandler(this.btnXuatFile_Click);
+            // 
             // txtMaChiTiet
             // 
             this.txtMaChiTiet.Location = new System.Drawing.Point(147, 89);
@@ -98,6 +109,7 @@
             this.cbbMaMatHang.Name = "cbbMaMatHang";
             this.cbbMaMatHang.Size = new System.Drawing.Size(220, 24);
             this.cbbMaMatHang.TabIndex = 28;
+            this.cbbMaMatHang.SelectedIndexChanged += new System.EventHandler(this.cbbMaMatHang_SelectedIndexChanged);
             // 
             // cbbMaDonViTinh
             // 
@@ -255,21 +267,11 @@
             this.dataChiTietPhieuXuat.Location = new System.Drawing.Point(396, 0);
             this.dataChiTietPhieuXuat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataChiTietPhieuXuat.Name = "dataChiTietPhieuXuat";
+            this.dataChiTietPhieuXuat.RowHeadersWidth = 51;
             this.dataChiTietPhieuXuat.RowTemplate.Height = 24;
             this.dataChiTietPhieuXuat.Size = new System.Drawing.Size(671, 554);
             this.dataChiTietPhieuXuat.TabIndex = 2;
             this.dataChiTietPhieuXuat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataChiTietPhieuXuat_CellClick);
-            // 
-            // btnXuatFile
-            // 
-            this.btnXuatFile.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.btnXuatFile.Location = new System.Drawing.Point(202, 341);
-            this.btnXuatFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnXuatFile.Name = "btnXuatFile";
-            this.btnXuatFile.Size = new System.Drawing.Size(165, 65);
-            this.btnXuatFile.TabIndex = 30;
-            this.btnXuatFile.Text = "Xuất File";
-            this.btnXuatFile.Click += new System.EventHandler(this.btnXuatFile_Click);
             // 
             // frmChiTietPhieuXuat
             // 
