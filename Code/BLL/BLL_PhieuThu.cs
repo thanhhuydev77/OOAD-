@@ -29,6 +29,9 @@ namespace BLL
         public bool SuaPhieuThu(DTO_PhieuThu s) {
             return pt.SuaPhieuThu(s);
         }
+        public bool capnhapphieuthu(DTO_PhieuThu s) {
+            return pt.capnhatPhieuThu(s);
+        }
         public uint LayTongThu(long madl, int thang, int nam)
         {
             return pt.TongThu(madl, thang, nam);

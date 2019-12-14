@@ -222,5 +222,66 @@ namespace GUI
             if(e.KeyCode == Keys.F1)
             scTimKiem.Focus();
         }
+
+        private void btnThem_Click(object sender, EventArgs e) {
+        //    if (btnThem.Text == "Thêm Nhà Cung Cấp") {
+        //        ResetValue();
+        //        SetDefault(true);
+        //        btnThem.Text = "Lưu";
+        //        btnSua.Enabled = false;
+        //        btnXoa.Text = "Hủy";
+        //        btnXoa.Enabled = true;
+        //        btnThem.Enabled = true;
+        //        txtTenNhanVien.Focus();
+        //    } else {
+        //        DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thêm nhân viên", "THÊM NHÂN VIÊN", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        //        if (result == DialogResult.OK) {
+        //            if (KiemTra()) {
+        //                DTO_NhanVien ldl = new DTO_NhanVien();
+        //                ldl.TenNhanVien = this.txtTenNhanVien.Text;
+        //                ldl.GioiTinh = this.cbGioiTinh.SelectedIndex != 0;
+        //                ldl.ChucVu = this.txtChucVu.Text;
+        //                ldl.DiaChi = this.txtDiaChi.Text;
+        //                ldl.Email = this.txtEmail.Text;
+        //                ldl.Tuoi = int.Parse(this.numTuoi.Text);
+        //                ldl.SDT = this.numSDT.Value.ToString();
+        //                ldl.PhanQuyen = ((int)this.cbQuyen.SelectedValue);
+        //                int cancreateaccount = taikhoan.createAccount(txtTaikhoan.Text);
+        //                if (cancreateaccount == 0) {
+        //                    txtTaikhoan.Focus();
+        //                    MessageBox.Show("Vui lòng kiểm tra lại quy định và dữ liệu", "Thêm tài khoản thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                    return;
+        //                }
+        //                ldl.TaiKhoan = cancreateaccount;
+        //                if (nhanvien.ThemNhanVien(ldl)) {
+        //                    btnThem.Text = "Thêm Nhân Viên";
+        //                    btnXoa.Text = "Xóa";
+
+        //                    dataMatHang.DataSource = nhanvien.LayDanhSachNhanVien();
+        //                    CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
+        //                    myCurrencyManager.Refresh();
+
+        //                    SetDefault(false);
+        //                    ResetValue();
+
+        //                    if (string.IsNullOrEmpty(txtMaNhanVien.Text)) {
+        //                        btnXoa.Enabled = false;
+        //                    }
+
+        //                    MessageBox.Show("Thêm nhân viên thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        //                } else {
+        //                    MessageBox.Show("Vui lòng kiểm tra lại quy định và dữ liệu", "Thêm nhân viên thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                }
+
+
+        //            }
+        //        }
+
+        //    }
+        }
+
+        private void simpleButton1_Click(object sender, EventArgs e) {
+
+        }
     }
 }

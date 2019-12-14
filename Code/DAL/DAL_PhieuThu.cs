@@ -34,7 +34,7 @@ namespace DAL
                     cmd.Connection = con;
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
-                    cmd.Parameters.AddWithValue("@manv", pt.MaNCC);
+                    cmd.Parameters.AddWithValue("@manv", pt.MaNV);
                     cmd.Parameters.AddWithValue("@ngaythu", pt.Ngaythu);
                     cmd.Parameters.AddWithValue("@mancc",pt.MaNCC);
                     cmd.Parameters.AddWithValue("@sotien", decimal.Parse(pt.Sotien.ToString()));
@@ -84,7 +84,7 @@ namespace DAL
                                 pt.MaNV = long.Parse(reader["manv"].ToString());
                                 pt.Ngaythu = DateTime.Parse(reader["ngayTiepNhan"].ToString());
                                 pt.MaNCC = long.Parse(reader["mancc"].ToString());
-                                pt.Sotien = (uint)reader.GetDecimal(4);
+                                pt.Sotien = (double)reader.GetDecimal(4);
                                 ds.Add(pt);
                             }
                         }
@@ -102,8 +102,38 @@ namespace DAL
         }
 
         public bool XoaPhieuThu(long id) {
+            XoaTatCaPhieuThu(id);
             string query = string.Empty;
             query += "DELETE FROM [tblhoadonnhap] where [id] = @id";
+
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                using (SqlCommand cmd = new SqlCommand()) {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    try {
+                        con.Open();
+                        if (cmd.ExecuteNonQuery() > 0) {
+                            con.Close();
+                            con.Dispose();
+                            return true;
+                        } else {
+                            con.Close();
+                            return false;
+                        }
+                    } catch {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+        }
+        public bool XoaTatCaPhieuThu(long id) {
+            string query = string.Empty;
+            query += "DELETE FROM [tblCThoadonnhap] where [mahoadon] = @id";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 using (SqlCommand cmd = new SqlCommand()) {
@@ -167,7 +197,39 @@ namespace DAL
                 }
             }
         }
+        public bool capnhatPhieuThu(DTO_PhieuThu pt) {
+            string query = string.Empty;
+            query = "UPDATE [tblhoadonnhap] " +
+                "SET [tongtien] = tongtien+ @sotien " +
+                "WHERE [id] = @id";
 
+
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                using (SqlCommand cmd = new SqlCommand()) {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+
+                    cmd.Parameters.AddWithValue("@sotien", Decimal.Parse(pt.Sotien.ToString()));
+                    cmd.Parameters.AddWithValue("@id", pt.Id);
+
+                    try {
+                        con.Open();
+                        if (cmd.ExecuteNonQuery() > 0) {
+                            con.Close();
+                            con.Dispose();
+                            return true;
+                        } else {
+                            con.Close();
+                            return false;
+                        }
+                    } catch {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+        }
         public uint TongThu(long madl, int thang, int nam)
         {
             uint tt = 0;

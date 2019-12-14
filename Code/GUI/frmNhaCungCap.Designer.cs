@@ -38,17 +38,19 @@
             this.lbTenLoaiDaiLy = new System.Windows.Forms.Label();
             this.lbMaLoaiDaiLy = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.scTimKiem = new DevExpress.XtraEditors.SearchControl();
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.numSDT = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.scTimKiem = new DevExpress.XtraEditors.SearchControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
+            this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataMatHang)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.scTimKiem.Properties)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSDT)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.scTimKiem.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // btnXoa
@@ -61,9 +63,9 @@
             this.btnXoa.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnXoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.Image")));
             this.btnXoa.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.btnXoa.Location = new System.Drawing.Point(37, 445);
+            this.btnXoa.Location = new System.Drawing.Point(12, 454);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(139, 58);
+            this.btnXoa.Size = new System.Drawing.Size(93, 58);
             this.btnXoa.TabIndex = 8;
             this.btnXoa.Text = "Thoát";
             this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
@@ -77,7 +79,7 @@
             this.btnSua.Appearance.Options.UseForeColor = true;
             this.btnSua.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnSua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.ImageOptions.Image")));
-            this.btnSua.Location = new System.Drawing.Point(197, 445);
+            this.btnSua.Location = new System.Drawing.Point(112, 453);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(139, 58);
             this.btnSua.TabIndex = 7;
@@ -186,8 +188,23 @@
             this.panel2.Size = new System.Drawing.Size(560, 120);
             this.panel2.TabIndex = 11;
             // 
+            // scTimKiem
+            // 
+            this.scTimKiem.Location = new System.Drawing.Point(0, 34);
+            this.scTimKiem.Name = "scTimKiem";
+            this.scTimKiem.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Repository.ClearButton(),
+            new DevExpress.XtraEditors.Repository.SearchButton()});
+            this.scTimKiem.Size = new System.Drawing.Size(264, 20);
+            this.scTimKiem.TabIndex = 1;
+            this.scTimKiem.TextChanged += new System.EventHandler(this.scTimKiem_TextChanged);
+            this.scTimKiem.Enter += new System.EventHandler(this.scTimKiem_Enter);
+            this.scTimKiem.Leave += new System.EventHandler(this.scTimKiem_Leave);
+            // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.simpleButton1);
+            this.panel1.Controls.Add(this.btnThem);
             this.panel1.Controls.Add(this.txtDiaChi);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.numSDT);
@@ -254,18 +271,36 @@
             this.label5.TabIndex = 27;
             this.label5.Text = "SĐT:";
             // 
-            // scTimKiem
+            // simpleButton1
             // 
-            this.scTimKiem.Location = new System.Drawing.Point(0, 34);
-            this.scTimKiem.Name = "scTimKiem";
-            this.scTimKiem.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
-            new DevExpress.XtraEditors.Repository.ClearButton(),
-            new DevExpress.XtraEditors.Repository.SearchButton()});
-            this.scTimKiem.Size = new System.Drawing.Size(264, 20);
-            this.scTimKiem.TabIndex = 1;
-            this.scTimKiem.TextChanged += new System.EventHandler(this.scTimKiem_TextChanged);
-            this.scTimKiem.Enter += new System.EventHandler(this.scTimKiem_Enter);
-            this.scTimKiem.Leave += new System.EventHandler(this.scTimKiem_Leave);
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.simpleButton1.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.simpleButton1.Appearance.Options.UseFont = true;
+            this.simpleButton1.Appearance.Options.UseForeColor = true;
+            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.simpleButton1.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.simpleButton1.Location = new System.Drawing.Point(257, 453);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(101, 58);
+            this.simpleButton1.TabIndex = 32;
+            this.simpleButton1.Text = "Xóa";
+            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnThem.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnThem.Appearance.Options.UseFont = true;
+            this.btnThem.Appearance.Options.UseForeColor = true;
+            this.btnThem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.ImageOptions.Image")));
+            this.btnThem.Location = new System.Drawing.Point(12, 389);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(346, 58);
+            this.btnThem.TabIndex = 31;
+            this.btnThem.Text = "Thêm Nhà Cung Cấp";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // frmNhaCungCap
             // 
@@ -288,10 +323,10 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmNhaCungCap_KeyPress);
             ((System.ComponentModel.ISupportInitialize)(this.dataMatHang)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.scTimKiem.Properties)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numSDT)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.scTimKiem.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -315,5 +350,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtDiaChi;
         private DevExpress.XtraEditors.SearchControl scTimKiem;
+        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnThem;
     }
 }

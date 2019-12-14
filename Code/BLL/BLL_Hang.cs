@@ -10,36 +10,45 @@ namespace BLL
 {
     public class BLL_Hang
     {
-        private DAL_Hang mhk = new DAL_Hang();
+        private DAL_Hang hang = new DAL_Hang();
 
         public List<DTO_Hang> LayDanhSachMatHangKhac()
         {
-            return mhk.LayDanhSachMatHangKhac();
+            return hang.LayDanhSachMatHangKhac();
         }
         public List<DTO_Hang> LayDanhSachThuoc() {
-            return mhk.LayDanhSachThuoc();
+            return hang.LayDanhSachThuoc();
         }
         public List<DTO_Hang> LayDanhSachKho() {
-            return mhk.LayDanhSachKho();
+            return hang.LayDanhSachKho();
         }
         public bool ThemMatHang(DTO_Hang loaidl)
         {
-            return mhk.ThemMatHang(loaidl);
+            return hang.ThemMatHang(loaidl);
         }
         public bool XoaMatHang(long id)
         {
-            return mhk.XoaMatHang(id);
+            return hang.XoaMatHang(id);
+        }
+        public bool suaSoluongHangTrongKho(long id,int sl) {
+            return hang.Suasoluonghang(id, sl);
+        }
+        public DTO_Hang timHang(long id) {
+            return hang.TimKiemHang(id);
         }
         public bool SuaMatHang(DTO_Hang loaidl)
         {
-            return mhk.SuaMatHang(loaidl);
+            return hang.SuaMatHang(loaidl);
+        }
+        public long timMaHang(string ten) {
+            return hang.timMaHang(ten);
         }
         public bool SuaKho(DTO_Hang loaidl) {
-            return mhk.SuaKho(loaidl);
+            return hang.SuaKho(loaidl);
         }
         public List<DTO_Hang> TimKiem(string tukhoa,int loai)
         {
-            return mhk.TimKiemHang(tukhoa,loai);
+            return hang.TimKiemHang(tukhoa,loai);
         }
     }
 }

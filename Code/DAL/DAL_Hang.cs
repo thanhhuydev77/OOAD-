@@ -256,6 +256,45 @@ namespace DAL
                 }
             }
         }
+        public bool Suasoluonghang(long mahang,int soluong) {
+            string query = string.Empty;
+
+            query = "UPDATE [tblhang] " +
+                "SET [soluong] = soluong + @soluong " +
+                "WHERE [id] = @id";
+
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                using (SqlCommand cmd = new SqlCommand()) {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    //cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                    cmd.CommandText = query;
+
+                    
+                    cmd.Parameters.AddWithValue("@soluong", soluong);
+
+                    cmd.Parameters.AddWithValue("@id", mahang);
+
+                    //try
+                    {
+                        con.Open();
+                        if (cmd.ExecuteNonQuery() > 0) {
+                            con.Close();
+                            con.Dispose();
+                            return true;
+                        } else {
+                            con.Close();
+                            return false;
+                        }
+                    }
+                    //catch
+                    {
+                        con.Close();
+                        return false;
+                    }
+                }
+            }
+        }
         public bool XoaMatHang(long id)
         {
             string query = string.Empty;
@@ -352,8 +391,86 @@ namespace DAL
 
             return ds;
         }
+        public long timMaHang(string ten) {
+            long result  = 0;
+
+            string query = "SELECT id FROM tblhang where ten= '"+ten+"'";
+
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                using (SqlCommand cmd = new SqlCommand()) {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+
+                    try {
+                        con.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows == true) {
+                            while (reader.Read()) {
+                                result = long.Parse(reader["id"].ToString());
+                            }
+                        }
+                        con.Close();
+                        con.Dispose();
+                    } catch {
+                        con.Close();
+                        return 0;
+                    }
+                }
+
+            }
+
+            return result;
+        }
+        public DTO_Hang TimKiemHang(long id) {
+            DTO_Hang ds = new DTO_Hang();
 
 
+            string query = string.Empty;
+            query += "SELECT * FROM [tblhang]";
+           
+            query += "WHERE [id] = @id";
+            using (SqlConnection con = new SqlConnection(connectionString)) {
+                using (SqlCommand cmd = new SqlCommand()) {
+                    cmd.Connection = con;
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.CommandText = query;
+
+                    cmd.Parameters.AddWithValue("@id",id);
+
+
+                    try {
+                        con.Open();
+                        SqlDataReader reader = cmd.ExecuteReader();
+
+                        if (reader.HasRows == true) {
+                            while (reader.Read()) {
+                                DTO_Hang ldl = new DTO_Hang();
+                                ldl.MaMatHang = long.Parse(reader["id"].ToString());
+                                ldl.TenMatHang = reader.GetString(2);
+                                ldl.MaNhomHang = long.Parse(reader["manhom"].ToString());
+                                ldl.CongDung = reader.GetString(3);
+                                ldl.ThanhPhan = reader.GetString(4);
+                                ldl.MaDVT = long.Parse(reader["dvt"].ToString());
+                                ldl.XuatXu = reader.GetString(6);
+                                ldl.SoLuong = int.Parse(reader["soluong"].ToString());
+                                ldl.GiaNhap = (uint)reader.GetDecimal(8);
+                                ldl.GiaBan = (uint)reader.GetDecimal(9);
+                                return ldl;
+                            }
+                        }
+                        con.Close();
+                        con.Dispose();
+                    } catch {
+                        con.Close();
+                        return null;
+                    }
+                }
+            }
+
+            return ds;
+        }
         public bool SuaKho(DTO_Hang ldl) {
             string query = string.Empty;
             query = "UPDATE [tblhang] " +

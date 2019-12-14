@@ -14,7 +14,7 @@ namespace DTO
         private long maNV;
         private DateTime ngaythu;
         private long maNCC;
-        private uint sotien;
+        private double sotien;
         [DisplayName("Mã phiếu thu")]
         public long Id { get => id; set => id = value; }    
         [DisplayName("Mã nhân viên")]
@@ -24,7 +24,7 @@ namespace DTO
         [DisplayName("Mã nhà cung cấp")]
         public long MaNCC { get => maNCC; set => maNCC = value; }
         [DisplayName("Số tiền")]
-        public uint Sotien { get => sotien; set => sotien = value; }
+        public double Sotien { get => sotien; set => sotien = value; }
         #endregion
     }
 }

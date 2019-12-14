@@ -11,9 +11,9 @@ namespace BLL
     public class BLL_ChiTietPhieuNhap
     {
         DAL_ChiTietPhieuNhap ChiTietPhieuNhap = new DAL_ChiTietPhieuNhap();
-        public List<DTO_ChiTietPhieuNhap> LayDanhSachChiTietPhieuNhap()
+        public List<DTO_ChiTietPhieuNhap> LayDanhSachChiTietPhieuNhap(long mahoadon)
         {
-            return ChiTietPhieuNhap.LayDanhSachChiTiet();
+            return ChiTietPhieuNhap.LayDanhSachChiTiet(mahoadon);
         }
         public List<DTO_ChiTietPhieuNhap> timkiem(string tukhoa)
         {
@@ -23,7 +23,7 @@ namespace BLL
         {
             return ChiTietPhieuNhap.ThemChiTiet(ctpn);
         }
-        public bool XoaChiTietPX(long id)
+        public bool XoaChiTiet(long id)
         {
             return ChiTietPhieuNhap.XoaChiTiet(id);
         }

@@ -23,12 +23,12 @@ namespace DAL
         {
             connectionString = ConfigurationManager.AppSettings["ConnectionString"];
         }
-        public List<DTO_ChiTietPhieuNhap> LayDanhSachChiTiet()
+        public List<DTO_ChiTietPhieuNhap> LayDanhSachChiTiet(long mahoadon)
         {
             List<DTO_ChiTietPhieuNhap> ds = new List<DTO_ChiTietPhieuNhap>();
 
             string query = string.Empty;
-            query = "SELECT * FROM tblcthoadonnhap";
+            query = "select a.id,a.mahoadon,a.mahang,b.ten,a.dongiaban,a.soluong from tblcthoadonnhap a , tblhang b  where a.mahang = b.id and a.mahoadon = " + mahoadon ;
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -49,10 +49,11 @@ namespace DAL
                             {
                                 DTO_ChiTietPhieuNhap ctpn = new DTO_ChiTietPhieuNhap();
                                 ctpn.Id = long.Parse(reader["id"].ToString());
-                                ctpn.MaHD = reader["mahoadon"].ToString();
-                                ctpn.MaHang = reader["mahang"].ToString();
+                                ctpn.MaHD = long.Parse(reader["mahoadon"].ToString());
+                                ctpn.TenHang = reader["ten"].ToString();
                                 ctpn.DonGiaBan = long.Parse(reader["dongiaban"].ToString());
                                 ctpn.SoLuong = int.Parse(reader["soLuong"].ToString());
+                                ctpn.Mahang = long.Parse(reader["mahang"].ToString());
                                 ds.Add(ctpn);
                             }
                         }
@@ -85,7 +86,7 @@ namespace DAL
                     cmd.CommandText = query;
 
                     cmd.Parameters.AddWithValue("@mahoadon", chitiet.MaHD);
-                    cmd.Parameters.AddWithValue("@mahang", chitiet.MaHang);
+                    cmd.Parameters.AddWithValue("@mahang", chitiet.Mahang);
                     cmd.Parameters.AddWithValue("@dongiaban", chitiet.DonGiaBan);
                     cmd.Parameters.AddWithValue("@soluong", chitiet.SoLuong);
                     try
@@ -167,7 +168,7 @@ namespace DAL
                     cmd.CommandText = query;
 
                     cmd.Parameters.AddWithValue("@mahoadon", ctpn.MaHD);
-                    cmd.Parameters.AddWithValue("@mahang", ctpn.MaHang);
+                    cmd.Parameters.AddWithValue("@mahang", ctpn.Mahang);
                     cmd.Parameters.AddWithValue("@dongiaban", ctpn.DonGiaBan);
                     cmd.Parameters.AddWithValue("@soluong", ctpn.SoLuong);
                     cmd.Parameters.AddWithValue("@id", ctpn.Id);
@@ -226,8 +227,8 @@ namespace DAL
                             {
                                 DTO_ChiTietPhieuNhap ctpn = new DTO_ChiTietPhieuNhap();
                                 ctpn.Id = long.Parse(reader["id"].ToString());
-                                ctpn.MaHD = reader["mahoadon"].ToString();
-                                ctpn.MaHang = reader["mahang"].ToString();
+                                ctpn.MaHD = long.Parse(reader["mahoadon"].ToString());
+                                ctpn.Mahang = long.Parse(reader["mahang"].ToString());
                                 ctpn.DonGiaBan = long.Parse(reader["dongiaban"].ToString());
                                 ctpn.SoLuong = int.Parse(reader["soLuong"].ToString());
                                 ds.Add(ctpn);

@@ -23,7 +23,7 @@ namespace GUI
         private BLL_Hang hanghoa = new BLL_Hang();
         private BLL_ChiTietPhieuNhap ctpn = new BLL_ChiTietPhieuNhap();
         private BLL_LoaiHang loaihang = new BLL_LoaiHang();
-
+        int index = 0;
         #endregion
         #region method
         public frmPhieuThu() {
@@ -31,149 +31,160 @@ namespace GUI
         }
         private void frmPhieuThu_Load(object sender, EventArgs e) {
             dataPhieuThu.DataSource = pt.LayDanhSachPhieuThu();
-            dataCTPhieuThu.DataSource = hanghoa.LayDanhSachThuoc();
+            //dataCTPhieuThu.DataSource = hanghoa.LayDanhSachThuoc();
             loadsource();
+            cbDVT.Enabled = false;
+            cbMaNhom.Enabled = false;
             dtpkNgayThu.Value = DateTime.Now;
             SetDefault(false);
         }
         private void btnXacNhan_Click(object sender, EventArgs e) {
-            if (btnThemPhieuThu.Text == "Xác Nhận") {
-                if (numSoTien.Value > 0 ) {
-                    
-                    DTO_PhieuThu phieuthu = new DTO_PhieuThu();
-                    phieuthu.MaNV = long.Parse(cbManv.SelectedValue.ToString());
-                    phieuthu.Ngaythu = dtpkNgayThu.Value;
-                    phieuthu.MaNCC = long.Parse(cbMancc.SelectedValue.ToString());
-                    phieuthu.Sotien = uint.Parse(numSoTien.Value.ToString());
 
-                    if (pt.themPhieuThu(phieuthu)) {
-                        MessageBox.Show("Thêm phiếu thu thành công!");
+        }
+        private void btnThemHang_Click(object sender, EventArgs e) {
+            long mahang = 0;
+            if (btnThemHang.Text == "Xác Nhận") {
+
+                if (numSoLuongHang.Value > 0 && numGiaNhap.Value > 0) {
+                    DTO_Hang hang = new DTO_Hang();
+                    DTO_ChiTietPhieuNhap ct = new DTO_ChiTietPhieuNhap();
+                    //hàng mới
+                    if (rbHangMoi.Checked) {
+                        hang.TenMatHang = txttenhang1.Text;
+                        hang.CongDung = txtCongDung.Text;
+                        hang.XuatXu = txtXuatSu.Text;
+                        hang.ThanhPhan = txtThanhPhan.Text;
+                        hang.MaDVT = long.Parse(cbDVT.SelectedValue.ToString());
+                        hang.MaNhomHang = long.Parse(cbMaNhom.SelectedValue.ToString());
+                        hang.SoLuong = int.Parse(numSoLuongHang.Value.ToString());
+                        hang.GiaNhap = double.Parse(numGiaNhap.Value.ToString());
+                        hang.GiaBan = double.Parse(numGiaBan.Value.ToString());
+                        if (hanghoa.ThemMatHang(hang)) {
+                            hang.MaMatHang = hanghoa.timMaHang(hang.TenMatHang);
+                            MessageBox.Show("Thêm hàng thành công!");
+                        } else {
+                            MessageBox.Show("Thêm hàng thất bại \nvui lòng kiểm tra lại!");
+                            return;
+                        }
+
+                    } else
+                    if (rbHangSan.Checked) {
+                        hang = hanghoa.timHang(long.Parse(cbtenhang.SelectedValue.ToString()));
+                        if (hanghoa.suaSoluongHangTrongKho(long.Parse(cbtenhang.SelectedValue.ToString()), (int)numSoLuongHang.Value))
+                            MessageBox.Show("Thêm hàng thành công!");
+                        else {
+                            MessageBox.Show("Thêm hàng thất bại \nvui lòng kiểm tra lại!");
+                            return;
+                        }
+                    }
+
+                    //mahang = hanghoa.timMaHang(hang.TenMatHang);
+                    ct.MaHD = long.Parse(txtId.Text);
+                    ct.Mahang = hang.MaMatHang;
+                    ct.SoLuong = (int)numSoLuongHang.Value;
+                    ct.DonGiaBan = long.Parse(numGiaNhap.Value.ToString());
+                    if (ctpn.ThemChiTietPX(ct)) {
+                        dataCTPhieuThu.DataSource = ctpn.LayDanhSachChiTietPhieuNhap(long.Parse(txtId.Text));
+                        DTO_PhieuThu phieuthu = new DTO_PhieuThu();
+                        phieuthu.Id = long.Parse(txtId.Text);
+                        //phieuthu.MaNCC = long.Parse(cbMancc.SelectedValue.ToString());
+                        phieuthu.Sotien = ct.SoLuong * ct.DonGiaBan;
+                        pt.capnhapphieuthu(phieuthu);
                         dataPhieuThu.DataSource = pt.LayDanhSachPhieuThu();
                     } else {
                         MessageBox.Show("Thêm phiếu thu thất bại \nvui lòng kiểm tra lại!");
                         return;
                     }
+
                     SetDefault(false);
-                    btnThemPhieuThu.Text = "Thêm Phiếu Thu";
+                    btnThemHang.Enabled = true;
+                    btnThemHang.Text = "Thêm Hàng";
                     btnXoa.Text = "Xóa";
-                } else {
-                    MessageBox.Show("Bạn chưa nhận đủ thông tin !");
-                    return;
+
                 }
             } else {
                 SetDefault(true);
-                btnThemPhieuThu.Text = "Xác Nhận";
-                btnXoa.Text = "Hủy";
+                btnThemHang.Text = "Xác Nhận";
+                btnXoaHang.Text = "Hủy";
 
             }
-        }
-        private void btnThemHang_Click(object sender, EventArgs e)
-        {
-            if (btnXacNhanHang.Text == "Xác Nhận")
-            {
-                if (numSoLuongHang.Value > 0)
-                {
-                    DTO_Hang hang = new DTO_Hang();
-                    DTO_ChiTietPhieuNhap ct = new DTO_ChiTietPhieuNhap();
-                    hang.TenMatHang = txtTenHang.Text;
-                    hang.CongDung = txtCongDung.Text;
-                    hang.XuatXu = txtXuatSu.Text;
-                    hang.ThanhPhan = txtThanhPhan.Text;
-                    hang.MaDVT = long.Parse(cbDVT.SelectedValue.ToString());
-                    hang.MaNhomHang = long.Parse(cbMaNhom.SelectedValue.ToString());
-                    hang.SoLuong = int.Parse(numSoLuongHang.Value.ToString());
-                    hang.GiaNhap = double.Parse(numGiaNhap.Value.ToString());
-                    hang.GiaBan = double.Parse(numGiaBan.Value.ToString());
-                    ct.MaHD = txtId.Text;
-                    ct.MaHang = txtIdH.Text;
-                    ct.SoLuong = int.Parse(numSoLuongHang.Value.ToString());
-                    ct.DonGiaBan = long.Parse(numGiaBan.Value.ToString());
-
-                    if (hanghoa.ThemMatHang(hang))
-                    {
-                        MessageBox.Show("Thêm hàng thành công!");
-                        dataCTPhieuThu.DataSource = hanghoa.LayDanhSachThuoc();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Thêm phiếu thu thất bại \nvui lòng kiểm tra lại!");
-                        return;
-                    }
-                    SetDefault(false);
-                    btnXacNhanHang.Text = "Thêm Hàng";
-                    btnXoa.Text = "Xóa";
-                }
-                else
-                {
-                    MessageBox.Show("Bạn chưa nhận đủ thông tin !");
-                    return;
-                }
-            }
-            else
-            {
-                SetDefault(true);
-                btnXacNhanHang.Text = "Xác Nhận";
-                btnXoa.Text = "Hủy";
-
-            }
+            reset();
         }
         private void loadsource() {
             List<DTO_DonViTinh> listdvt = donvitinh.hienthidanhsach();
             List<DTO_LoaiHang> listloaihang = loaihang.laydanhsachloaihang();
+            List<DTO_Hang> listhang = hanghoa.LayDanhSachKho();
+
+
             cbManv.DataSource = nhanvien.LayDanhSachNhanVien();
-            cbManv.ValueMember = "Id";
-            cbManv.DisplayMember = "TenNhanVien";
+            cbManv.ValueMember = "id";
+            cbManv.DisplayMember = "tenNhanVien";
             cbMancc.DataSource = nhacungcap.LayDanhSachNhaCungCap();
-            cbMancc.ValueMember = "Id";
-            cbMancc.DisplayMember = "Name";
+            cbMancc.ValueMember = "id";
+            cbMancc.DisplayMember = "name";
             dataPhieuThu.DataSource = pt.LayDanhSachPhieuThu();
             this.dataPhieuThu.Columns["manv"].Visible = false;
             this.dataPhieuThu.Columns["maNCC"].Visible = false;
             this.cbDVT.DataSource = listdvt;
             this.cbDVT.DisplayMember = "ten";
             this.cbDVT.ValueMember = "id";
-            this.cbDVT.DataSource = listdvt;
-            this.cbDVT.DisplayMember = "ten";
-            this.cbDVT.ValueMember = "id";
+            //this.cbDVT.DataSource = listdvt;
+            //this.cbDVT.DisplayMember = "ten";
+            //this.cbDVT.ValueMember = "id";
+
             this.cbMaNhom.DataSource = listloaihang;
-            this.cbMaNhom.DisplayMember = "ten";
+            this.cbMaNhom.DisplayMember = "TenLoaiHang";
             this.cbMaNhom.ValueMember = "id";
+
+            this.cbtenhang.DataSource = listhang;
+            this.cbtenhang.DisplayMember = "tenMatHang";
+            this.cbtenhang.ValueMember = "maMatHang";
 
         }
 
-        private void dataPhieuThu_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
+        private void reset() {
+            
+            numSoTien.Value = 0;
+            numGiaBan.Value = 0;
+            numGiaNhap.Value = 0;
+            numSoLuongHang.Value = 0;
+            txtCongDung.Text = "";
+            txttenhang1.Text = "";
+            txtThanhPhan.Text = "";
+            txtXuatSu.Text = "";
+        }
+        private void dataPhieuThu_CellClick(object sender, DataGridViewCellEventArgs e) {
 
-            if (btnThemPhieuThu.Text == "Thêm Phiếu Thu" && btnSua.Text == "Sửa")
-            {
-                try
-                {
+            if (btnThemPhieuThu.Text == "Thêm Phiếu Thu" && btnSua.Text == "Sửa") {
+                try {
                     int index = e.RowIndex;
                     DataGridViewRow row = this.dataPhieuThu.Rows[index];
-                    this.numSoTien.Value = uint.Parse(row.Cells[3].Value.ToString());
+                    this.numSoTien.Value = decimal.Parse(row.Cells[4].Value.ToString());
                     this.txtId.Text = row.Cells[0].Value.ToString();
-                }
-                catch
-                {
+                    this.cbManv.SelectedValue = row.Cells[1].Value;
+                    this.cbMancc.SelectedValue = row.Cells[3].Value;
+                    dataCTPhieuThu.DataSource = ctpn.LayDanhSachChiTietPhieuNhap(long.Parse(row.Cells[0].Value.ToString()));
+                    dataCTPhieuThu.Columns["maHD"].Visible = false;
+                    dataCTPhieuThu.Columns["mahang"].Visible = false;
+                    btnThemHang.Enabled = true;
+                } catch {
                     return;
                 }
             }
 
         }
 
-        private void dataCTPhieuThu_Click(object sender, DataGridViewCellEventArgs e)
-        {
-            if (btnXacNhanHang.Text == "Thêm Hàng Hóa" && btnSua.Text == "Sửa")
-            {
-                try
-                {
-                    int index = e.RowIndex;
+        private void dataCTPhieuThu_Click(object sender, DataGridViewCellEventArgs e) {
+            if (btnThemHang.Text == "Thêm Hàng") {
+                try {
+
+                    btnXoaHang.Enabled = true;
+                    index = e.RowIndex;
                     DataGridViewRow row = this.dataCTPhieuThu.Rows[index];
-                    // this.numSoTien.Value = uint.Parse(row.Cells[3].Value.ToString());
-                    this.txtIdH.Text = row.Cells[0].Value.ToString();
-                }
-                catch
-                {
+                    this.numGiaNhap.Value = uint.Parse(row.Cells[3].Value.ToString());
+                    this.numSoLuongHang.Text = row.Cells[4].Value.ToString();
+                    this.cbtenhang.SelectedValue = row.Cells[5].Value;
+                } catch {
                     return;
                 }
             }
@@ -183,12 +194,23 @@ namespace GUI
             this.txtId.Enabled = false;
             dtpkNgayThu.Enabled = false;
             this.numSoTien.Enabled = status;
+            cbManv.Enabled = status;
+            cbMancc.Enabled = status;
             dataPhieuThu.Enabled = !status;
-            btnXuatFile.Enabled = false;
+            dataCTPhieuThu.Enabled = !status;
+            btnXuatFile.Enabled = status;
             this.txtCongDung.Enabled = true;
             this.txtXuatSu.Enabled = true;
             this.txtThanhPhan.Enabled = true;
-            this.txtTenHang.Enabled = true;
+            this.btnXoaHang.Enabled = status;
+            rbHangSan.Enabled = status;
+            rbHangMoi.Enabled = status;
+            this.btnThemHang.Enabled = status;
+
+            cbtenhang.Enabled = status;
+            numSoLuongHang.Enabled = status;
+            numGiaNhap.Enabled = status;
+            //this.txtTenHang.Enabled = true;
         }
 
         private void btnSua_Click(object sender, EventArgs e) {
@@ -222,6 +244,7 @@ namespace GUI
 
                             MessageBox.Show("Cập nhật phiếu thu thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                             SetDefault(false);
+                            reset();
                             numSoTien.Value = 0;
                         } else {
                             MessageBox.Show("Vui lòng kiểm tra lại quy định và dữ liệu", "Cập nhật phiếu thu thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -241,7 +264,7 @@ namespace GUI
 
                             CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataPhieuThu.DataSource];
                             myCurrencyManager.Refresh();
-
+                            reset();
                             MessageBox.Show("Xóa phiếu thu thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
                         } else {
                             MessageBox.Show("Xóa phiếu thu thất bài", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -270,61 +293,55 @@ namespace GUI
         }
 
 
-        private void btnXoaHang_Click(object sender, EventArgs e)
-        {
-            if (btnXoaHang.Text == "Xóa Hàng")
-            {
+        private void btnXoaHang_Click(object sender, EventArgs e) {
+            if (btnXoaHang.Text == "Xóa Hàng") {
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa mặc hàng này", "XÓA MẶC HÀNG", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.OK)
-                {
-                    try
-                    {
-                        if (hanghoa.XoaMatHang(long.Parse(txtIdH.Text)))
-                        {
-                            dataCTPhieuThu.DataSource = hanghoa.LayDanhSachThuoc();
-
+                if (result == DialogResult.OK) {
+                    try {
+                        DataGridViewRow row = this.dataCTPhieuThu.Rows[index];
+                        // this.numSoTien.Value = uint.Parse(row.Cells[3].Value.ToString());
+                        long id = long.Parse(row.Cells[0].Value.ToString());
+                        if (ctpn.XoaChiTiet(id)) {
+                            dataCTPhieuThu.DataSource = ctpn.LayDanhSachChiTietPhieuNhap(long.Parse(txtId.Text));
+                            DTO_PhieuThu phieuthu = new DTO_PhieuThu();
+                            phieuthu.Id = long.Parse(txtId.Text);
+                            //phieuthu.MaNCC = long.Parse(cbMancc.SelectedValue.ToString());
+                            phieuthu.Sotien = -(double)(numGiaNhap.Value * numSoLuongHang.Value);
+                            pt.capnhapphieuthu(phieuthu);
+                            dataPhieuThu.DataSource = pt.LayDanhSachPhieuThu();
                             CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataCTPhieuThu.DataSource];
                             myCurrencyManager.Refresh();
-
+                            reset();
                             MessageBox.Show("Xóa hàng thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        } else {
+                            MessageBox.Show("Xóa hàng thất bài", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                        else
-                        {
-                            MessageBox.Show("Xóa phiếu thu thất bài", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                    catch
-                    {
+                    } catch {
                         MessageBox.Show("Vui lòng chọn hàng trước!", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                 }
-            }
-            else
-            {
+            } else {
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn hủy", "HỦY THAO TÁC", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                if (result == DialogResult.OK)
-                {
-                    btnXacNhanHang.Text = "Thêm Hàng Hóa";
-                    btnSua.Text = "Sửa";
-                    btnXoa.Text = "Xóa";
+                if (result == DialogResult.OK) {
+                    btnThemHang.Text = "Thêm Hàng";
+
+                    btnXoaHang.Text = "Xóa Hàng";
                     //btnSua.Enabled = true;
-                    btnXacNhanHang.Enabled = true;
-                    if (string.IsNullOrEmpty(txtId.Text))
-                    {
+                    btnThemHang.Enabled = true;
+                    if (string.IsNullOrEmpty(txtId.Text)) {
                         btnXoaHang.Enabled = false;
                     }
                     SetDefault(false);
                     numSoTien.Value = 0;
+                    reset();
                 }
 
             }
         }
 
-        private void btnXuatFile_Click(object sender, EventArgs e)
-        {
-            try
-            {
+        private void btnXuatFile_Click(object sender, EventArgs e) {
+            try {
                 PrintDialog _PrintDialog = new PrintDialog();
                 PrintDocument _PrintDocument = new PrintDocument();
                 _PrintDialog.Document = _PrintDocument; //add the document to the dialog box
@@ -333,19 +350,15 @@ namespace GUI
                                                                                                                //on a till you will not want to ask the user where to print but this is fine for the test envoironment.
                 DialogResult result = _PrintDialog.ShowDialog();
 
-                if (result == DialogResult.OK)
-                {
+                if (result == DialogResult.OK) {
                     _PrintDocument.Print();
                 }
-            }
-            catch (Exception)
-            {
+            } catch (Exception) {
 
             }
         }
 
-        private void _CreateReceipt(object sender, System.Drawing.Printing.PrintPageEventArgs e)
-        {
+        private void _CreateReceipt(object sender, System.Drawing.Printing.PrintPageEventArgs e) {
             Graphics graphic = e.Graphics;
             Font font = new Font("Courier New", 12);
             float FontHeight = font.GetHeight();
@@ -381,12 +394,103 @@ namespace GUI
 
         #endregion
 
-        private void txtId_TextChanged(object sender, EventArgs e)
-        {
-            if (txtId.Text != string.Empty)
-            {
+        private void txtId_TextChanged(object sender, EventArgs e) {
+            if (txtId.Text != string.Empty) {
                 btnXuatFile.Enabled = true;
+
+                btnThemHang.Enabled = true;
+                btnSua.Enabled = true;
+                btnXoa.Enabled = true;
+                btnXuatFile.Enabled = true;
+                groupBox1.Enabled = true;
+                btnXuatFile.Enabled = true;
+                this.btnThemHang.Enabled = true;
+
+            } else {
+                groupBox1.Enabled = false;
+                btnXuatFile.Enabled = false;
+                btnXoaHang.Enabled = false;
+                btnXuatFile.Enabled = false;
+                btnThemHang.Enabled = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
+                btnXuatFile.Enabled = false;
+                this.btnThemHang.Enabled = false;
+                btnXoaHang.Enabled = false;
             }
+        }
+
+        private void dataPhieuThu_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e) {
+            if (rbHangSan.Checked) {
+                cbtenhang.Visible = true;
+                txttenhang1.Visible = false;
+                cbMaNhom.Enabled = false;
+                cbDVT.Enabled = false;
+                lbdongia.Text = "Đơn giá:";
+                lbgiaban.Visible = false;
+                numGiaBan.Visible = false;
+                lbcongdung.Visible = false;
+                lbxuatxu.Visible = false;
+                lbthanhphan.Visible = false;
+                txtCongDung.Visible = false;
+                txtThanhPhan.Visible = false;
+                txtXuatSu.Visible = false;
+            }
+            if (rbHangMoi.Checked) {
+                cbtenhang.Visible = false;
+                txttenhang1.Visible = true;
+                txttenhang1.Enabled = true;
+                cbMaNhom.Enabled = true;
+                cbDVT.Enabled = true;
+                lbdongia.Text = "Giá nhập:";
+                lbgiaban.Visible = true;
+                numGiaBan.Visible = true;
+                lbcongdung.Visible = true;
+                lbxuatxu.Visible = true;
+                lbthanhphan.Visible = true;
+                txtCongDung.Visible = true;
+                txtThanhPhan.Visible = true;
+                txtXuatSu.Visible = true;
+            }
+        }
+
+        private void btnThemPhieuThu_Click(object sender, EventArgs e) {
+            if (btnThemPhieuThu.Text == "Xác Nhận") {
+
+
+                DTO_PhieuThu phieuthu = new DTO_PhieuThu();
+                phieuthu.MaNV = long.Parse(cbManv.SelectedValue.ToString());
+                phieuthu.Ngaythu = dtpkNgayThu.Value;
+                phieuthu.MaNCC = long.Parse(cbMancc.SelectedValue.ToString());
+                phieuthu.Sotien = uint.Parse(numSoTien.Value.ToString());
+
+                if (pt.themPhieuThu(phieuthu)) {
+                    MessageBox.Show("Thêm phiếu thu thành công!");
+                    dataPhieuThu.DataSource = pt.LayDanhSachPhieuThu();
+                } else {
+                    MessageBox.Show("Thêm phiếu thu thất bại \nvui lòng kiểm tra lại!");
+                    return;
+                }
+                SetDefault(false);
+                btnThemPhieuThu.Text = "Thêm Phiếu Thu";
+                btnXoa.Text = "Xóa";
+
+
+            } else {
+                SetDefault(true);
+                btnThemPhieuThu.Text = "Xác Nhận";
+                btnXoa.Text = "Hủy";
+
+            }
+            reset();
+        }
+
+        private void dataCTPhieuThu_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+
         }
     }
 }
