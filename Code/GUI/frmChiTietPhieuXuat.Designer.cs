@@ -56,6 +56,7 @@
             // 
             // panel1
             // 
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.btnXuatFile);
             this.panel1.Controls.Add(this.txtMaChiTiet);
             this.panel1.Controls.Add(this.cbbMaMatHang);
@@ -79,11 +80,14 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(391, 554);
             this.panel1.TabIndex = 19;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // btnXuatFile
             // 
+            this.btnXuatFile.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnXuatFile.Appearance.Options.UseFont = true;
             this.btnXuatFile.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXuatFile.ImageOptions.Image")));
-            this.btnXuatFile.Location = new System.Drawing.Point(202, 341);
+            this.btnXuatFile.Location = new System.Drawing.Point(202, 379);
             this.btnXuatFile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXuatFile.Name = "btnXuatFile";
             this.btnXuatFile.Size = new System.Drawing.Size(165, 65);
@@ -104,7 +108,7 @@
             // 
             this.cbbMaMatHang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbMaMatHang.FormattingEnabled = true;
-            this.cbbMaMatHang.Location = new System.Drawing.Point(147, 204);
+            this.cbbMaMatHang.Location = new System.Drawing.Point(147, 233);
             this.cbbMaMatHang.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbbMaMatHang.Name = "cbbMaMatHang";
             this.cbbMaMatHang.Size = new System.Drawing.Size(220, 24);
@@ -115,7 +119,7 @@
             // 
             this.cbbMaDonViTinh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbMaDonViTinh.FormattingEnabled = true;
-            this.cbbMaDonViTinh.Location = new System.Drawing.Point(147, 164);
+            this.cbbMaDonViTinh.Location = new System.Drawing.Point(147, 191);
             this.cbbMaDonViTinh.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbbMaDonViTinh.Name = "cbbMaDonViTinh";
             this.cbbMaDonViTinh.Size = new System.Drawing.Size(220, 24);
@@ -123,7 +127,7 @@
             // 
             // txtSoLuong
             // 
-            this.txtSoLuong.Location = new System.Drawing.Point(147, 251);
+            this.txtSoLuong.Location = new System.Drawing.Point(147, 281);
             this.txtSoLuong.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtSoLuong.Name = "txtSoLuong";
             this.txtSoLuong.Size = new System.Drawing.Size(220, 22);
@@ -132,7 +136,8 @@
             // label5
             // 
             this.label5.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label5.Location = new System.Drawing.Point(24, 204);
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label5.Location = new System.Drawing.Point(21, 234);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(120, 23);
             this.label5.TabIndex = 23;
@@ -142,7 +147,8 @@
             // label3
             // 
             this.label3.Cursor = System.Windows.Forms.Cursors.Default;
-            this.label3.Location = new System.Drawing.Point(24, 164);
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(21, 192);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(120, 23);
             this.label3.TabIndex = 22;
@@ -151,7 +157,7 @@
             // 
             // txtThanhTien
             // 
-            this.txtThanhTien.Location = new System.Drawing.Point(149, 290);
+            this.txtThanhTien.Location = new System.Drawing.Point(147, 328);
             this.txtThanhTien.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtThanhTien.Name = "txtThanhTien";
             this.txtThanhTien.Size = new System.Drawing.Size(217, 22);
@@ -160,7 +166,8 @@
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(24, 292);
+            this.label9.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label9.Location = new System.Drawing.Point(21, 328);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(120, 23);
             this.label9.TabIndex = 21;
@@ -169,8 +176,10 @@
             // 
             // btnXoa
             // 
+            this.btnXoa.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnXoa.Appearance.Options.UseFont = true;
             this.btnXoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.Image")));
-            this.btnXoa.Location = new System.Drawing.Point(203, 423);
+            this.btnXoa.Location = new System.Drawing.Point(199, 478);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(165, 65);
@@ -180,8 +189,10 @@
             // 
             // btnSua
             // 
+            this.btnSua.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnSua.Appearance.Options.UseFont = true;
             this.btnSua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.ImageOptions.Image")));
-            this.btnSua.Location = new System.Drawing.Point(15, 423);
+            this.btnSua.Location = new System.Drawing.Point(12, 478);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(165, 65);
@@ -191,8 +202,10 @@
             // 
             // btnThemChiTiet
             // 
+            this.btnThemChiTiet.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+            this.btnThemChiTiet.Appearance.Options.UseFont = true;
             this.btnThemChiTiet.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemChiTiet.ImageOptions.Image")));
-            this.btnThemChiTiet.Location = new System.Drawing.Point(15, 341);
+            this.btnThemChiTiet.Location = new System.Drawing.Point(12, 379);
             this.btnThemChiTiet.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThemChiTiet.Name = "btnThemChiTiet";
             this.btnThemChiTiet.Size = new System.Drawing.Size(165, 65);
@@ -202,7 +215,7 @@
             // 
             // txtMaPhieuXuat
             // 
-            this.txtMaPhieuXuat.Location = new System.Drawing.Point(147, 124);
+            this.txtMaPhieuXuat.Location = new System.Drawing.Point(147, 140);
             this.txtMaPhieuXuat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtMaPhieuXuat.Name = "txtMaPhieuXuat";
             this.txtMaPhieuXuat.Size = new System.Drawing.Size(220, 22);
@@ -211,7 +224,8 @@
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(24, 252);
+            this.label8.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label8.Location = new System.Drawing.Point(21, 281);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(120, 23);
             this.label8.TabIndex = 7;
@@ -220,6 +234,7 @@
             // 
             // label4
             // 
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
             this.label4.Location = new System.Drawing.Point(24, 89);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(120, 23);
@@ -229,7 +244,8 @@
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(24, 124);
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
+            this.label2.Location = new System.Drawing.Point(21, 139);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(120, 23);
             this.label2.TabIndex = 1;
@@ -239,7 +255,7 @@
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(391, 66);

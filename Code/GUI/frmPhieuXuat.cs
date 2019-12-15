@@ -262,5 +262,6 @@ namespace GUI
                 btnXemChiTiet.Enabled = true;
             }
         }
+
     }
 }

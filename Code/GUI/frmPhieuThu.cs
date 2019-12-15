@@ -539,7 +539,8 @@ namespace GUI
             reset();
         }
 
-        private void dataCTPhieuThu_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+        private void dataCTPhieuThu_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }
