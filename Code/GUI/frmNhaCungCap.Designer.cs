@@ -26,8 +26,8 @@
         /// </summary>
         private void InitializeComponent() {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmNhaCungCap));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.btnthoat = new DevExpress.XtraEditors.SimpleButton();
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -40,12 +40,12 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.scTimKiem = new DevExpress.XtraEditors.SearchControl();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnxoa = new DevExpress.XtraEditors.SimpleButton();
+            this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             this.txtDiaChi = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.numSDT = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.btnThem = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataMatHang)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scTimKiem.Properties)).BeginInit();
@@ -53,22 +53,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.numSDT)).BeginInit();
             this.SuspendLayout();
             // 
-            // btnXoa
+            // btnthoat
             // 
-            this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnXoa.Appearance.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnXoa.Appearance.Options.UseFont = true;
-            this.btnXoa.Appearance.Options.UseForeColor = true;
-            this.btnXoa.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnXoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.Image")));
-            this.btnXoa.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.btnXoa.Location = new System.Drawing.Point(12, 454);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(93, 58);
-            this.btnXoa.TabIndex = 8;
-            this.btnXoa.Text = "Thoát";
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            this.btnthoat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnthoat.Appearance.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnthoat.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnthoat.Appearance.Options.UseFont = true;
+            this.btnthoat.Appearance.Options.UseForeColor = true;
+            this.btnthoat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnthoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.Image")));
+            this.btnthoat.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.btnthoat.Location = new System.Drawing.Point(12, 454);
+            this.btnthoat.Name = "btnthoat";
+            this.btnthoat.Size = new System.Drawing.Size(93, 58);
+            this.btnthoat.TabIndex = 7;
+            this.btnthoat.Text = "Thoát";
+            this.btnthoat.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
@@ -82,7 +82,7 @@
             this.btnSua.Location = new System.Drawing.Point(112, 453);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(139, 58);
-            this.btnSua.TabIndex = 7;
+            this.btnSua.TabIndex = 5;
             this.btnSua.Text = "Sửa";
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
@@ -92,7 +92,7 @@
             this.txtEmail.Location = new System.Drawing.Point(150, 174);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(178, 22);
-            this.txtEmail.TabIndex = 3;
+            this.txtEmail.TabIndex = 2;
             this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
             this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
@@ -127,8 +127,8 @@
             this.dataMatHang.Location = new System.Drawing.Point(366, 75);
             this.dataMatHang.Name = "dataMatHang";
             this.dataMatHang.ReadOnly = true;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataMatHang.RowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataMatHang.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataMatHang.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataMatHang.Size = new System.Drawing.Size(560, 452);
             this.dataMatHang.TabIndex = 12;
@@ -196,20 +196,20 @@
             new DevExpress.XtraEditors.Repository.ClearButton(),
             new DevExpress.XtraEditors.Repository.SearchButton()});
             this.scTimKiem.Size = new System.Drawing.Size(264, 20);
-            this.scTimKiem.TabIndex = 1;
+            this.scTimKiem.TabIndex = 8;
             this.scTimKiem.TextChanged += new System.EventHandler(this.scTimKiem_TextChanged);
             this.scTimKiem.Enter += new System.EventHandler(this.scTimKiem_Enter);
             this.scTimKiem.Leave += new System.EventHandler(this.scTimKiem_Leave);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.simpleButton1);
+            this.panel1.Controls.Add(this.btnxoa);
             this.panel1.Controls.Add(this.btnThem);
             this.panel1.Controls.Add(this.txtDiaChi);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.numSDT);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.btnXoa);
+            this.panel1.Controls.Add(this.btnthoat);
             this.panel1.Controls.Add(this.btnSua);
             this.panel1.Controls.Add(this.txtEmail);
             this.panel1.Controls.Add(this.label2);
@@ -224,13 +224,44 @@
             this.panel1.Size = new System.Drawing.Size(366, 519);
             this.panel1.TabIndex = 10;
             // 
+            // btnxoa
+            // 
+            this.btnxoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnxoa.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnxoa.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnxoa.Appearance.Options.UseFont = true;
+            this.btnxoa.Appearance.Options.UseForeColor = true;
+            this.btnxoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnxoa.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.btnxoa.Location = new System.Drawing.Point(257, 453);
+            this.btnxoa.Name = "btnxoa";
+            this.btnxoa.Size = new System.Drawing.Size(101, 58);
+            this.btnxoa.TabIndex = 6;
+            this.btnxoa.Text = "Xóa";
+            this.btnxoa.Click += new System.EventHandler(this.simpleButton1_Click);
+            // 
+            // btnThem
+            // 
+            this.btnThem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnThem.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnThem.Appearance.Options.UseFont = true;
+            this.btnThem.Appearance.Options.UseForeColor = true;
+            this.btnThem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.ImageOptions.Image")));
+            this.btnThem.Location = new System.Drawing.Point(12, 389);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(346, 58);
+            this.btnThem.TabIndex = 4;
+            this.btnThem.Text = "Thêm Nhà Cung Cấp";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            // 
             // txtDiaChi
             // 
             this.txtDiaChi.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDiaChi.Location = new System.Drawing.Point(150, 208);
             this.txtDiaChi.Name = "txtDiaChi";
             this.txtDiaChi.Size = new System.Drawing.Size(178, 22);
-            this.txtDiaChi.TabIndex = 30;
+            this.txtDiaChi.TabIndex = 3;
             this.txtDiaChi.Enter += new System.EventHandler(this.txtDiaChi_Enter);
             this.txtDiaChi.Leave += new System.EventHandler(this.txtDiaChi_Leave);
             // 
@@ -256,7 +287,7 @@
             0});
             this.numSDT.Name = "numSDT";
             this.numSDT.Size = new System.Drawing.Size(178, 22);
-            this.numSDT.TabIndex = 26;
+            this.numSDT.TabIndex = 1;
             this.numSDT.Enter += new System.EventHandler(this.numSDT_Enter);
             this.numSDT.Leave += new System.EventHandler(this.numSDT_Leave);
             // 
@@ -271,44 +302,13 @@
             this.label5.TabIndex = 27;
             this.label5.Text = "SĐT:";
             // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.simpleButton1.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.simpleButton1.Appearance.Options.UseFont = true;
-            this.simpleButton1.Appearance.Options.UseForeColor = true;
-            this.simpleButton1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
-            this.simpleButton1.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.simpleButton1.Location = new System.Drawing.Point(257, 453);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(101, 58);
-            this.simpleButton1.TabIndex = 32;
-            this.simpleButton1.Text = "Xóa";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
-            // 
-            // btnThem
-            // 
-            this.btnThem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnThem.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThem.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnThem.Appearance.Options.UseFont = true;
-            this.btnThem.Appearance.Options.UseForeColor = true;
-            this.btnThem.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThem.ImageOptions.Image")));
-            this.btnThem.Location = new System.Drawing.Point(12, 389);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(346, 58);
-            this.btnThem.TabIndex = 31;
-            this.btnThem.Text = "Thêm Nhà Cung Cấp";
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
             // frmNhaCungCap
             // 
             this.AcceptButton = this.btnSua;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
-            this.CancelButton = this.btnXoa;
+            this.CancelButton = this.btnthoat;
             this.ClientSize = new System.Drawing.Size(933, 519);
             this.Controls.Add(this.dataMatHang);
             this.Controls.Add(this.panel2);
@@ -333,7 +333,7 @@
 
         #endregion
 
-        private DevExpress.XtraEditors.SimpleButton btnXoa;
+        private DevExpress.XtraEditors.SimpleButton btnthoat;
         private DevExpress.XtraEditors.SimpleButton btnSua;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label2;
@@ -350,7 +350,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtDiaChi;
         private DevExpress.XtraEditors.SearchControl scTimKiem;
-        private DevExpress.XtraEditors.SimpleButton simpleButton1;
+        private DevExpress.XtraEditors.SimpleButton btnxoa;
         private DevExpress.XtraEditors.SimpleButton btnThem;
     }
 }

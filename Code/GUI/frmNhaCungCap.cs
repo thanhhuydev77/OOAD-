@@ -48,7 +48,7 @@ namespace GUI
 
             this.btnSua.Enabled = status;
 
-            this.btnXoa.Enabled = true;
+            this.btnthoat.Enabled = true;
             this.dataMatHang.Enabled = !status;
         }
         private void btnSua_Click(object sender, EventArgs e) {
@@ -59,7 +59,7 @@ namespace GUI
                 if (btnSua.Text == "Sửa") {
 
                     btnSua.Text = "Cập nhật";
-                    btnXoa.Text = "Hủy";
+                    btnthoat.Text = "Hủy";
                     SetDefault(true);
                     txtTenNCC.Focus();
                 } else {
@@ -77,7 +77,7 @@ namespace GUI
 
                         if (ncc.suaNhaCungCap(ldl)) {
                             btnSua.Text = "Sửa";
-                            btnXoa.Text = "Thoát";
+                            btnthoat.Text = "Thoát";
                             dataMatHang.DataSource = ncc.LayDanhSachNhaCungCap();
                             CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
                             myCurrencyManager.Refresh();
@@ -124,7 +124,7 @@ namespace GUI
 
         private void frmNhaCungCap_Load(object sender, EventArgs e) {
             btnSua.Enabled = false;
-            btnXoa.Enabled = false;
+            btnthoat.Enabled = false;
 
             List<DTO_NhaCungCap> listncc = ncc.LayDanhSachNhaCungCap();
 
@@ -144,7 +144,7 @@ namespace GUI
                     DataGridViewRow row = this.dataMatHang.Rows[index];
                     this.txtMaNCC.Text = row.Cells[0].Value.ToString();
                     this.txtTenNCC.Text = row.Cells[1].Value.ToString();
-                    this.numSDT.Text= row.Cells[2].Value.ToString();
+                    this.numSDT.Text = row.Cells[2].Value.ToString();
                     this.txtEmail.Text = row.Cells[4].Value.ToString();
                     this.txtDiaChi.Text = row.Cells[3].Value.ToString();
 
@@ -167,7 +167,7 @@ namespace GUI
         }
 
         private void txtTenNCC_Leave(object sender, EventArgs e) {
-            txtTenNCC.Font =smallfont;
+            txtTenNCC.Font = smallfont;
         }
 
         private void numSDT_Enter(object sender, EventArgs e) {
@@ -219,69 +219,96 @@ namespace GUI
         }
 
         private void frmNhaCungCap_KeyPress(object sender, KeyEventArgs e) {
-            if(e.KeyCode == Keys.F1)
-            scTimKiem.Focus();
+            if (e.KeyCode == Keys.F1)
+                scTimKiem.Focus();
         }
 
         private void btnThem_Click(object sender, EventArgs e) {
-        //    if (btnThem.Text == "Thêm Nhà Cung Cấp") {
-        //        ResetValue();
-        //        SetDefault(true);
-        //        btnThem.Text = "Lưu";
-        //        btnSua.Enabled = false;
-        //        btnXoa.Text = "Hủy";
-        //        btnXoa.Enabled = true;
-        //        btnThem.Enabled = true;
-        //        txtTenNhanVien.Focus();
-        //    } else {
-        //        DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thêm nhân viên", "THÊM NHÂN VIÊN", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-        //        if (result == DialogResult.OK) {
-        //            if (KiemTra()) {
-        //                DTO_NhanVien ldl = new DTO_NhanVien();
-        //                ldl.TenNhanVien = this.txtTenNhanVien.Text;
-        //                ldl.GioiTinh = this.cbGioiTinh.SelectedIndex != 0;
-        //                ldl.ChucVu = this.txtChucVu.Text;
-        //                ldl.DiaChi = this.txtDiaChi.Text;
-        //                ldl.Email = this.txtEmail.Text;
-        //                ldl.Tuoi = int.Parse(this.numTuoi.Text);
-        //                ldl.SDT = this.numSDT.Value.ToString();
-        //                ldl.PhanQuyen = ((int)this.cbQuyen.SelectedValue);
-        //                int cancreateaccount = taikhoan.createAccount(txtTaikhoan.Text);
-        //                if (cancreateaccount == 0) {
-        //                    txtTaikhoan.Focus();
-        //                    MessageBox.Show("Vui lòng kiểm tra lại quy định và dữ liệu", "Thêm tài khoản thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                    return;
-        //                }
-        //                ldl.TaiKhoan = cancreateaccount;
-        //                if (nhanvien.ThemNhanVien(ldl)) {
-        //                    btnThem.Text = "Thêm Nhân Viên";
-        //                    btnXoa.Text = "Xóa";
+            if (btnThem.Text == "Thêm Nhà Cung Cấp") {
+                ResetValue();
+                SetDefault(true);
+                btnThem.Text = "Lưu";
+                btnSua.Enabled = false;
+                btnthoat.Text = "Hủy";
+                btnthoat.Enabled = true;
+                btnThem.Enabled = true;
+                txtTenNCC.Focus();
+            } else {
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn thêm nhà cung cấp", "THÊM NHÀ CUNG CẤP", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK) {
+                    if (KiemTra()) {
+                        DTO_NhaCungCap ldl = new DTO_NhaCungCap();
+                        ldl.Name = this.txtTenNCC.Text;
+                        ldl.DiaChi = this.txtDiaChi.Text;
+                        ldl.Email = this.txtEmail.Text;
+                        ldl.Sdt = this.numSDT.Value.ToString();
+                        bool cancreateaccount = ncc.themNhaCungCap(ldl);
+                        if (!cancreateaccount) {
+                            txtTenNCC.Focus();
+                            MessageBox.Show("Vui lòng kiểm tra lại quy định và dữ liệu", "Thêm tài khoản thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
+                        btnThem.Text = "Thêm Nhà Cung Cấp";
+                        btnthoat.Text = "Xóa";
 
-        //                    dataMatHang.DataSource = nhanvien.LayDanhSachNhanVien();
-        //                    CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
-        //                    myCurrencyManager.Refresh();
+                        dataMatHang.DataSource = ncc.LayDanhSachNhaCungCap();
+                        CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
+                        myCurrencyManager.Refresh();
 
-        //                    SetDefault(false);
-        //                    ResetValue();
+                        SetDefault(false);
+                        ResetValue();
 
-        //                    if (string.IsNullOrEmpty(txtMaNhanVien.Text)) {
-        //                        btnXoa.Enabled = false;
-        //                    }
+                        if (string.IsNullOrEmpty(txtMaNCC.Text)) {
+                            btnthoat.Enabled = false;
+                        }
 
-        //                    MessageBox.Show("Thêm nhân viên thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-        //                } else {
-        //                    MessageBox.Show("Vui lòng kiểm tra lại quy định và dữ liệu", "Thêm nhân viên thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        //                }
+                        MessageBox.Show("Thêm nhà cung cấp thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                    } else {
+                        MessageBox.Show("Vui lòng kiểm tra lại quy định và dữ liệu", "Thêm nhà cung cấp thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
 
 
-        //            }
-        //        }
+                }
 
-        //    }
+
+            }
         }
 
         private void simpleButton1_Click(object sender, EventArgs e) {
+            if (btnxoa.Text == "Xóa") {
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn xóa nhà cung cấp", "XÓA NHÀ CUNG CẤP", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK) {
+                    try {
+                        if (ncc.xoaNhaCungCap(long.Parse(txtMaNCC.Text))) {
+                            dataMatHang.DataSource = ncc.LayDanhSachNhaCungCap();
 
+                            CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
+                            myCurrencyManager.Refresh();
+                            MessageBox.Show("Xóa nhà cung cấp thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                        } else {
+                            MessageBox.Show("Xóa nhà cung cấp thất bài", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    } catch {
+                        MessageBox.Show("Vui lòng chọn nhà cung cấp trước!", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+            } else {
+                DialogResult result = MessageBox.Show("Bạn chắc chắn muốn hủy", "HỦY THAO TÁC", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (result == DialogResult.OK) {
+                    btnThem.Text = "Thêm Nhà Cung Cấp";
+                    btnSua.Text = "Sửa";
+                    btnthoat.Text = "Xóa";
+                    //btnSua.Enabled = true;
+                    btnThem.Enabled = true;
+                    if (string.IsNullOrEmpty(txtMaNCC.Text)) {
+                        btnthoat.Enabled = false;
+                    }
+                    SetDefault(false);
+                    
+                }
+
+            }
         }
     }
 }

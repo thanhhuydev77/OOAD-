@@ -45,7 +45,7 @@ namespace GUI
             long mahang = 0;
             if (btnThemHang.Text == "Xác Nhận") {
 
-                if (numSoLuongHang.Value > 0 && numGiaNhap.Value > 0) {
+                if (checkvalid()) {
                     DTO_Hang hang = new DTO_Hang();
                     DTO_ChiTietPhieuNhap ct = new DTO_ChiTietPhieuNhap();
                     //hàng mới
@@ -62,6 +62,7 @@ namespace GUI
                         if (hanghoa.ThemMatHang(hang)) {
                             hang.MaMatHang = hanghoa.timMaHang(hang.TenMatHang);
                             MessageBox.Show("Thêm hàng thành công!");
+                            reset();
                         } else {
                             MessageBox.Show("Thêm hàng thất bại \nvui lòng kiểm tra lại!");
                             return;
@@ -70,9 +71,10 @@ namespace GUI
                     } else
                     if (rbHangSan.Checked) {
                         hang = hanghoa.timHang(long.Parse(cbtenhang.SelectedValue.ToString()));
-                        if (hanghoa.suaSoluongHangTrongKho(long.Parse(cbtenhang.SelectedValue.ToString()), (int)numSoLuongHang.Value))
+                        if (hanghoa.suaSoluongHangTrongKho(long.Parse(cbtenhang.SelectedValue.ToString()), (int)numSoLuongHang.Value)) {
                             MessageBox.Show("Thêm hàng thành công!");
-                        else {
+                            
+                        } else {
                             MessageBox.Show("Thêm hàng thất bại \nvui lòng kiểm tra lại!");
                             return;
                         }
@@ -92,23 +94,23 @@ namespace GUI
                         pt.capnhapphieuthu(phieuthu);
                         dataPhieuThu.DataSource = pt.LayDanhSachPhieuThu();
                     } else {
-                        MessageBox.Show("Thêm phiếu thu thất bại \nvui lòng kiểm tra lại!");
+                        MessageBox.Show("Thêm hàng thất bại \nvui lòng kiểm tra lại!");
                         return;
                     }
-
+                    rbHangSan.Checked = true;
                     SetDefault(false);
                     btnThemHang.Enabled = true;
                     btnThemHang.Text = "Thêm Hàng";
-                    btnXoa.Text = "Xóa";
+                    btnXoaHang.Text = "Xóa";
 
                 }
             } else {
                 SetDefault(true);
                 btnThemHang.Text = "Xác Nhận";
                 btnXoaHang.Text = "Hủy";
-
+                reset();
             }
-            reset();
+            
         }
         private void loadsource() {
             List<DTO_DonViTinh> listdvt = donvitinh.hienthidanhsach();
@@ -142,6 +144,51 @@ namespace GUI
 
         }
 
+        bool checkvalid() {
+
+            if (txttenhang1.Text.Length <= 0 && rbHangMoi.Checked) {
+                MessageBox.Show("Vui lòng nhập tên hàng!");
+                txttenhang1.Focus();
+                return false;
+            }
+            
+
+
+            if (numSoLuongHang.Value <= 0) {
+                MessageBox.Show("Vui lòng nhập số lượng!");
+                numSoLuongHang.Focus();
+                return false;
+            }
+
+            if (numGiaNhap.Value <= 0) {
+                MessageBox.Show("Vui lòng nhập giá !");
+                numGiaBan.Focus();
+                return false;
+            }
+            
+            if (numGiaBan.Value <= 0 && rbHangMoi.Checked) {
+                MessageBox.Show("Vui lòng nhập giá bán!");
+                numGiaBan.Focus();
+                return false;
+            }
+            if (txtThanhPhan.Text.Length <= 0 && rbHangMoi.Checked) {
+                MessageBox.Show("Vui lòng nhập thành phần!");
+                txtThanhPhan.Focus();
+                return false;
+            }
+            if (txtCongDung.Text.Length <= 0 && rbHangMoi.Checked) {
+                MessageBox.Show("Vui lòng nhập công dụng!");
+                txtCongDung.Focus();
+                return false;
+            }
+            if (txtXuatSu.Text.Length <= 0 && rbHangMoi.Checked) {
+                MessageBox.Show("Vui lòng nhập xuất xứ!");
+                txtXuatSu.Focus();
+                return false;
+            }
+
+            return true;
+        }
         private void reset() {
             
             numSoTien.Value = 0;
@@ -179,6 +226,7 @@ namespace GUI
                 try {
 
                     btnXoaHang.Enabled = true;
+                    btnThemHang.Enabled = true;
                     index = e.RowIndex;
                     DataGridViewRow row = this.dataCTPhieuThu.Rows[index];
                     this.numGiaNhap.Value = uint.Parse(row.Cells[3].Value.ToString());
@@ -313,6 +361,7 @@ namespace GUI
                             myCurrencyManager.Refresh();
                             reset();
                             MessageBox.Show("Xóa hàng thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+                            SetDefault(false);
                         } else {
                             MessageBox.Show("Xóa hàng thất bài", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }

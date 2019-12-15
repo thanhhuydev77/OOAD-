@@ -60,7 +60,7 @@ namespace DAL
         }
         public bool ThemNhaCungCap(DTO_NhaCungCap ldl) {
             string query = string.Empty;
-            query += "INSERT INTO [tblnhacungcap] ([[ten],[sdt],[email],[diachi]) ";
+            query += "INSERT INTO [tblnhacungcap] ([ten],[sdt],[email],[diachi]) ";
             query += "VALUES (@ten, @sdt, @email, @diachi)";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
