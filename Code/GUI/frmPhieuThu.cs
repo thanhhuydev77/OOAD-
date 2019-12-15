@@ -101,7 +101,7 @@ namespace GUI
                     SetDefault(false);
                     btnThemHang.Enabled = true;
                     btnThemHang.Text = "Thêm Hàng";
-                    btnXoaHang.Text = "Xóa";
+                    btnXoaHang.Text = "Xóa Hàng";
 
                 }
             } else {
