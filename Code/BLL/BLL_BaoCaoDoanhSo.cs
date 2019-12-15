@@ -14,7 +14,7 @@ namespace BLL
         private DAL_BaoCaoDoanhSo bcds = new DAL_BaoCaoDoanhSo();
         #endregion
         #region method
-        public List<DTO_BaoCaoDoanhSo> hienthidoanhso(int startmonth,int startyear,int endmonth,int endyear) {
+        public List<DTO_PhieuXuatHang> hienthidoanhso(int startmonth,int startyear,int endmonth,int endyear) {
             return bcds.hienthidoanhso(startmonth, startyear, endmonth, endyear);
         }
         public uint hienthitongdoanhthu() {

@@ -19,16 +19,18 @@ namespace DAL
         }
         #endregion
         #region method
-        public List<DTO_BaoCaoDoanhSo> list = new List<DTO_BaoCaoDoanhSo>();
+       // public List<DTO_PhieuXuatHang> list = new List<DTO_PhieuXuatHang>();
+        public List<DTO_PhieuXuatHang> listpx = new List<DTO_PhieuXuatHang>();
         public DAL_BaoCaoDoanhSo() {
             connectionString = ConfigurationManager.AppSettings["ConnectionString"];
         }
-        public List<DTO_BaoCaoDoanhSo> hienthidoanhso(int startmonth, int startyear, int endmonth, int endyear) 
+        public List<DTO_PhieuXuatHang> hienthidoanhso(int startmonth, int startyear, int endmonth, int endyear) 
             {
-            List<DTO_BaoCaoDoanhSo> List = new List<DTO_BaoCaoDoanhSo>();
+            List<DTO_PhieuXuatHang> List = new List<DTO_PhieuXuatHang>();
 
             String query = string.Empty;
-            query = "select b.id,tenDL,tyle,sophieuxuat,tongtrigia from tblBaoCaoDoanhSo b join tbldaily d on b.manv = d.id  where maTG in (select id from tblThoiGian where( (nam > @startyear  and nam < @endyear) or (nam = @startyear and thang >= @startmonth and nam < @endyear ) or (nam = @endyear and thang <= @endmonth and nam > @startyear) or ( nam = @startyear and nam = @endyear and thang >= @startmonth and thang <= @endmonth) ))";
+            //query = "select b.id,tenDL,tyle,sophieuxuat,tongtrigia from tblBaoCaoDoanhSo b join tbldaily d on b.manv = d.id  where maTG in (select id from tblThoiGian where( (nam > @startyear  and nam < @endyear) or (nam = @startyear and thang >= @startmonth and nam < @endyear ) or (nam = @endyear and thang <= @endmonth and nam > @startyear) or ( nam = @startyear and nam = @endyear and thang >= @startmonth and thang <= @endmonth) ))";
+            query = "select * from tblhoadonxuat as hd where ( ( (YEAR(hd.ngayxuat) > @startyear  and YEAR(hd.ngayxuat) < @endyear) or (YEAR(hd.ngayxuat) = @startyear and MONTH(hd.ngayxuat) >= @startmonth and YEAR(hd.ngayxuat) < @endyear ) or (YEAR(hd.ngayxuat) = @endyear and MONTH(hd.ngayxuat) <= @endmonth and YEAR(hd.ngayxuat) > @startyear) or ( YEAR(hd.ngayxuat) = @startyear and YEAR(hd.ngayxuat) = @endyear and MONTH(hd.ngayxuat) >= @startmonth and MONTH(hd.ngayxuat) <= @endmonth) ) )";
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 using (SqlCommand cmd = new SqlCommand()) {
                     cmd.Connection = con;
@@ -45,14 +47,20 @@ namespace DAL
 
                         if (reader.HasRows == true) {
                             while (reader.Read()) {
-                                DTO_BaoCaoDoanhSo bcds = new DTO_BaoCaoDoanhSo();
-                                bcds.Id = long.Parse(reader["id"].ToString());
-                                bcds.Tendaily = reader["tenDL"].ToString();
-                                bcds.Tyle = float.Parse(reader["tyle"].ToString());
-                                bcds.Sophieuxuat = int.Parse(reader["soPhieuXuat"].ToString());
-                                bcds.Tongtrigia = (uint)reader.GetDecimal(4);
+                                //DTO_BaoCaoDoanhSo bcds = new DTO_BaoCaoDoanhSo();
+                                //bcds.Id = long.Parse(reader["id"].ToString());
+                                //bcds.Tendaily = reader["tenDL"].ToString();
+                                //bcds.Tyle = float.Parse(reader["tyle"].ToString());
+                                //bcds.Sophieuxuat = int.Parse(reader["soPhieuXuat"].ToString());
+                                //bcds.Tongtrigia = (uint)reader.GetDecimal(4);
+                                DTO_PhieuXuatHang px = new DTO_PhieuXuatHang();
+                                px.Id = long.Parse(reader["id"].ToString());
+                                px.MaNV = long.Parse(reader["manv"].ToString());
+                                px.MaKH = long.Parse(reader["makh"].ToString());
+                                px.NgayLapPhieu = reader.GetDateTime(3);
+                                px.TongTriGia = (uint)reader.GetDecimal(4);
 
-                                List.Add(bcds);
+                                List.Add(px);
                             }
                         }
                         con.Close();
@@ -61,7 +69,7 @@ namespace DAL
                         con.Close();
                         return null;
                    }
-                    list = List;
+                    listpx = List;
                     return List;
                 }
             }
@@ -69,9 +77,9 @@ namespace DAL
 
         public uint hienthitongdoanhthu() {
             uint tong = 0;
-            if( list.Count != 0)
-            for (int i = 0; i < list.Count; i++)
-                tong += list[i].Tongtrigia;
+            if (listpx.Count != 0)
+                for (int i = 0; i < listpx.Count; i++)
+                    tong += listpx[i].TongTriGia;
             return tong;
         }
         #endregion
