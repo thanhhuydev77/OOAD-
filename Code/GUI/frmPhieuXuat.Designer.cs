@@ -159,22 +159,22 @@
             this.txtMaPhieuXuat.TabIndex = 8;
             this.txtMaPhieuXuat.TextChanged += new System.EventHandler(this.TxtMaPhieuXuat_TextChanged);
             // 
-<<<<<<< HEAD
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(353, 58);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "PHIẾU XUẤT HÀNG";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-=======
->>>>>>> afa7e7a9d4519d080b2b932b627b2c0fcff6af1b
+//<<<<<<< HEAD
+//            // label1
+//            // 
+//            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+//            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
+//            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+//            this.label1.Location = new System.Drawing.Point(0, 0);
+//            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+//            this.label1.Name = "label1";
+//            this.label1.Size = new System.Drawing.Size(353, 58);
+//            this.label1.TabIndex = 0;
+//            this.label1.Text = "PHIẾU XUẤT HÀNG";
+//            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+//            // 
+//=======
+//>>>>>>> afa7e7a9d4519d080b2b932b627b2c0fcff6af1b
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;

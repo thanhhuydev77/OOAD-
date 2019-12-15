@@ -78,11 +78,11 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-<<<<<<< HEAD
-            this.panel1.Size = new System.Drawing.Size(342, 519);
-=======
+//<<<<<<< HEAD
+//            this.panel1.Size = new System.Drawing.Size(342, 519);
+//=======
             this.panel1.Size = new System.Drawing.Size(422, 554);
->>>>>>> afa7e7a9d4519d080b2b932b627b2c0fcff6af1b
+//>>>>>>> afa7e7a9d4519d080b2b932b627b2c0fcff6af1b
             this.panel1.TabIndex = 19;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -166,13 +166,13 @@
             this.txtThanhTien.Location = new System.Drawing.Point(128, 233);
             this.txtThanhTien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtThanhTien.Name = "txtThanhTien";
-<<<<<<< HEAD
-            this.txtThanhTien.Size = new System.Drawing.Size(193, 22);
-            this.txtThanhTien.TabIndex = 4;
-=======
+//<<<<<<< HEAD
+//            this.txtThanhTien.Size = new System.Drawing.Size(193, 22);
+//            this.txtThanhTien.TabIndex = 4;
+//=======
             this.txtThanhTien.Size = new System.Drawing.Size(220, 22);
             this.txtThanhTien.TabIndex = 15;
->>>>>>> afa7e7a9d4519d080b2b932b627b2c0fcff6af1b
+//>>>>>>> afa7e7a9d4519d080b2b932b627b2c0fcff6af1b
             this.txtThanhTien.Text = "0";
             // 
             // label9
@@ -270,22 +270,22 @@
             this.label2.Text = "Mã phiếu xuất:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-<<<<<<< HEAD
-            // label1
-            // 
-            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Maroon;
-            this.label1.Location = new System.Drawing.Point(0, 0);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(342, 62);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "CHI TIẾT PHIẾU XUẤT";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-=======
->>>>>>> afa7e7a9d4519d080b2b932b627b2c0fcff6af1b
+//<<<<<<< HEAD
+//            // label1
+//            // 
+//            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
+//            this.label1.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+//            this.label1.ForeColor = System.Drawing.Color.Maroon;
+//            this.label1.Location = new System.Drawing.Point(0, 0);
+//            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+//            this.label1.Name = "label1";
+//            this.label1.Size = new System.Drawing.Size(342, 62);
+//            this.label1.TabIndex = 0;
+//            this.label1.Text = "CHI TIẾT PHIẾU XUẤT";
+//            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+//            // 
+//=======
+//>>>>>>> afa7e7a9d4519d080b2b932b627b2c0fcff6af1b
             // panel3
             // 
             this.panel3.Controls.Add(this.dataChiTietPhieuXuat);
@@ -304,21 +304,21 @@
             this.dataChiTietPhieuXuat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataChiTietPhieuXuat.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.dataChiTietPhieuXuat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-<<<<<<< HEAD
-            this.dataChiTietPhieuXuat.Location = new System.Drawing.Point(346, 0);
-            this.dataChiTietPhieuXuat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dataChiTietPhieuXuat.Name = "dataChiTietPhieuXuat";
-            this.dataChiTietPhieuXuat.RowHeadersWidth = 51;
-            this.dataChiTietPhieuXuat.RowTemplate.Height = 24;
-            this.dataChiTietPhieuXuat.Size = new System.Drawing.Size(587, 519);
-=======
+//<<<<<<< HEAD
+//            this.dataChiTietPhieuXuat.Location = new System.Drawing.Point(346, 0);
+//            this.dataChiTietPhieuXuat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+//            this.dataChiTietPhieuXuat.Name = "dataChiTietPhieuXuat";
+//            this.dataChiTietPhieuXuat.RowHeadersWidth = 51;
+//            this.dataChiTietPhieuXuat.RowTemplate.Height = 24;
+//            this.dataChiTietPhieuXuat.Size = new System.Drawing.Size(587, 519);
+//=======
             this.dataChiTietPhieuXuat.Location = new System.Drawing.Point(419, 0);
             this.dataChiTietPhieuXuat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataChiTietPhieuXuat.Name = "dataChiTietPhieuXuat";
             this.dataChiTietPhieuXuat.RowHeadersWidth = 51;
             this.dataChiTietPhieuXuat.RowTemplate.Height = 24;
             this.dataChiTietPhieuXuat.Size = new System.Drawing.Size(648, 554);
->>>>>>> afa7e7a9d4519d080b2b932b627b2c0fcff6af1b
+//>>>>>>> afa7e7a9d4519d080b2b932b627b2c0fcff6af1b
             this.dataChiTietPhieuXuat.TabIndex = 2;
             this.dataChiTietPhieuXuat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataChiTietPhieuXuat_CellClick);
             // 
