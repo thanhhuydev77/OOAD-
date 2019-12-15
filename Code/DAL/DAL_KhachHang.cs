@@ -60,8 +60,8 @@ namespace DAL
         }
         public bool ThemKhachHang(DTO_KhachHang ldl) {
             string query = string.Empty;
-            query += "INSERT INTO [tblkhachhang] ([[ten],[sdt],[email]) ";
-            query += "VALUES (@ten, @sdt, @email )";
+            query += "INSERT INTO [tblkhachhang] ([ten],[sdt],[email]) ";
+            query += "VALUES (@ten , @sdt , @email )";
 
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 using (SqlCommand cmd = new SqlCommand()) {

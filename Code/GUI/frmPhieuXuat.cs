@@ -18,7 +18,9 @@ namespace GUI
         }
         private void SetDefault(bool status)
         {
-
+            cbMakh.Enabled = status;
+            cbManv.Enabled = status;
+            dataPhieuXuat.Enabled = !status;
             this.txtMaPhieuXuat.Enabled = false;
             this.dNgayTiepNhan.Enabled = false;
             this.txtTongTriGia.Enabled = status;
@@ -41,6 +43,8 @@ namespace GUI
         private void FrmPhieuXuat_Load(object sender, EventArgs e)
         {
             dataPhieuXuat.DataSource = phieuxuat.laydanhsach();
+            this.dataPhieuXuat.Columns["manv"].Visible = false;
+            this.dataPhieuXuat.Columns["makh"].Visible = false;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             btnXemChiTiet.Enabled = false;
@@ -145,8 +149,8 @@ namespace GUI
                     {
                         DTO_PhieuXuatHang pxh = new DTO_PhieuXuatHang();
                         pxh.Id = long.Parse(this.txtMaPhieuXuat.Text);
-                        pxh.MaNV = long.Parse(this.cbManv.Text);
-                        pxh.MaKH = long.Parse(this.cbMakh.Text);
+                        pxh.MaNV = long.Parse(this.cbManv.SelectedValue.ToString());
+                        pxh.MaKH = long.Parse(this.cbMakh.SelectedValue.ToString());
                         pxh.TongTriGia = uint.Parse(this.txtTongTriGia.Text);
 
                         if (phieuxuat.SuaPhieuXuat(pxh))

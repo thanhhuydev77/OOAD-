@@ -25,23 +25,25 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKhachHang));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmKhachHang));
             this.numSDT = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.scTimKiem = new DevExpress.XtraEditors.SearchControl();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.btnXoa = new DevExpress.XtraEditors.SimpleButton();
+            this.btnthoat = new DevExpress.XtraEditors.SimpleButton();
             this.btnSua = new DevExpress.XtraEditors.SimpleButton();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtMaNCC = new System.Windows.Forms.TextBox();
+            this.txtMaKh = new System.Windows.Forms.TextBox();
             this.lbLoaiDaiLy = new System.Windows.Forms.Label();
-            this.txtTenNCC = new System.Windows.Forms.TextBox();
+            this.txtTenKh = new System.Windows.Forms.TextBox();
             this.lbTenLoaiDaiLy = new System.Windows.Forms.Label();
             this.lbMaLoaiDaiLy = new System.Windows.Forms.Label();
             this.dataMatHang = new System.Windows.Forms.DataGridView();
+            this.btnxoa = new DevExpress.XtraEditors.SimpleButton();
+            this.btnThemKhachHang = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.numSDT)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.scTimKiem.Properties)).BeginInit();
@@ -54,13 +56,14 @@
             this.numSDT.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numSDT.Location = new System.Drawing.Point(175, 163);
             this.numSDT.Maximum = new decimal(new int[] {
-            1410065408,
-            2,
+            1874919424,
+            2328306,
             0,
             0});
             this.numSDT.Name = "numSDT";
             this.numSDT.Size = new System.Drawing.Size(208, 22);
-            this.numSDT.TabIndex = 26;
+            this.numSDT.TabIndex = 1;
+            this.numSDT.Tag = "1";
             this.numSDT.Enter += new System.EventHandler(this.numSDT_Enter);
             this.numSDT.Leave += new System.EventHandler(this.numSDT_Leave);
             // 
@@ -95,22 +98,24 @@
             new DevExpress.XtraEditors.Repository.ClearButton(),
             new DevExpress.XtraEditors.Repository.SearchButton()});
             this.scTimKiem.Size = new System.Drawing.Size(359, 22);
-            this.scTimKiem.TabIndex = 0;
+            this.scTimKiem.TabIndex = 6;
             this.scTimKiem.TextChanged += new System.EventHandler(this.scTimKiem_TextChanged);
             this.scTimKiem.Enter += new System.EventHandler(this.scTimKiem_Enter);
             this.scTimKiem.Leave += new System.EventHandler(this.scTimKiem_Leave);
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnxoa);
+            this.panel1.Controls.Add(this.btnThemKhachHang);
             this.panel1.Controls.Add(this.numSDT);
             this.panel1.Controls.Add(this.label5);
-            this.panel1.Controls.Add(this.btnXoa);
+            this.panel1.Controls.Add(this.btnthoat);
             this.panel1.Controls.Add(this.btnSua);
             this.panel1.Controls.Add(this.txtEmail);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtMaNCC);
+            this.panel1.Controls.Add(this.txtMaKh);
             this.panel1.Controls.Add(this.lbLoaiDaiLy);
-            this.panel1.Controls.Add(this.txtTenNCC);
+            this.panel1.Controls.Add(this.txtTenKh);
             this.panel1.Controls.Add(this.lbTenLoaiDaiLy);
             this.panel1.Controls.Add(this.lbMaLoaiDaiLy);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
@@ -119,35 +124,35 @@
             this.panel1.Size = new System.Drawing.Size(427, 451);
             this.panel1.TabIndex = 13;
             // 
-            // btnXoa
+            // btnthoat
             // 
-            this.btnXoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnXoa.Appearance.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXoa.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnXoa.Appearance.Options.UseFont = true;
-            this.btnXoa.Appearance.Options.UseForeColor = true;
-            this.btnXoa.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnXoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.Image")));
-            this.btnXoa.ImeMode = System.Windows.Forms.ImeMode.On;
-            this.btnXoa.Location = new System.Drawing.Point(43, 365);
-            this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(162, 67);
-            this.btnXoa.TabIndex = 8;
-            this.btnXoa.Text = "Thoát";
-            this.btnXoa.Click += new System.EventHandler(this.btnXoa_Click);
+            this.btnthoat.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnthoat.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnthoat.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnthoat.Appearance.Options.UseFont = true;
+            this.btnthoat.Appearance.Options.UseForeColor = true;
+            this.btnthoat.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnthoat.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.Image")));
+            this.btnthoat.ImeMode = System.Windows.Forms.ImeMode.On;
+            this.btnthoat.Location = new System.Drawing.Point(38, 368);
+            this.btnthoat.Name = "btnthoat";
+            this.btnthoat.Size = new System.Drawing.Size(173, 67);
+            this.btnthoat.TabIndex = 7;
+            this.btnthoat.Text = "Thoát";
+            this.btnthoat.Click += new System.EventHandler(this.btnXoa_Click);
             // 
             // btnSua
             // 
-            this.btnSua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSua.Appearance.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSua.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSua.Appearance.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnSua.Appearance.Options.UseFont = true;
             this.btnSua.Appearance.Options.UseForeColor = true;
             this.btnSua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.ImageOptions.Image")));
-            this.btnSua.Location = new System.Drawing.Point(230, 365);
+            this.btnSua.Location = new System.Drawing.Point(251, 302);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(162, 67);
-            this.btnSua.TabIndex = 7;
+            this.btnSua.Size = new System.Drawing.Size(124, 61);
+            this.btnSua.TabIndex = 4;
             this.btnSua.Text = "Sửa";
             this.btnSua.Click += new System.EventHandler(this.btnSua_Click);
             // 
@@ -157,7 +162,7 @@
             this.txtEmail.Location = new System.Drawing.Point(175, 201);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(207, 22);
-            this.txtEmail.TabIndex = 3;
+            this.txtEmail.TabIndex = 2;
             this.txtEmail.Enter += new System.EventHandler(this.txtEmail_Enter);
             this.txtEmail.Leave += new System.EventHandler(this.txtEmail_Leave);
             // 
@@ -171,14 +176,14 @@
             this.label2.TabIndex = 15;
             this.label2.Text = "Email:";
             // 
-            // txtMaNCC
+            // txtMaKh
             // 
-            this.txtMaNCC.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMaNCC.Location = new System.Drawing.Point(175, 85);
-            this.txtMaNCC.Name = "txtMaNCC";
-            this.txtMaNCC.Size = new System.Drawing.Size(207, 22);
-            this.txtMaNCC.TabIndex = 10;
-            this.txtMaNCC.TextChanged += new System.EventHandler(this.txtMaNCC_TextChanged);
+            this.txtMaKh.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMaKh.Location = new System.Drawing.Point(175, 85);
+            this.txtMaKh.Name = "txtMaKh";
+            this.txtMaKh.Size = new System.Drawing.Size(207, 22);
+            this.txtMaKh.TabIndex = 10;
+            this.txtMaKh.TextChanged += new System.EventHandler(this.txtMaNCC_TextChanged);
             // 
             // lbLoaiDaiLy
             // 
@@ -191,15 +196,15 @@
             this.lbLoaiDaiLy.TabIndex = 6;
             this.lbLoaiDaiLy.Text = "KHÁCH HÀNG";
             // 
-            // txtTenNCC
+            // txtTenKh
             // 
-            this.txtTenNCC.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTenNCC.Location = new System.Drawing.Point(175, 123);
-            this.txtTenNCC.Name = "txtTenNCC";
-            this.txtTenNCC.Size = new System.Drawing.Size(207, 22);
-            this.txtTenNCC.TabIndex = 0;
-            this.txtTenNCC.Enter += new System.EventHandler(this.txtTenNCC_Enter);
-            this.txtTenNCC.Leave += new System.EventHandler(this.txtTenNCC_Leave);
+            this.txtTenKh.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTenKh.Location = new System.Drawing.Point(175, 123);
+            this.txtTenKh.Name = "txtTenKh";
+            this.txtTenKh.Size = new System.Drawing.Size(207, 22);
+            this.txtTenKh.TabIndex = 0;
+            this.txtTenKh.Enter += new System.EventHandler(this.txtTenNCC_Enter);
+            this.txtTenKh.Leave += new System.EventHandler(this.txtTenNCC_Leave);
             // 
             // lbTenLoaiDaiLy
             // 
@@ -239,13 +244,41 @@
             this.dataMatHang.TabIndex = 16;
             this.dataMatHang.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataMatHang_CellClick);
             // 
+            // btnxoa
+            // 
+            this.btnxoa.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnxoa.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnxoa.Appearance.Options.UseFont = true;
+            this.btnxoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("simpleButton1.ImageOptions.Image")));
+            this.btnxoa.Location = new System.Drawing.Point(216, 368);
+            this.btnxoa.Margin = new System.Windows.Forms.Padding(2);
+            this.btnxoa.Name = "btnxoa";
+            this.btnxoa.Size = new System.Drawing.Size(159, 67);
+            this.btnxoa.TabIndex = 5;
+            this.btnxoa.Text = "Xóa";
+            this.btnxoa.Click += new System.EventHandler(this.btnxoa_Click_1);
+            // 
+            // btnThemKhachHang
+            // 
+            this.btnThemKhachHang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnThemKhachHang.Appearance.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThemKhachHang.Appearance.Options.UseFont = true;
+            this.btnThemKhachHang.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemChiTiet.ImageOptions.Image")));
+            this.btnThemKhachHang.Location = new System.Drawing.Point(38, 302);
+            this.btnThemKhachHang.Margin = new System.Windows.Forms.Padding(2);
+            this.btnThemKhachHang.Name = "btnThemKhachHang";
+            this.btnThemKhachHang.Size = new System.Drawing.Size(208, 61);
+            this.btnThemKhachHang.TabIndex = 3;
+            this.btnThemKhachHang.Text = "Thêm Khách Hàng";
+            this.btnThemKhachHang.Click += new System.EventHandler(this.btnThemChiTiet_Click);
+            // 
             // frmKhachHang
             // 
             this.AcceptButton = this.btnSua;
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
-            this.CancelButton = this.btnXoa;
+            this.CancelButton = this.btnthoat;
             this.ClientSize = new System.Drawing.Size(950, 451);
             this.Controls.Add(this.dataMatHang);
             this.Controls.Add(this.panel2);
@@ -274,15 +307,17 @@
         private System.Windows.Forms.Panel panel2;
         private DevExpress.XtraEditors.SearchControl scTimKiem;
         private System.Windows.Forms.Panel panel1;
-        private DevExpress.XtraEditors.SimpleButton btnXoa;
+        private DevExpress.XtraEditors.SimpleButton btnthoat;
         private DevExpress.XtraEditors.SimpleButton btnSua;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtMaNCC;
+        private System.Windows.Forms.TextBox txtMaKh;
         private System.Windows.Forms.Label lbLoaiDaiLy;
-        private System.Windows.Forms.TextBox txtTenNCC;
+        private System.Windows.Forms.TextBox txtTenKh;
         private System.Windows.Forms.Label lbTenLoaiDaiLy;
         private System.Windows.Forms.Label lbMaLoaiDaiLy;
         private System.Windows.Forms.DataGridView dataMatHang;
+        private DevExpress.XtraEditors.SimpleButton btnxoa;
+        private DevExpress.XtraEditors.SimpleButton btnThemKhachHang;
     }
 }

@@ -25,7 +25,8 @@ namespace GUI
                 int ey = dtpkNgayKetThuc.Value.Year;
                 if (baocao.hienthidoanhso(sm, sy, em, ey) != null) {
                     datadoanhthu.DataSource = baocao.hienthidoanhso(sm, sy, em, ey);
-                   // this.datadoanhthu.Columns["maTG"].Visible = false;
+                   this.datadoanhthu.Columns["makh"].Visible = false;
+                    this.datadoanhthu.Columns["manv"].Visible = false;
                 } else
                     MessageBox.Show("rỗng");
                 hienthidoanhthu();

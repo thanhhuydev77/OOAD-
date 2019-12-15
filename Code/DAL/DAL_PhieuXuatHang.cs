@@ -205,8 +205,8 @@ namespace DAL
         {
             string query = string.Empty;
             query = "UPDATE [tblhoadonxuat] " +
-                "SET [manv] = @manv , [makh] = @makh, [tongtien] = @tongtien " +
-                "WHERE [id] = @id";
+                "SET [manv] = @manv , [makh] = @makh , [tongtien] = @tongtien " +
+                "WHERE [id] = @id ";
             //query = "SuaDaiLy";
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -220,7 +220,7 @@ namespace DAL
 
                     cmd.Parameters.AddWithValue("@manv", pxh.MaNV);
                     cmd.Parameters.AddWithValue("@makh", pxh.MaKH);
-                    cmd.Parameters.AddWithValue("@tongtrigia", Decimal.Parse(pxh.TongTriGia.ToString()));
+                    cmd.Parameters.AddWithValue("@tongtien", Decimal.Parse(pxh.TongTriGia.ToString()));
                     cmd.Parameters.AddWithValue("@id", pxh.Id);
 
                     try

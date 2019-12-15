@@ -416,7 +416,7 @@ namespace GUI
             int startY = 10;
             int offset = 40;
 
-            graphic.DrawString("PHIẾU THU", new Font("Courier New", 28), new SolidBrush(Color.Black), startX, startY);
+            graphic.DrawString("PHIẾU NHẬP HÀNG", new Font("Courier New", 28), new SolidBrush(Color.Black), startX, startY);
 
             offset = offset + (int)FontHeight + 5; //make the spacing consistent              
             graphic.DrawString("Mã nhân viên: ", font, new SolidBrush(Color.Black), startX, startY + offset);
