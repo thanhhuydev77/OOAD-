@@ -28,7 +28,7 @@ namespace DAL
             List<DTO_ChiTietPhieuXuat> ds = new List<DTO_ChiTietPhieuXuat>();
 
             string query = string.Empty;
-            query = "SELECT * FROM tblChiTietPX";
+            query = "SELECT * FROM tblcthoadonxuat";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -49,11 +49,11 @@ namespace DAL
                             {
                                 DTO_ChiTietPhieuXuat ctpx = new DTO_ChiTietPhieuXuat();
                                 ctpx.Id = long.Parse(reader["id"].ToString());
-                                ctpx.MaPx = long.Parse(reader["maPX"].ToString());
-                                ctpx.MaDvt = long.Parse(reader["maDVT"].ToString());
-                                ctpx.MaMh = long.Parse(reader["maMH"].ToString());
-                                ctpx.SoLuong = int.Parse(reader["soLuong"].ToString());
-                                ctpx.ThanhTien = (uint)reader.GetDecimal(5);
+                                ctpx.MaPx = long.Parse(reader["mahoadon"].ToString());
+                                ctpx.MaDvt = long.Parse(reader["madvt"].ToString());
+                                ctpx.MaMh = long.Parse(reader["mahang"].ToString());
+                                ctpx.SoLuong = int.Parse(reader["soluong"].ToString());
+                                ctpx.ThanhTien = /*(uint)reader.GetDecimal(5);*/ uint.Parse(reader["dongiaban"].ToString());
                                 ds.Add(ctpx);
                             }
                         }
@@ -74,8 +74,8 @@ namespace DAL
         {
 
             string query = string.Empty;
-            query += "INSERT [dbo].[tblChiTietPX] ([maPX], [maDVT], [maMH], [soLuong],[thanhTien])";
-            query += "VALUES (@mapx, @madvt, @mamh, @soluong, @thanhTien)";
+            query += "INSERT [dbo].[tblcthoadonxuat] ([mahang], [mahoadon],[dongiaban], [madvt], [soLuong])";
+            query += "VALUES (@mahang, @mahoadon, @dongiaban, @madvt, @soluong)";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -85,11 +85,11 @@ namespace DAL
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
 
-                    cmd.Parameters.AddWithValue("@mapx", chitiet.MaPx);
+                    cmd.Parameters.AddWithValue("@mahoadon", chitiet.MaPx);
                     cmd.Parameters.AddWithValue("@madvt",chitiet.MaDvt);
-                    cmd.Parameters.AddWithValue("@mamh", chitiet.MaMh);
+                    cmd.Parameters.AddWithValue("@mahang", chitiet.MaMh);
                     cmd.Parameters.AddWithValue("@soluong", chitiet.SoLuong);
-                    cmd.Parameters.AddWithValue("@thanhTien", Decimal.Parse(chitiet.ThanhTien.ToString()));
+                    cmd.Parameters.AddWithValue("@dongiaban", Decimal.Parse(chitiet.ThanhTien.ToString()));
                     try
                     {
                         con.Open();
@@ -116,7 +116,7 @@ namespace DAL
         public bool XoaChiTiet(long id)
         {
             string query = string.Empty;
-            query += "DELETE FROM [tblChiTietPX] where [id] = @id";
+            query += "DELETE FROM [tblcthoadonxuat] where [id] = @id";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -154,8 +154,8 @@ namespace DAL
         public bool SuaChiTietPX(DTO_ChiTietPhieuXuat ctpx)
         {
             string query = string.Empty;
-            query = "UPDATE [tblChiTietPX] " +
-                "SET [maDVT] = @madvt , [maMH] = @mamh, [soLuong] = @soluong " +
+            query = "UPDATE [tblcthoadonxuat] " +
+                "SET [madvt] = @madvt , [mahang] = @mahang, [soluong] = @soluong " +
                 "WHERE [id] = @id";
             //query = "SuaDaiLy";
 
@@ -169,7 +169,7 @@ namespace DAL
                     cmd.CommandText = query;
 
                     cmd.Parameters.AddWithValue("@madvt", ctpx.MaDvt);
-                    cmd.Parameters.AddWithValue("@mamh", ctpx.MaMh);
+                    cmd.Parameters.AddWithValue("@mahang", ctpx.MaMh);
                     cmd.Parameters.AddWithValue("@soluong", ctpx.SoLuong);
                     cmd.Parameters.AddWithValue("@id", ctpx.Id);
 
@@ -202,8 +202,8 @@ namespace DAL
             List<DTO_ChiTietPhieuXuat> ds = new List<DTO_ChiTietPhieuXuat>();
 
             string query = string.Empty;
-            query += "SELECT * FROM [tblChiTietPX]";
-            query += "WHERE [maPX] = @tukhoa";
+            query += "SELECT * FROM [tblcthoadonxuat]";
+            query += "WHERE [mahoadon] = @tukhoa";
        
 
             using (SqlConnection con = new SqlConnection(connectionString))
@@ -227,11 +227,11 @@ namespace DAL
                             {
                                 DTO_ChiTietPhieuXuat ctpx = new DTO_ChiTietPhieuXuat();
                                 ctpx.Id = long.Parse(reader["id"].ToString());
-                                ctpx.MaPx = long.Parse(reader["maPX"].ToString());
-                                ctpx.MaDvt = long.Parse(reader["maDVT"].ToString());
-                                ctpx.MaMh = long.Parse(reader["maMH"].ToString());
-                                ctpx.SoLuong = int.Parse(reader["soLuong"].ToString());
-                                ctpx.ThanhTien = (uint)reader.GetDecimal(5);
+                                ctpx.MaPx = long.Parse(reader["mahoadon"].ToString());
+                                ctpx.MaDvt = long.Parse(reader["madvt"].ToString());
+                                ctpx.MaMh = long.Parse(reader["mahang"].ToString());
+                                ctpx.SoLuong = int.Parse(reader["soluong"].ToString());
+                                ctpx.ThanhTien = /*(uint)reader.GetDecimal(5);*/ uint.Parse(reader["dongiaban"].ToString());
                                 ds.Add(ctpx);
                             }
                         }

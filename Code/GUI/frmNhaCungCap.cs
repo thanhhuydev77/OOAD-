@@ -229,7 +229,7 @@ namespace GUI
                 SetDefault(true);
                 btnThem.Text = "Lưu";
                 btnSua.Enabled = false;
-                btnthoat.Text = "Hủy";
+                btnxoa.Text = "Hủy";
                 btnthoat.Enabled = true;
                 btnThem.Enabled = true;
                 txtTenNCC.Focus();
@@ -249,7 +249,7 @@ namespace GUI
                             return;
                         }
                         btnThem.Text = "Thêm Nhà Cung Cấp";
-                        btnthoat.Text = "Xóa";
+                        btnxoa.Text = "Xóa";
 
                         dataMatHang.DataSource = ncc.LayDanhSachNhaCungCap();
                         CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataMatHang.DataSource];
@@ -298,7 +298,7 @@ namespace GUI
                 if (result == DialogResult.OK) {
                     btnThem.Text = "Thêm Nhà Cung Cấp";
                     btnSua.Text = "Sửa";
-                    btnthoat.Text = "Xóa";
+                    btnxoa.Text = "Xóa";
                     //btnSua.Enabled = true;
                     btnThem.Enabled = true;
                     if (string.IsNullOrEmpty(txtMaNCC.Text)) {

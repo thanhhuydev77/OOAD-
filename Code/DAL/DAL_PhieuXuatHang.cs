@@ -27,7 +27,7 @@ namespace DAL
             List<DTO_PhieuXuatHang> ds = new List<DTO_PhieuXuatHang>();
 
             string query = string.Empty;
-            query += "SELECT * FROM [tblPhieuXuat]";
+            query += "SELECT * FROM [tblhoadonxuat]";
             query += "WHERE [maDL] = @tukhoa";
            
 
@@ -53,10 +53,10 @@ namespace DAL
                             {
                                 DTO_PhieuXuatHang pxh = new DTO_PhieuXuatHang();
                                 pxh.Id = long.Parse(reader["id"].ToString());
-                            
-                                pxh.MaDl = long.Parse(reader["maDL"].ToString());
-                                pxh.NgayLapPhieu = reader.GetDateTime(2);
-                                pxh.TongTriGia = (uint)reader.GetDecimal(3);
+                                pxh.MaNV = long.Parse(reader["manv"].ToString());
+                                pxh.MaKH = long.Parse(reader["makh"].ToString());
+                                pxh.NgayLapPhieu = reader.GetDateTime(3);
+                                pxh.TongTriGia = (uint)reader.GetDecimal(4);
                                 ds.Add(pxh);
                             }
                         }
@@ -77,8 +77,8 @@ namespace DAL
         {
 
             string query = string.Empty;
-            query += "INSERT INTO [tblPhieuXuat] ([maDl], [ngayLapPhieu], [tongTriGia]) ";
-            query += "VALUES (@madl, @ngaylapphieu, @tongtrigia)";
+            query += "INSERT INTO [tblhoadonxuat] ([manv], [makh], [ngayxuat], [tongtien]) ";
+            query += "VALUES (@manv, @makh, @ngayxuat, @tongtien)";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -88,9 +88,10 @@ namespace DAL
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
 
-                    cmd.Parameters.AddWithValue("@madl", pxh.MaDl);
-                    cmd.Parameters.AddWithValue("@ngaylapphieu", pxh.NgayLapPhieu);
-                    cmd.Parameters.AddWithValue("@tongtrigia", Decimal.Parse(pxh.TongTriGia.ToString()));
+                    cmd.Parameters.AddWithValue("@manv", pxh.MaNV);
+                    cmd.Parameters.AddWithValue("@makh", pxh.MaKH);
+                    cmd.Parameters.AddWithValue("@ngayxuat", pxh.NgayLapPhieu);
+                    cmd.Parameters.AddWithValue("@tongtien", Decimal.Parse(pxh.TongTriGia.ToString()));
                    
 
                     try
@@ -121,7 +122,7 @@ namespace DAL
             List<DTO_PhieuXuatHang> ds = new List<DTO_PhieuXuatHang>();
 
             string query = string.Empty;
-            query = "select * from tblPhieuXuat ";
+            query = "select * from tblhoadonxuat ";
             
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -142,9 +143,10 @@ namespace DAL
                             {
                                 DTO_PhieuXuatHang pxh = new DTO_PhieuXuatHang();
                                 pxh.Id = long.Parse(reader["id"].ToString());
-                                pxh.MaDl= long.Parse(reader["maDL"].ToString());
-                                pxh.NgayLapPhieu = reader.GetDateTime(2);
-                                pxh.TongTriGia = (uint)reader.GetDecimal(3);
+                                pxh.MaNV= long.Parse(reader["manv"].ToString());
+                                pxh.MaKH = long.Parse(reader["makh"].ToString());
+                                pxh.NgayLapPhieu = reader.GetDateTime(3);
+                                pxh.TongTriGia = (uint)reader.GetDecimal(4);
                                 ds.Add(pxh);
                             }
                         }
@@ -164,7 +166,7 @@ namespace DAL
         public bool XoaPhieuXuat(long id)
         {
             string query = string.Empty;
-            query += "DELETE FROM [tblPhieuXuat] where [id] = @id";
+            query += "DELETE FROM [tblhoadonxuat] where [id] = @id";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -202,8 +204,8 @@ namespace DAL
         public bool SuaPhieuXuat(DTO_PhieuXuatHang pxh)
         {
             string query = string.Empty;
-            query = "UPDATE [tblPhieuXuat] " +
-                "SET [maDL] = @madl , [tongTriGia] = @tongtrigia " +
+            query = "UPDATE [tblhoadonxuat] " +
+                "SET [manv] = @manv , [makh] = @makh, [tongtien] = @tongtien " +
                 "WHERE [id] = @id";
             //query = "SuaDaiLy";
 
@@ -216,7 +218,8 @@ namespace DAL
                     //cmd.CommandType = System.Data.CommandType.StoredProcedure;
                     cmd.CommandText = query;
 
-                    cmd.Parameters.AddWithValue("@madl", pxh.MaDl);
+                    cmd.Parameters.AddWithValue("@manv", pxh.MaNV);
+                    cmd.Parameters.AddWithValue("@makh", pxh.MaKH);
                     cmd.Parameters.AddWithValue("@tongtrigia", Decimal.Parse(pxh.TongTriGia.ToString()));
                     cmd.Parameters.AddWithValue("@id", pxh.Id);
 
@@ -248,8 +251,8 @@ namespace DAL
         {
             uint tt = 0;
             string query = string.Empty;
-            query += "SELECT sum(tongTriGia) FROM [tblPhieuXuat] ";
-            query += "WHERE maDL =@madl and MONTH(ngayLapPhieu) = @thang and YEAR(ngayLapPhieu) = @nam";
+            query += "SELECT sum(tongtien) FROM [tblhoadonxuat] ";
+            query += "WHERE maDL =@manv and MONTH(ngayxuat) = @thang and YEAR(ngayxuat) = @nam";
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
@@ -259,7 +262,7 @@ namespace DAL
                     cmd.CommandType = System.Data.CommandType.Text;
                     cmd.CommandText = query;
 
-                    cmd.Parameters.AddWithValue("@madl", madl);
+                    cmd.Parameters.AddWithValue("@manv", madl);
                     cmd.Parameters.AddWithValue("@thang", thang);
                     cmd.Parameters.AddWithValue("@nam", nam);
 

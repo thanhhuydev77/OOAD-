@@ -62,7 +62,7 @@ namespace GUI
                         if (hanghoa.ThemMatHang(hang)) {
                             hang.MaMatHang = hanghoa.timMaHang(hang.TenMatHang);
                             MessageBox.Show("Thêm hàng thành công!");
-                            reset();
+                            
                         } else {
                             MessageBox.Show("Thêm hàng thất bại \nvui lòng kiểm tra lại!");
                             return;
@@ -93,6 +93,7 @@ namespace GUI
                         phieuthu.Sotien = ct.SoLuong * ct.DonGiaBan;
                         pt.capnhapphieuthu(phieuthu);
                         dataPhieuThu.DataSource = pt.LayDanhSachPhieuThu();
+                        reset();
                     } else {
                         MessageBox.Show("Thêm hàng thất bại \nvui lòng kiểm tra lại!");
                         return;

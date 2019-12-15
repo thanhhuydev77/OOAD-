@@ -57,18 +57,17 @@ namespace GUI
             {
                 btnXuatFile.Enabled = false;
             }
-            if (chitiet.timkiem(txtMaPhieuXuat.Text) != null)
-            {
+            if (chitiet.timkiem(txtMaPhieuXuat.Text) != null) {
                 this.dataChiTietPhieuXuat.DataSource = chitiet.timkiem(txtMaPhieuXuat.Text);
-
+            }
                 List<DTO_DonViTinh> listdvt = donvitinh.hienthidanhsach();
-                List<DTO_Hang> listmh = mathang.LayDanhSachMatHangKhac();
+               List<DTO_Hang> listmh = mathang.LayDanhSachMatHangKhac();
 
-                if (listdvt == null || listmh == null)
-                {
-                    MessageBox.Show("Có lỗi khi lấy dữ liệu");
-                    return;
-                }
+            //    if (listdvt == null || listmh == null)
+            //    {
+            //        MessageBox.Show("Có lỗi khi lấy dữ liệu");
+            //        return;
+            //    }
 
                 cbbMaDonViTinh.DataSource = new BindingSource(listdvt, String.Empty);
                 cbbMaDonViTinh.DisplayMember = "Ten";
@@ -78,14 +77,15 @@ namespace GUI
                 cbbMaMatHang.DisplayMember = "TenMatHang";
                 cbbMaMatHang.ValueMember = "MaMatHang";
 
-                CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataChiTietPhieuXuat.DataSource];
+            this.dataChiTietPhieuXuat.DataSource = chitiet.LayDanhSachChiTietPhieuXuat();
+            CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataChiTietPhieuXuat.DataSource];
                 myCurrencyManager.Refresh();
                
-            }
-            else
-            {
-                MessageBox.Show("Lỗi truy xuất dữ liệu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            //}
+            //else
+            //{
+            //    MessageBox.Show("Lỗi truy xuất dữ liệu", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //}
 
             SetDefault(false);
         }
@@ -144,7 +144,7 @@ namespace GUI
                     if (KiemTra())
                     {
                         DTO_ChiTietPhieuXuat ctpx = new DTO_ChiTietPhieuXuat();
-                       ctpx.MaPx = long.Parse(this.txtMaPhieuXuat.Text);
+                        ctpx.MaPx = long.Parse(this.txtMaPhieuXuat.Text);
                         ctpx.MaDvt = long.Parse(this.cbbMaDonViTinh.SelectedValue.ToString());
                         ctpx.MaMh = long.Parse(this.cbbMaMatHang.SelectedValue.ToString());
                         ctpx.SoLuong = int.Parse(this.txtSoLuong.Text);
