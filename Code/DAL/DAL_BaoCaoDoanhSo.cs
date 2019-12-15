@@ -28,7 +28,7 @@ namespace DAL
             List<DTO_BaoCaoDoanhSo> List = new List<DTO_BaoCaoDoanhSo>();
 
             String query = string.Empty;
-            query = "select b.id,tenDL,tyle,sophieuxuat,tongtrigia from tblBaoCaoDoanhSo b join tbldaily d on b.maDL = d.id  where maTG in (select id from tblThoiGian where( (nam > @startyear  and nam < @endyear) or (nam = @startyear and thang >= @startmonth and nam < @endyear ) or (nam = @endyear and thang <= @endmonth and nam > @startyear) or ( nam = @startyear and nam = @endyear and thang >= @startmonth and thang <= @endmonth) ))";
+            query = "select b.id,tenDL,tyle,sophieuxuat,tongtrigia from tblBaoCaoDoanhSo b join tbldaily d on b.manv = d.id  where maTG in (select id from tblThoiGian where( (nam > @startyear  and nam < @endyear) or (nam = @startyear and thang >= @startmonth and nam < @endyear ) or (nam = @endyear and thang <= @endmonth and nam > @startyear) or ( nam = @startyear and nam = @endyear and thang >= @startmonth and thang <= @endmonth) ))";
             using (SqlConnection con = new SqlConnection(connectionString)) {
                 using (SqlCommand cmd = new SqlCommand()) {
                     cmd.Connection = con;

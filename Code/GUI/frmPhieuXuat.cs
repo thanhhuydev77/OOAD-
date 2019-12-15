@@ -9,10 +9,9 @@ namespace GUI
 {
     public partial class frmPhieuXuat : Form
     {
-        private string maloaidaily;
-        public string MaLoaiDaiLy { get => maloaidaily; set => maloaidaily = value; }
         private BLL_PhieuXuatHang phieuxuat = new BLL_PhieuXuatHang();
-        //private BLL_LoaiHang daily = new BLL_LoaiHang();
+        private BLL_NhanVien nhanvien = new BLL_NhanVien();
+        private BLL_KhachHang khachhang = new BLL_KhachHang();
         public frmPhieuXuat()
         {
             InitializeComponent();
@@ -36,21 +35,21 @@ namespace GUI
         }
         private bool KiemTra()
         {
-            MessageBox.Show("Bạn phải nhập Mã Phiếu xuất", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                txtMaPhieuXuat.Focus();
-                return false;
-
             return true;
         }
 
         private void FrmPhieuXuat_Load(object sender, EventArgs e)
         {
+            dataPhieuXuat.DataSource = phieuxuat.laydanhsach();
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
             btnXemChiTiet.Enabled = false;
-           // List<DTO_LoaiHang> listDl = daily.laydanhsachloaihang();
-            //cbbMaDaiLy.DataSource = new BindingSource(listDl, string.Empty);
-           // cbbMaDaiLy.DisplayMember = "Id";
+            cbManv.DataSource = nhanvien.LayDanhSachNhanVien();
+            cbManv.ValueMember = "Id";
+            cbManv.DisplayMember = "TenNhanVien";
+            cbMakh.DataSource = khachhang.LayDanhSachKhachHang();
+            cbMakh.ValueMember = "Id";
+            cbMakh.DisplayMember = "Name";
             SetDefault(false);
         }
 
@@ -92,6 +91,8 @@ namespace GUI
                         DTO_PhieuXuatHang pxh = new DTO_PhieuXuatHang();
 
                         //pxh.MaDl = long.Parse(this.cbbMaDaiLy.Text);
+                        pxh.MaNV = long.Parse(cbManv.SelectedValue.ToString());
+                        pxh.MaKH = long.Parse(cbMakh.SelectedValue.ToString());
                         pxh.NgayLapPhieu = this.dNgayTiepNhan.Value;
                         pxh.TongTriGia = uint.Parse(this.txtTongTriGia.Text);
 
@@ -144,7 +145,8 @@ namespace GUI
                     {
                         DTO_PhieuXuatHang pxh = new DTO_PhieuXuatHang();
                         pxh.Id = long.Parse(this.txtMaPhieuXuat.Text);
-                       // pxh.MaDl = long.Parse(this.cbbMaDaiLy.Text);
+                        pxh.MaNV = long.Parse(this.cbManv.Text);
+                        pxh.MaKH = long.Parse(this.cbMakh.Text);
                         pxh.TongTriGia = uint.Parse(this.txtTongTriGia.Text);
 
                         if (phieuxuat.SuaPhieuXuat(pxh))
@@ -231,9 +233,11 @@ namespace GUI
                     int index = e.RowIndex;
                     DataGridViewRow row = this.dataPhieuXuat.Rows[index];
                     this.txtMaPhieuXuat.Text = row.Cells[0].Value.ToString();
-                    this.txtTongTriGia.Text = row.Cells[3].Value.ToString();
+                    this.cbManv.SelectedValue = row.Cells[1].Value;
+                    this.cbMakh.SelectedValue = row.Cells[2].Value;
+                    this.txtTongTriGia.Text = row.Cells[4].Value.ToString();
 
-                    this.dNgayTiepNhan.Value = DateTime.Parse(row.Cells[2].Value.ToString());
+                    this.dNgayTiepNhan.Value = DateTime.Parse(row.Cells[3].Value.ToString());
                 }
                 catch
                 {

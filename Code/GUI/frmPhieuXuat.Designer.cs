@@ -42,6 +42,10 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbMakh = new System.Windows.Forms.ComboBox();
+            this.cbManv = new System.Windows.Forms.ComboBox();
             this.btnTimPhieu = new System.Windows.Forms.Button();
             this.btnXemChiTiet = new System.Windows.Forms.Button();
             this.panel3.SuspendLayout();
@@ -75,7 +79,7 @@
             // 
             // txtTongTriGia
             // 
-            this.txtTongTriGia.Location = new System.Drawing.Point(149, 206);
+            this.txtTongTriGia.Location = new System.Drawing.Point(146, 226);
             this.txtTongTriGia.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtTongTriGia.Name = "txtTongTriGia";
             this.txtTongTriGia.Size = new System.Drawing.Size(220, 22);
@@ -84,7 +88,7 @@
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(24, 206);
+            this.label9.Location = new System.Drawing.Point(21, 225);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(120, 23);
             this.label9.TabIndex = 21;
@@ -94,7 +98,7 @@
             // btnXoa
             // 
             this.btnXoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.Image")));
-            this.btnXoa.Location = new System.Drawing.Point(204, 331);
+            this.btnXoa.Location = new System.Drawing.Point(206, 360);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(165, 65);
@@ -105,7 +109,7 @@
             // btnSua
             // 
             this.btnSua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.ImageOptions.Image")));
-            this.btnSua.Location = new System.Drawing.Point(24, 331);
+            this.btnSua.Location = new System.Drawing.Point(24, 360);
             this.btnSua.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnSua.Name = "btnSua";
             this.btnSua.Size = new System.Drawing.Size(165, 65);
@@ -116,10 +120,10 @@
             // btnThemPhieu
             // 
             this.btnThemPhieu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemPhieu.ImageOptions.Image")));
-            this.btnThemPhieu.Location = new System.Drawing.Point(26, 246);
+            this.btnThemPhieu.Location = new System.Drawing.Point(24, 271);
             this.btnThemPhieu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnThemPhieu.Name = "btnThemPhieu";
-            this.btnThemPhieu.Size = new System.Drawing.Size(343, 65);
+            this.btnThemPhieu.Size = new System.Drawing.Size(347, 65);
             this.btnThemPhieu.TabIndex = 16;
             this.btnThemPhieu.Text = "Thêm phiếu xuất hàng";
             this.btnThemPhieu.Click += new System.EventHandler(this.BtnThemPhieu_Click);
@@ -128,7 +132,7 @@
             // 
             this.dNgayTiepNhan.CustomFormat = "MM/dd/yyyy hh:mm:ss";
             this.dNgayTiepNhan.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dNgayTiepNhan.Location = new System.Drawing.Point(147, 131);
+            this.dNgayTiepNhan.Location = new System.Drawing.Point(146, 187);
             this.dNgayTiepNhan.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dNgayTiepNhan.Name = "dNgayTiepNhan";
             this.dNgayTiepNhan.Size = new System.Drawing.Size(219, 22);
@@ -145,11 +149,11 @@
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(21, 130);
+            this.label8.Location = new System.Drawing.Point(21, 189);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(120, 23);
             this.label8.TabIndex = 7;
-            this.label8.Text = "Ngày tiếp nhận";
+            this.label8.Text = "Ngày tiếp nhận:";
             this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label2
@@ -174,6 +178,10 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label4);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.cbMakh);
+            this.panel1.Controls.Add(this.cbManv);
             this.panel1.Controls.Add(this.btnTimPhieu);
             this.panel1.Controls.Add(this.btnXemChiTiet);
             this.panel1.Controls.Add(this.txtTongTriGia);
@@ -193,9 +201,45 @@
             this.panel1.Size = new System.Drawing.Size(400, 540);
             this.panel1.TabIndex = 17;
             // 
+            // label4
+            // 
+            this.label4.Location = new System.Drawing.Point(21, 145);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(120, 23);
+            this.label4.TabIndex = 38;
+            this.label4.Text = "Mã khách hàng:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label3
+            // 
+            this.label3.Location = new System.Drawing.Point(21, 106);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(120, 23);
+            this.label3.TabIndex = 37;
+            this.label3.Text = "Mã nhân viên:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // cbMakh
+            // 
+            this.cbMakh.FormattingEnabled = true;
+            this.cbMakh.Location = new System.Drawing.Point(147, 144);
+            this.cbMakh.Margin = new System.Windows.Forms.Padding(2);
+            this.cbMakh.Name = "cbMakh";
+            this.cbMakh.Size = new System.Drawing.Size(220, 24);
+            this.cbMakh.TabIndex = 36;
+            // 
+            // cbManv
+            // 
+            this.cbManv.FormattingEnabled = true;
+            this.cbManv.Location = new System.Drawing.Point(147, 105);
+            this.cbManv.Margin = new System.Windows.Forms.Padding(2);
+            this.cbManv.Name = "cbManv";
+            this.cbManv.Size = new System.Drawing.Size(219, 24);
+            this.cbManv.TabIndex = 35;
+            // 
             // btnTimPhieu
             // 
-            this.btnTimPhieu.Location = new System.Drawing.Point(27, 429);
+            this.btnTimPhieu.Location = new System.Drawing.Point(24, 444);
             this.btnTimPhieu.Margin = new System.Windows.Forms.Padding(4);
             this.btnTimPhieu.Name = "btnTimPhieu";
             this.btnTimPhieu.Size = new System.Drawing.Size(162, 65);
@@ -206,7 +250,7 @@
             // 
             // btnXemChiTiet
             // 
-            this.btnXemChiTiet.Location = new System.Drawing.Point(204, 429);
+            this.btnXemChiTiet.Location = new System.Drawing.Point(206, 444);
             this.btnXemChiTiet.Margin = new System.Windows.Forms.Padding(4);
             this.btnXemChiTiet.Name = "btnXemChiTiet";
             this.btnXemChiTiet.Size = new System.Drawing.Size(163, 65);
@@ -252,5 +296,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnTimPhieu;
         private System.Windows.Forms.Button btnXemChiTiet;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cbMakh;
+        private System.Windows.Forms.ComboBox cbManv;
     }
 }
