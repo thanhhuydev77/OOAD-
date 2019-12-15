@@ -46,5 +46,10 @@ namespace GUI
         private void hienthidoanhthu() {
             txttongdoanhthu.Text =  baocao.hienthitongdoanhthu() + " Đồng";
         }
+
+        private void lbPhieuThu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

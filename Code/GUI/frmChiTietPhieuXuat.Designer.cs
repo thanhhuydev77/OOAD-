@@ -46,9 +46,9 @@
             this.label8 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dataChiTietPhieuXuat = new System.Windows.Forms.DataGridView();
+            this.lbPhieuThu = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataChiTietPhieuXuat)).BeginInit();
@@ -57,6 +57,7 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.lbPhieuThu);
             this.panel1.Controls.Add(this.btnXuatFile);
             this.panel1.Controls.Add(this.txtMaChiTiet);
             this.panel1.Controls.Add(this.cbbMaMatHang);
@@ -73,12 +74,15 @@
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
+<<<<<<< HEAD
             this.panel1.Size = new System.Drawing.Size(342, 519);
+=======
+            this.panel1.Size = new System.Drawing.Size(422, 554);
+>>>>>>> afa7e7a9d4519d080b2b932b627b2c0fcff6af1b
             this.panel1.TabIndex = 19;
             this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
@@ -162,8 +166,13 @@
             this.txtThanhTien.Location = new System.Drawing.Point(128, 233);
             this.txtThanhTien.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtThanhTien.Name = "txtThanhTien";
+<<<<<<< HEAD
             this.txtThanhTien.Size = new System.Drawing.Size(193, 22);
             this.txtThanhTien.TabIndex = 4;
+=======
+            this.txtThanhTien.Size = new System.Drawing.Size(220, 22);
+            this.txtThanhTien.TabIndex = 15;
+>>>>>>> afa7e7a9d4519d080b2b932b627b2c0fcff6af1b
             this.txtThanhTien.Text = "0";
             // 
             // label9
@@ -261,6 +270,7 @@
             this.label2.Text = "Mã phiếu xuất:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+<<<<<<< HEAD
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -274,6 +284,8 @@
             this.label1.Text = "CHI TIẾT PHIẾU XUẤT";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+=======
+>>>>>>> afa7e7a9d4519d080b2b932b627b2c0fcff6af1b
             // panel3
             // 
             this.panel3.Controls.Add(this.dataChiTietPhieuXuat);
@@ -292,14 +304,34 @@
             this.dataChiTietPhieuXuat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataChiTietPhieuXuat.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.dataChiTietPhieuXuat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+<<<<<<< HEAD
             this.dataChiTietPhieuXuat.Location = new System.Drawing.Point(346, 0);
             this.dataChiTietPhieuXuat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataChiTietPhieuXuat.Name = "dataChiTietPhieuXuat";
             this.dataChiTietPhieuXuat.RowHeadersWidth = 51;
             this.dataChiTietPhieuXuat.RowTemplate.Height = 24;
             this.dataChiTietPhieuXuat.Size = new System.Drawing.Size(587, 519);
+=======
+            this.dataChiTietPhieuXuat.Location = new System.Drawing.Point(419, 0);
+            this.dataChiTietPhieuXuat.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.dataChiTietPhieuXuat.Name = "dataChiTietPhieuXuat";
+            this.dataChiTietPhieuXuat.RowHeadersWidth = 51;
+            this.dataChiTietPhieuXuat.RowTemplate.Height = 24;
+            this.dataChiTietPhieuXuat.Size = new System.Drawing.Size(648, 554);
+>>>>>>> afa7e7a9d4519d080b2b932b627b2c0fcff6af1b
             this.dataChiTietPhieuXuat.TabIndex = 2;
             this.dataChiTietPhieuXuat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataChiTietPhieuXuat_CellClick);
+            // 
+            // lbPhieuThu
+            // 
+            this.lbPhieuThu.AutoSize = true;
+            this.lbPhieuThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPhieuThu.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbPhieuThu.Location = new System.Drawing.Point(40, 29);
+            this.lbPhieuThu.Name = "lbPhieuThu";
+            this.lbPhieuThu.Size = new System.Drawing.Size(300, 31);
+            this.lbPhieuThu.TabIndex = 31;
+            this.lbPhieuThu.Text = "CHI TIẾT PHIẾU XUẤT";
             // 
             // frmChiTietPhieuXuat
             // 
@@ -331,7 +363,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.DataGridView dataChiTietPhieuXuat;
         private System.Windows.Forms.ComboBox cbbMaMatHang;
@@ -341,5 +372,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtMaChiTiet;
         private DevExpress.XtraEditors.SimpleButton btnXuatFile;
+        private System.Windows.Forms.Label lbPhieuThu;
     }
 }

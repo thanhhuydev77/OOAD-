@@ -38,7 +38,6 @@
             this.btnThemPhieu = new DevExpress.XtraEditors.SimpleButton();
             this.dNgayTiepNhan = new System.Windows.Forms.DateTimePicker();
             this.txtMaPhieuXuat = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,6 +47,7 @@
             this.cbManv = new System.Windows.Forms.ComboBox();
             this.btnTimPhieu = new System.Windows.Forms.Button();
             this.btnXemChiTiet = new System.Windows.Forms.Button();
+            this.lbPhieuThu = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataPhieuXuat)).BeginInit();
             this.panel1.SuspendLayout();
@@ -159,6 +159,7 @@
             this.txtMaPhieuXuat.TabIndex = 8;
             this.txtMaPhieuXuat.TextChanged += new System.EventHandler(this.TxtMaPhieuXuat_TextChanged);
             // 
+<<<<<<< HEAD
             // label1
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -172,9 +173,12 @@
             this.label1.Text = "PHIẾU XUẤT HÀNG";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+=======
+>>>>>>> afa7e7a9d4519d080b2b932b627b2c0fcff6af1b
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel1.Controls.Add(this.lbPhieuThu);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label5);
@@ -190,7 +194,6 @@
             this.panel1.Controls.Add(this.btnThemPhieu);
             this.panel1.Controls.Add(this.dNgayTiepNhan);
             this.panel1.Controls.Add(this.txtMaPhieuXuat);
-            this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -287,6 +290,17 @@
             this.btnXemChiTiet.UseVisualStyleBackColor = true;
             this.btnXemChiTiet.Click += new System.EventHandler(this.BtnXemChiTiet_Click);
             // 
+            // lbPhieuThu
+            // 
+            this.lbPhieuThu.AutoSize = true;
+            this.lbPhieuThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPhieuThu.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbPhieuThu.Location = new System.Drawing.Point(57, 20);
+            this.lbPhieuThu.Name = "lbPhieuThu";
+            this.lbPhieuThu.Size = new System.Drawing.Size(264, 31);
+            this.lbPhieuThu.TabIndex = 42;
+            this.lbPhieuThu.Text = "PHIẾU XUẤT HÀNG";
+            // 
             // frmPhieuXuat
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -318,7 +332,6 @@
         private DevExpress.XtraEditors.SimpleButton btnThemPhieu;
         private System.Windows.Forms.DateTimePicker dNgayTiepNhan;
         private System.Windows.Forms.TextBox txtMaPhieuXuat;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnTimPhieu;
         private System.Windows.Forms.Button btnXemChiTiet;
@@ -328,5 +341,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbPhieuThu;
     }
 }
