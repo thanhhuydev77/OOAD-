@@ -126,55 +126,55 @@ namespace GUI
             }
         }
 
-        private void BtnSua_Click(object sender, EventArgs e)
-        {
-            if (string.IsNullOrEmpty(txtMaPhieuXuat.Text))
-            {
-                MessageBox.Show("Vui lòng chọn đại lý để cập nhật", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                SetDefault(true);
-            }
-            else
-            {
-                if (btnSua.Text == "Sửa")
-                {
-                    btnSua.Text = "Cập nhật";
-                    btnXoa.Text = "Hủy";
-                    btnThemPhieu.Enabled = false;
-                    SetDefault(true);
-                }
-                else
-                {
-                    DialogResult result = MessageBox.Show("Bạn chắc chắn muốn cập nhật", "THÔNG BÁO", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
-                    if (result == DialogResult.OK)
-                    {
-                        DTO_PhieuXuatHang pxh = new DTO_PhieuXuatHang();
-                        pxh.Id = long.Parse(this.txtMaPhieuXuat.Text);
-                        pxh.MaNV = long.Parse(this.cbManv.SelectedValue.ToString());
-                        pxh.MaKH = long.Parse(this.cbMakh.SelectedValue.ToString());
-                        pxh.TongTriGia = uint.Parse(this.txtTongTriGia.Text);
+        //private void BtnSua_Click(object sender, EventArgs e)
+        //{
+        //    if (string.IsNullOrEmpty(txtMaPhieuXuat.Text))
+        //    {
+        //        MessageBox.Show("Vui lòng chọn đại lý để cập nhật", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        //        SetDefault(true);
+        //    }
+        //    else
+        //    {
+        //        if (btnSua.Text == "Sửa")
+        //        {
+        //            btnSua.Text = "Cập nhật";
+        //            btnXoa.Text = "Hủy";
+        //            btnThemPhieu.Enabled = false;
+        //            SetDefault(true);
+        //        }
+        //        else
+        //        {
+        //            DialogResult result = MessageBox.Show("Bạn chắc chắn muốn cập nhật", "THÔNG BÁO", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+        //            if (result == DialogResult.OK)
+        //            {
+        //                DTO_PhieuXuatHang pxh = new DTO_PhieuXuatHang();
+        //                pxh.Id = long.Parse(this.txtMaPhieuXuat.Text);
+        //                pxh.MaNV = long.Parse(this.cbManv.SelectedValue.ToString());
+        //                pxh.MaKH = long.Parse(this.cbMakh.SelectedValue.ToString());
+        //                pxh.TongTriGia = uint.Parse(this.txtTongTriGia.Text);
 
-                        if (phieuxuat.SuaPhieuXuat(pxh))
-                        {
-                            btnSua.Text = "Sửa";
-                            btnXoa.Text = "Xóa";
-                            btnThemPhieu.Enabled = true;
+        //                if (phieuxuat.SuaPhieuXuat(pxh))
+        //                {
+        //                    btnSua.Text = "Sửa";
+        //                    btnXoa.Text = "Xóa";
+        //                    btnThemPhieu.Enabled = true;
 
-                            dataPhieuXuat.DataSource = phieuxuat.laydanhsach();
-                            CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataPhieuXuat.DataSource];
-                            myCurrencyManager.Refresh();
+        //                    dataPhieuXuat.DataSource = phieuxuat.laydanhsach();
+        //                    CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataPhieuXuat.DataSource];
+        //                    myCurrencyManager.Refresh();
 
-                            MessageBox.Show("Cập nhật Phiếu xuất thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
-                            SetDefault(false);
-                            ResetValue();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Vui lòng kiểm tra lại quy định và dữ liệu", "Cập nhật phiếu xuất thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
-            }
-        }
+        //                    MessageBox.Show("Cập nhật Phiếu xuất thành công", "THÔNG BÁO", MessageBoxButtons.OK, MessageBoxIcon.Asterisk);
+        //                    SetDefault(false);
+        //                    ResetValue();
+        //                }
+        //                else
+        //                {
+        //                    MessageBox.Show("Vui lòng kiểm tra lại quy định và dữ liệu", "Cập nhật phiếu xuất thất bại", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        //                }
+        //            }
+        //        }
+        //    }
+        //}
 
         private void BtnXoa_Click(object sender, EventArgs e)
         {
@@ -230,7 +230,7 @@ namespace GUI
 
         private void DataPhieuXuat_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (btnThemPhieu.Text == "Thêm phiếu xuất hàng" && btnSua.Text == "Sửa")
+            if (btnThemPhieu.Text == "Thêm phiếu xuất hàng")
             {
                 try
                 {
@@ -253,15 +253,15 @@ namespace GUI
 
         private void TxtMaPhieuXuat_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtMaPhieuXuat.Text))
+            if (txtMaPhieuXuat.Text == string.Empty)
             {
-                btnSua.Enabled = false;
+                // btnSua.Enabled = false;
                 btnXoa.Enabled = false;
                 btnXemChiTiet.Enabled = false;
             }
             else
             {
-                btnSua.Enabled = true;
+                // btnSua.Enabled = true;
                 btnXoa.Enabled = true;
                 btnXemChiTiet.Enabled = true;
             }

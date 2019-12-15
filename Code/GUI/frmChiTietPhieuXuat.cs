@@ -20,6 +20,8 @@ namespace GUI
         private BLL_Hang ldl = new BLL_Hang();
         private BLL_ChiTietPhieuXuat chitiet = new BLL_ChiTietPhieuXuat();
         private string id;
+        Font bigfont = new Font("Times New Roman", 16f);
+        Font smallfont = new Font("Times New Roman", 8.25f);
         public string Id { get => id; set => id = value; }
         public frmChiTietPhieuXuat()
         {
@@ -33,7 +35,7 @@ namespace GUI
             this.txtMaChiTiet.Enabled = false;
             this.cbbMaDonViTinh.Enabled = status;
             this.cbbMaMatHang.Enabled = status;
-            this.txtSoLuong.Enabled = status;
+            //this.txtSoLuong.Enabled = status;
             this.txtThanhTien.Enabled = false;
            
         }
@@ -52,7 +54,7 @@ namespace GUI
             txtMaPhieuXuat.Text = id;
             btnSua.Enabled = false;
             btnXoa.Enabled = false;
-
+            txtSoLuong.Enabled = true;
             if (dataChiTietPhieuXuat.Rows.Count == 0)
             {
                 btnXuatFile.Enabled = false;
@@ -77,10 +79,12 @@ namespace GUI
                 cbbMaMatHang.DisplayMember = "TenMatHang";
                 cbbMaMatHang.ValueMember = "MaMatHang";
 
-            this.dataChiTietPhieuXuat.DataSource = chitiet.LayDanhSachChiTietPhieuXuat();
+            this.dataChiTietPhieuXuat.DataSource =  chitiet.timkiem(txtMaPhieuXuat.Text);
             CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataChiTietPhieuXuat.DataSource];
+
                 myCurrencyManager.Refresh();
-               
+            dataChiTietPhieuXuat.Columns["maDVT"].Visible = false;
+
             //}
             //else
             //{
@@ -103,7 +107,7 @@ namespace GUI
 
         private void DataChiTietPhieuXuat_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (btnThemChiTiet.Text == "Thêm chi tiết phiếu xuất hàng" && btnSua.Text == "Sửa")
+            if (btnThemChiTiet.Text == "Thêm chi tiết" && btnSua.Text == "Sửa")
             {
                 try
                 {
@@ -113,7 +117,6 @@ namespace GUI
                     this.txtMaPhieuXuat.Text = row.Cells[1].Value.ToString();
                    
                     this.txtThanhTien.Text = row.Cells[5].Value.ToString();
-                    this.cbbMaDonViTinh.SelectedValue = row.Cells[2].Value;
                     this.cbbMaMatHang.SelectedValue = row.Cells[3].Value;
                     this.txtSoLuong.Text = row.Cells[4].Value.ToString();
 
@@ -159,6 +162,7 @@ namespace GUI
                             dataChiTietPhieuXuat.DataSource = chitiet.timkiem(txtMaPhieuXuat.Text);
                             CurrencyManager myCurrencyManager = (CurrencyManager)this.BindingContext[dataChiTietPhieuXuat.DataSource];
                             myCurrencyManager.Refresh();
+                            dataChiTietPhieuXuat.Columns["maDVT"].Visible = false;
 
                             SetDefault(false);
                             ResetValue();
@@ -293,7 +297,7 @@ namespace GUI
 
         private void TxtMaChiTiet_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(txtMaPhieuXuat.Text))
+            if (txtMaChiTiet.Text == string.Empty)
             {
                 btnSua.Enabled = false;
                 btnXoa.Enabled = false;
@@ -381,6 +385,41 @@ namespace GUI
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void txtMaChiTiet_Enter(object sender, EventArgs e)
+        {
+            txtMaChiTiet.Font = bigfont;
+        }
+
+        private void txtMaChiTiet_Leave(object sender, EventArgs e)
+        {
+            txtMaChiTiet.Font = smallfont;
+        }
+
+        private void txtSoLuong_Enter(object sender, EventArgs e)
+        {
+            txtSoLuong.Font = bigfont;
+        }
+
+        private void txtSoLuong_Leave(object sender, EventArgs e)
+        {
+            txtSoLuong.Font = smallfont;
+        }
+
+        private void lbPhieuThu_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbbMaMatHang_Enter(object sender, EventArgs e)
+        {
+            cbbMaMatHang.Font = bigfont;
+        }
+
+        private void cbbMaMatHang_Leave(object sender, EventArgs e)
+        {
+            cbbMaMatHang.Font = smallfont;
         }
     }
 }

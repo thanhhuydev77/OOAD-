@@ -319,5 +319,10 @@ namespace GUI
                 scTimKiem.Focus();
 
         }
+
+        private void txtTenMatHang_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

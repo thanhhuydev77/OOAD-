@@ -231,7 +231,7 @@ namespace DAL
                                 ctpx.MaDvt = long.Parse(reader["madvt"].ToString());
                                 ctpx.MaMh = long.Parse(reader["mahang"].ToString());
                                 ctpx.SoLuong = int.Parse(reader["soluong"].ToString());
-                                ctpx.ThanhTien = /*(uint)reader.GetDecimal(5);*/ uint.Parse(reader["dongiaban"].ToString());
+                                //ctpx.ThanhTien = /*(uint)reader.GetDecimal(5);*/ uint.Parse(reader["dongiaban"].ToString());
                                 ds.Add(ctpx);
                             }
                         }

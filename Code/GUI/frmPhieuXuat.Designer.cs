@@ -39,6 +39,7 @@
             this.dNgayTiepNhan = new System.Windows.Forms.DateTimePicker();
             this.txtMaPhieuXuat = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.lbPhieuThu = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -47,7 +48,6 @@
             this.cbManv = new System.Windows.Forms.ComboBox();
             this.btnTimPhieu = new System.Windows.Forms.Button();
             this.btnXemChiTiet = new System.Windows.Forms.Button();
-            this.lbPhieuThu = new System.Windows.Forms.Label();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataPhieuXuat)).BeginInit();
             this.panel1.SuspendLayout();
@@ -58,7 +58,7 @@
             this.panel3.Controls.Add(this.dataPhieuXuat);
             this.panel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel3.Location = new System.Drawing.Point(353, 0);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(580, 507);
             this.panel3.TabIndex = 16;
@@ -70,7 +70,7 @@
             this.dataPhieuXuat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataPhieuXuat.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataPhieuXuat.Location = new System.Drawing.Point(0, 0);
-            this.dataPhieuXuat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataPhieuXuat.Margin = new System.Windows.Forms.Padding(2);
             this.dataPhieuXuat.Name = "dataPhieuXuat";
             this.dataPhieuXuat.RowHeadersWidth = 51;
             this.dataPhieuXuat.RowTemplate.Height = 24;
@@ -80,10 +80,10 @@
             // 
             // txtTongTriGia
             // 
-            this.txtTongTriGia.Location = new System.Drawing.Point(127, 235);
-            this.txtTongTriGia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtTongTriGia.Location = new System.Drawing.Point(134, 234);
+            this.txtTongTriGia.Margin = new System.Windows.Forms.Padding(2);
             this.txtTongTriGia.Name = "txtTongTriGia";
-            this.txtTongTriGia.Size = new System.Drawing.Size(198, 22);
+            this.txtTongTriGia.Size = new System.Drawing.Size(198, 26);
             this.txtTongTriGia.TabIndex = 15;
             this.txtTongTriGia.Text = "0";
             // 
@@ -104,27 +104,20 @@
             this.btnXoa.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnXoa.Appearance.Options.UseFont = true;
             this.btnXoa.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnXoa.ImageOptions.Image")));
-            this.btnXoa.Location = new System.Drawing.Point(184, 397);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnXoa.Location = new System.Drawing.Point(25, 380);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(2);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(145, 61);
+            this.btnXoa.Size = new System.Drawing.Size(304, 61);
             this.btnXoa.TabIndex = 20;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.Click += new System.EventHandler(this.BtnXoa_Click);
             // 
             // btnSua
             // 
-            this.btnSua.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSua.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
-            this.btnSua.Appearance.Options.UseFont = true;
-            this.btnSua.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnSua.ImageOptions.Image")));
-            this.btnSua.Location = new System.Drawing.Point(25, 397);
-            this.btnSua.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnSua.Location = new System.Drawing.Point(294, 406);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(142, 61);
-            this.btnSua.TabIndex = 17;
-            this.btnSua.Text = "Sửa";
-            this.btnSua.Click += new System.EventHandler(this.BtnSua_Click);
+            this.btnSua.Size = new System.Drawing.Size(10, 10);
+            this.btnSua.TabIndex = 43;
             // 
             // btnThemPhieu
             // 
@@ -132,10 +125,10 @@
             this.btnThemPhieu.Appearance.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnThemPhieu.Appearance.Options.UseFont = true;
             this.btnThemPhieu.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThemPhieu.ImageOptions.Image")));
-            this.btnThemPhieu.Location = new System.Drawing.Point(25, 323);
-            this.btnThemPhieu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnThemPhieu.Location = new System.Drawing.Point(25, 295);
+            this.btnThemPhieu.Margin = new System.Windows.Forms.Padding(2);
             this.btnThemPhieu.Name = "btnThemPhieu";
-            this.btnThemPhieu.Size = new System.Drawing.Size(303, 61);
+            this.btnThemPhieu.Size = new System.Drawing.Size(304, 70);
             this.btnThemPhieu.TabIndex = 16;
             this.btnThemPhieu.Text = "Thêm phiếu xuất hàng";
             this.btnThemPhieu.Click += new System.EventHandler(this.BtnThemPhieu_Click);
@@ -144,37 +137,21 @@
             // 
             this.dNgayTiepNhan.CustomFormat = "MM/dd/yyyy hh:mm:ss";
             this.dNgayTiepNhan.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dNgayTiepNhan.Location = new System.Drawing.Point(127, 188);
-            this.dNgayTiepNhan.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dNgayTiepNhan.Location = new System.Drawing.Point(134, 190);
+            this.dNgayTiepNhan.Margin = new System.Windows.Forms.Padding(2);
             this.dNgayTiepNhan.Name = "dNgayTiepNhan";
-            this.dNgayTiepNhan.Size = new System.Drawing.Size(198, 22);
+            this.dNgayTiepNhan.Size = new System.Drawing.Size(198, 26);
             this.dNgayTiepNhan.TabIndex = 17;
             // 
             // txtMaPhieuXuat
             // 
-            this.txtMaPhieuXuat.Location = new System.Drawing.Point(128, 60);
-            this.txtMaPhieuXuat.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtMaPhieuXuat.Location = new System.Drawing.Point(134, 59);
+            this.txtMaPhieuXuat.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaPhieuXuat.Name = "txtMaPhieuXuat";
-            this.txtMaPhieuXuat.Size = new System.Drawing.Size(195, 22);
+            this.txtMaPhieuXuat.Size = new System.Drawing.Size(195, 26);
             this.txtMaPhieuXuat.TabIndex = 8;
             this.txtMaPhieuXuat.TextChanged += new System.EventHandler(this.TxtMaPhieuXuat_TextChanged);
             // 
-//<<<<<<< HEAD
-//            // label1
-//            // 
-//            this.label1.Dock = System.Windows.Forms.DockStyle.Top;
-//            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F);
-//            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-//            this.label1.Location = new System.Drawing.Point(0, 0);
-//            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-//            this.label1.Name = "label1";
-//            this.label1.Size = new System.Drawing.Size(353, 58);
-//            this.label1.TabIndex = 0;
-//            this.label1.Text = "PHIẾU XUẤT HÀNG";
-//            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-//            // 
-//=======
-//>>>>>>> afa7e7a9d4519d080b2b932b627b2c0fcff6af1b
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -197,10 +174,21 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(353, 507);
             this.panel1.TabIndex = 17;
+            // 
+            // lbPhieuThu
+            // 
+            this.lbPhieuThu.AutoSize = true;
+            this.lbPhieuThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbPhieuThu.ForeColor = System.Drawing.Color.IndianRed;
+            this.lbPhieuThu.Location = new System.Drawing.Point(57, 20);
+            this.lbPhieuThu.Name = "lbPhieuThu";
+            this.lbPhieuThu.Size = new System.Drawing.Size(204, 31);
+            this.lbPhieuThu.TabIndex = 42;
+            this.lbPhieuThu.Text = "HÓA DƠN BÁN";
             // 
             // label4
             // 
@@ -231,7 +219,7 @@
             this.label5.Location = new System.Drawing.Point(17, 62);
             this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(85, 15);
+            this.label5.Size = new System.Drawing.Size(116, 19);
             this.label5.TabIndex = 39;
             this.label5.Text = "Id Phiếu Xuất:";
             // 
@@ -250,20 +238,20 @@
             // 
             this.cbMakh.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbMakh.FormattingEnabled = true;
-            this.cbMakh.Location = new System.Drawing.Point(128, 143);
+            this.cbMakh.Location = new System.Drawing.Point(134, 144);
             this.cbMakh.Margin = new System.Windows.Forms.Padding(2);
             this.cbMakh.Name = "cbMakh";
-            this.cbMakh.Size = new System.Drawing.Size(195, 23);
+            this.cbMakh.Size = new System.Drawing.Size(195, 27);
             this.cbMakh.TabIndex = 36;
             // 
             // cbManv
             // 
             this.cbManv.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbManv.FormattingEnabled = true;
-            this.cbManv.Location = new System.Drawing.Point(128, 98);
+            this.cbManv.Location = new System.Drawing.Point(134, 99);
             this.cbManv.Margin = new System.Windows.Forms.Padding(2);
             this.cbManv.Name = "cbManv";
-            this.cbManv.Size = new System.Drawing.Size(195, 23);
+            this.cbManv.Size = new System.Drawing.Size(195, 27);
             this.cbManv.TabIndex = 35;
             // 
             // btnTimPhieu
@@ -290,20 +278,9 @@
             this.btnXemChiTiet.UseVisualStyleBackColor = true;
             this.btnXemChiTiet.Click += new System.EventHandler(this.BtnXemChiTiet_Click);
             // 
-            // lbPhieuThu
-            // 
-            this.lbPhieuThu.AutoSize = true;
-            this.lbPhieuThu.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbPhieuThu.ForeColor = System.Drawing.Color.IndianRed;
-            this.lbPhieuThu.Location = new System.Drawing.Point(57, 20);
-            this.lbPhieuThu.Name = "lbPhieuThu";
-            this.lbPhieuThu.Size = new System.Drawing.Size(264, 31);
-            this.lbPhieuThu.TabIndex = 42;
-            this.lbPhieuThu.Text = "PHIẾU XUẤT HÀNG";
-            // 
             // frmPhieuXuat
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(933, 507);
             this.Controls.Add(this.panel3);

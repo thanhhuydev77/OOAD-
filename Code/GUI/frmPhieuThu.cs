@@ -24,6 +24,8 @@ namespace GUI
         private BLL_ChiTietPhieuNhap ctpn = new BLL_ChiTietPhieuNhap();
         private BLL_LoaiHang loaihang = new BLL_LoaiHang();
         int index = 0;
+        Font bigfont = new Font("Times New Roman", 16f);
+        Font smallfont = new Font("Times New Roman", 8.25f);
         #endregion
         #region method
         public frmPhieuThu() {
@@ -542,6 +544,142 @@ namespace GUI
         private void dataCTPhieuThu_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void txtId_MouseEnter(object sender, EventArgs e)
+        {
+            txtId.Font = bigfont;
+        }
+
+        private void txtId_Leave(object sender, EventArgs e)
+        {
+            txtId.Font = smallfont;
+        }
+
+        private void cbManv_Enter(object sender, EventArgs e)
+        {
+            cbManv.Font = bigfont;
+        }
+
+        private void cbManv_Leave(object sender, EventArgs e)
+        {
+            cbManv.Font = smallfont;
+        }
+
+        private void dtpkNgayThu_Enter(object sender, EventArgs e)
+        {
+            dtpkNgayThu.Font = bigfont;
+        }
+
+        private void dtpkNgayThu_Leave(object sender, EventArgs e)
+        {
+            dtpkNgayThu.Font = smallfont;
+        }
+
+        private void cbMancc_Enter(object sender, EventArgs e)
+        {
+            cbMancc.Font = bigfont;
+        }
+
+        private void cbMancc_Leave(object sender, EventArgs e)
+        {
+            cbMancc.Font = smallfont;
+        }
+
+        private void numSoTien_Enter(object sender, EventArgs e)
+        {
+            numSoTien.Font = bigfont;
+        }
+
+        private void numSoTien_Leave(object sender, EventArgs e)
+        {
+            numSoTien.Font = smallfont;
+        }
+
+        private void cbtenhang_Enter(object sender, EventArgs e)
+        {
+            cbtenhang.Font = bigfont;
+        }
+
+        private void cbtenhang_Leave(object sender, EventArgs e)
+        {
+            cbtenhang.Font = smallfont;
+        }
+
+        private void cbDVT_Enter(object sender, EventArgs e)
+        {
+            cbDVT.Font = bigfont;
+        }
+
+        private void cbDVT_Leave(object sender, EventArgs e)
+        {
+            cbDVT.Font = smallfont;
+        }
+
+        private void cbMaNhom_Enter(object sender, EventArgs e)
+        {
+            cbMaNhom.Font = bigfont;
+        }
+
+        private void cbMaNhom_Leave(object sender, EventArgs e)
+        {
+            cbMaNhom.Font = smallfont;
+        }
+
+        private void numSoLuongHang_Enter(object sender, EventArgs e)
+        {
+            numSoLuongHang.Font = bigfont;
+        }
+
+        private void numGiaNhap_Enter(object sender, EventArgs e)
+        {
+            numGiaNhap.Font = bigfont;
+        }
+
+        private void numGiaNhap_Leave(object sender, EventArgs e)
+        {
+            numGiaNhap.Font = smallfont;
+        }
+
+        private void numGiaBan_Enter(object sender, EventArgs e)
+        {
+            numGiaBan.Font = bigfont;
+        }
+
+        private void numGiaBan_Leave(object sender, EventArgs e)
+        {
+            numGiaBan.Font = smallfont;
+        }
+
+        private void txtCongDung_Enter(object sender, EventArgs e)
+        {
+            txtCongDung.Font = bigfont;
+
+        }
+
+        private void txtCongDung_Leave(object sender, EventArgs e)
+        {
+            txtCongDung.Font = smallfont;
+        }
+
+        private void txtThanhPhan_Enter(object sender, EventArgs e)
+        {
+            txtThanhPhan.Font = bigfont;
+        }
+
+        private void txtThanhPhan_Leave(object sender, EventArgs e)
+        {
+            txtThanhPhan.Font = smallfont;
+        }
+
+        private void txtXuatSu_Enter(object sender, EventArgs e)
+        {
+            txtXuatSu.Font = bigfont;
+        }
+
+        private void txtXuatSu_Leave(object sender, EventArgs e)
+        {
+            txtXuatSu.Font = smallfont;
         }
     }
 }

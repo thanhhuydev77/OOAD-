@@ -306,6 +306,8 @@
             this.numGiaBan.Size = new System.Drawing.Size(135, 26);
             this.numGiaBan.TabIndex = 10;
             this.numGiaBan.Visible = false;
+            this.numGiaBan.Enter += new System.EventHandler(this.numGiaBan_Enter);
+            this.numGiaBan.Leave += new System.EventHandler(this.numGiaBan_Leave);
             // 
             // lbgiaban
             // 
@@ -328,6 +330,8 @@
             this.numGiaNhap.Name = "numGiaNhap";
             this.numGiaNhap.Size = new System.Drawing.Size(135, 26);
             this.numGiaNhap.TabIndex = 9;
+            this.numGiaNhap.Enter += new System.EventHandler(this.numGiaNhap_Enter);
+            this.numGiaNhap.Leave += new System.EventHandler(this.numGiaNhap_Leave);
             // 
             // lbdongia
             // 
@@ -346,6 +350,8 @@
             this.txtXuatSu.Size = new System.Drawing.Size(223, 26);
             this.txtXuatSu.TabIndex = 13;
             this.txtXuatSu.Visible = false;
+            this.txtXuatSu.Enter += new System.EventHandler(this.txtXuatSu_Enter);
+            this.txtXuatSu.Leave += new System.EventHandler(this.txtXuatSu_Leave);
             // 
             // lbxuatxu
             // 
@@ -368,6 +374,7 @@
             this.numSoLuongHang.Name = "numSoLuongHang";
             this.numSoLuongHang.Size = new System.Drawing.Size(135, 26);
             this.numSoLuongHang.TabIndex = 8;
+            this.numSoLuongHang.Enter += new System.EventHandler(this.numSoLuongHang_Enter);
             // 
             // label13
             // 
@@ -387,6 +394,8 @@
             this.cbtenhang.Name = "cbtenhang";
             this.cbtenhang.Size = new System.Drawing.Size(136, 27);
             this.cbtenhang.TabIndex = 5;
+            this.cbtenhang.Enter += new System.EventHandler(this.cbtenhang_Enter);
+            this.cbtenhang.Leave += new System.EventHandler(this.cbtenhang_Leave);
             // 
             // cbMaNhom
             // 
@@ -397,6 +406,8 @@
             this.cbMaNhom.Name = "cbMaNhom";
             this.cbMaNhom.Size = new System.Drawing.Size(136, 27);
             this.cbMaNhom.TabIndex = 7;
+            this.cbMaNhom.Enter += new System.EventHandler(this.cbMaNhom_Enter);
+            this.cbMaNhom.Leave += new System.EventHandler(this.cbMaNhom_Leave);
             // 
             // label12
             // 
@@ -415,6 +426,8 @@
             this.txtThanhPhan.Size = new System.Drawing.Size(223, 26);
             this.txtThanhPhan.TabIndex = 12;
             this.txtThanhPhan.Visible = false;
+            this.txtThanhPhan.Enter += new System.EventHandler(this.txtThanhPhan_Enter);
+            this.txtThanhPhan.Leave += new System.EventHandler(this.txtThanhPhan_Leave);
             // 
             // txtCongDung
             // 
@@ -424,6 +437,8 @@
             this.txtCongDung.Size = new System.Drawing.Size(223, 26);
             this.txtCongDung.TabIndex = 11;
             this.txtCongDung.Visible = false;
+            this.txtCongDung.Enter += new System.EventHandler(this.txtCongDung_Enter);
+            this.txtCongDung.Leave += new System.EventHandler(this.txtCongDung_Leave);
             // 
             // txttenhang1
             // 
@@ -471,6 +486,8 @@
             this.cbDVT.Name = "cbDVT";
             this.cbDVT.Size = new System.Drawing.Size(136, 27);
             this.cbDVT.TabIndex = 6;
+            this.cbDVT.Enter += new System.EventHandler(this.cbDVT_Enter);
+            this.cbDVT.Leave += new System.EventHandler(this.cbDVT_Leave);
             // 
             // label7
             // 
@@ -489,6 +506,8 @@
             this.cbMancc.Name = "cbMancc";
             this.cbMancc.Size = new System.Drawing.Size(135, 27);
             this.cbMancc.TabIndex = 35;
+            this.cbMancc.Enter += new System.EventHandler(this.cbMancc_Enter);
+            this.cbMancc.Leave += new System.EventHandler(this.cbMancc_Leave);
             // 
             // cbManv
             // 
@@ -498,6 +517,8 @@
             this.cbManv.Name = "cbManv";
             this.cbManv.Size = new System.Drawing.Size(136, 27);
             this.cbManv.TabIndex = 34;
+            this.cbManv.Enter += new System.EventHandler(this.cbManv_Enter);
+            this.cbManv.Leave += new System.EventHandler(this.cbManv_Leave);
             // 
             // label1
             // 
@@ -529,6 +550,8 @@
             this.txtId.Size = new System.Drawing.Size(136, 26);
             this.txtId.TabIndex = 25;
             this.txtId.TextChanged += new System.EventHandler(this.txtId_TextChanged);
+            this.txtId.Enter += new System.EventHandler(this.txtId_MouseEnter);
+            this.txtId.Leave += new System.EventHandler(this.txtId_Leave);
             // 
             // label4
             // 
@@ -550,6 +573,8 @@
             this.numSoTien.Name = "numSoTien";
             this.numSoTien.Size = new System.Drawing.Size(135, 26);
             this.numSoTien.TabIndex = 0;
+            this.numSoTien.Enter += new System.EventHandler(this.numSoTien_Enter);
+            this.numSoTien.Leave += new System.EventHandler(this.numSoTien_Leave);
             // 
             // dtpkNgayThu
             // 
@@ -561,6 +586,8 @@
             this.dtpkNgayThu.Size = new System.Drawing.Size(136, 26);
             this.dtpkNgayThu.TabIndex = 3;
             this.dtpkNgayThu.Value = new System.DateTime(2019, 6, 9, 10, 56, 28, 0);
+            this.dtpkNgayThu.Enter += new System.EventHandler(this.dtpkNgayThu_Enter);
+            this.dtpkNgayThu.Leave += new System.EventHandler(this.dtpkNgayThu_Leave);
             // 
             // label6
             // 
