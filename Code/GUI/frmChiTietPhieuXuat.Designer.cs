@@ -85,7 +85,7 @@
             this.lbPhieuThu.ForeColor = System.Drawing.Color.IndianRed;
             this.lbPhieuThu.Location = new System.Drawing.Point(40, 29);
             this.lbPhieuThu.Name = "lbPhieuThu";
-            this.lbPhieuThu.Size = new System.Drawing.Size(326, 31);
+            this.lbPhieuThu.Size = new System.Drawing.Size(250, 25);
             this.lbPhieuThu.TabIndex = 31;
             this.lbPhieuThu.Text = "CHI TIẾT HÓA ĐƠN BÁN";
             this.lbPhieuThu.Click += new System.EventHandler(this.lbPhieuThu_Click);
@@ -108,7 +108,7 @@
             // 
             this.txtMaChiTiet.Location = new System.Drawing.Point(128, 83);
             this.txtMaChiTiet.Name = "txtMaChiTiet";
-            this.txtMaChiTiet.Size = new System.Drawing.Size(262, 26);
+            this.txtMaChiTiet.Size = new System.Drawing.Size(262, 22);
             this.txtMaChiTiet.TabIndex = 29;
             this.txtMaChiTiet.TextChanged += new System.EventHandler(this.TxtMaChiTiet_TextChanged);
             this.txtMaChiTiet.Enter += new System.EventHandler(this.txtMaChiTiet_Enter);
@@ -121,7 +121,7 @@
             this.cbbMaMatHang.Location = new System.Drawing.Point(130, 183);
             this.cbbMaMatHang.Margin = new System.Windows.Forms.Padding(2);
             this.cbbMaMatHang.Name = "cbbMaMatHang";
-            this.cbbMaMatHang.Size = new System.Drawing.Size(260, 27);
+            this.cbbMaMatHang.Size = new System.Drawing.Size(260, 23);
             this.cbbMaMatHang.TabIndex = 2;
             this.cbbMaMatHang.SelectedIndexChanged += new System.EventHandler(this.cbbMaMatHang_SelectedIndexChanged);
             this.cbbMaMatHang.Enter += new System.EventHandler(this.cbbMaMatHang_Enter);
@@ -134,7 +134,7 @@
             this.cbbMaDonViTinh.Location = new System.Drawing.Point(356, 339);
             this.cbbMaDonViTinh.Margin = new System.Windows.Forms.Padding(2);
             this.cbbMaDonViTinh.Name = "cbbMaDonViTinh";
-            this.cbbMaDonViTinh.Size = new System.Drawing.Size(10, 27);
+            this.cbbMaDonViTinh.Size = new System.Drawing.Size(10, 23);
             this.cbbMaDonViTinh.TabIndex = 1;
             // 
             // txtSoLuong
@@ -142,7 +142,7 @@
             this.txtSoLuong.Location = new System.Drawing.Point(130, 231);
             this.txtSoLuong.Margin = new System.Windows.Forms.Padding(2);
             this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Size = new System.Drawing.Size(260, 26);
+            this.txtSoLuong.Size = new System.Drawing.Size(260, 22);
             this.txtSoLuong.TabIndex = 3;
             this.txtSoLuong.Enter += new System.EventHandler(this.txtSoLuong_Enter);
             this.txtSoLuong.Leave += new System.EventHandler(this.txtSoLuong_Leave);
@@ -164,7 +164,7 @@
             this.txtThanhTien.Location = new System.Drawing.Point(356, 339);
             this.txtThanhTien.Margin = new System.Windows.Forms.Padding(2);
             this.txtThanhTien.Name = "txtThanhTien";
-            this.txtThanhTien.Size = new System.Drawing.Size(10, 26);
+            this.txtThanhTien.Size = new System.Drawing.Size(10, 22);
             this.txtThanhTien.TabIndex = 15;
             this.txtThanhTien.Text = "0";
             // 
@@ -207,7 +207,7 @@
             this.btnThemChiTiet.Name = "btnThemChiTiet";
             this.btnThemChiTiet.Size = new System.Drawing.Size(198, 61);
             this.btnThemChiTiet.TabIndex = 5;
-            this.btnThemChiTiet.Text = "Thêm chi tiết";
+            this.btnThemChiTiet.Text = "Thêm Chi Tiết";
             this.btnThemChiTiet.Click += new System.EventHandler(this.BtnThemChiTiet_Click);
             // 
             // txtMaPhieuXuat
@@ -215,7 +215,7 @@
             this.txtMaPhieuXuat.Location = new System.Drawing.Point(128, 127);
             this.txtMaPhieuXuat.Margin = new System.Windows.Forms.Padding(2);
             this.txtMaPhieuXuat.Name = "txtMaPhieuXuat";
-            this.txtMaPhieuXuat.Size = new System.Drawing.Size(262, 26);
+            this.txtMaPhieuXuat.Size = new System.Drawing.Size(262, 22);
             this.txtMaPhieuXuat.TabIndex = 0;
             this.txtMaPhieuXuat.TextChanged += new System.EventHandler(this.TxtMaPhieuXuat_TextChanged);
             // 
@@ -264,9 +264,6 @@
             // 
             // dataChiTietPhieuXuat
             // 
-            this.dataChiTietPhieuXuat.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataChiTietPhieuXuat.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataChiTietPhieuXuat.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
             this.dataChiTietPhieuXuat.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -275,13 +272,13 @@
             this.dataChiTietPhieuXuat.Name = "dataChiTietPhieuXuat";
             this.dataChiTietPhieuXuat.RowHeadersWidth = 51;
             this.dataChiTietPhieuXuat.RowTemplate.Height = 24;
-            this.dataChiTietPhieuXuat.Size = new System.Drawing.Size(648, 554);
+            this.dataChiTietPhieuXuat.Size = new System.Drawing.Size(514, 519);
             this.dataChiTietPhieuXuat.TabIndex = 2;
             this.dataChiTietPhieuXuat.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataChiTietPhieuXuat_CellClick);
             // 
             // frmChiTietPhieuXuat
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(933, 519);
             this.Controls.Add(this.panel1);

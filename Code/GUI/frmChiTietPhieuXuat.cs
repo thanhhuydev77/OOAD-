@@ -42,7 +42,7 @@ namespace GUI
 
         private void ResetValue()
         {
-            this.txtMaPhieuXuat.Text = string.Empty;
+            //this.txtMaPhieuXuat.Text = string.Empty;
             this.txtMaChiTiet.Text = string.Empty;
             this.cbbMaDonViTinh.SelectedValue = string.Empty;
             this.cbbMaMatHang.SelectedValue = string.Empty;
@@ -63,7 +63,7 @@ namespace GUI
                 this.dataChiTietPhieuXuat.DataSource = chitiet.timkiem(txtMaPhieuXuat.Text);
             }
                 List<DTO_DonViTinh> listdvt = donvitinh.hienthidanhsach();
-               List<DTO_Hang> listmh = mathang.LayDanhSachMatHangKhac();
+               List<DTO_Hang> listmh = mathang.LayDanhSachKho();
 
             //    if (listdvt == null || listmh == null)
             //    {
@@ -107,7 +107,7 @@ namespace GUI
 
         private void DataChiTietPhieuXuat_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (btnThemChiTiet.Text == "Thêm chi tiết" && btnSua.Text == "Sửa")
+            if (btnThemChiTiet.Text == "Thêm Chi Tiết" && btnSua.Text == "Sửa")
             {
                 try
                 {
@@ -120,6 +120,9 @@ namespace GUI
                     this.cbbMaMatHang.SelectedValue = row.Cells[3].Value;
                     this.txtSoLuong.Text = row.Cells[4].Value.ToString();
 
+                    btnSua.Enabled = true;
+                    btnXoa.Enabled = true;
+                    btnXuatFile.Enabled = true;
                 }
                 catch
                 {
@@ -130,7 +133,7 @@ namespace GUI
 
         private void BtnThemChiTiet_Click(object sender, EventArgs e)
         {
-            if (btnThemChiTiet.Text == "Thêm chi tiết phiếu xuất hàng")
+            if (btnThemChiTiet.Text == "Thêm Chi Tiết")
             {
                 btnThemChiTiet.Text = "Lưu";
                 btnSua.Enabled = false;
@@ -156,7 +159,7 @@ namespace GUI
 
                         if (chitiet.ThemChiTietPX(ctpx))
                         {
-                            btnThemChiTiet.Text = "Thêm chi tiết phiếu xuất hàng";
+                            btnThemChiTiet.Text = "Thêm Chi Tiết";
                             btnXoa.Text = "Xóa";
 
                             dataChiTietPhieuXuat.DataSource = chitiet.timkiem(txtMaPhieuXuat.Text);
@@ -279,7 +282,7 @@ namespace GUI
                 DialogResult result = MessageBox.Show("Bạn chắc chắn muốn hủy", "HỦY THAO TÁC", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
                 if (result == DialogResult.OK)
                 {
-                    btnThemChiTiet.Text = "Thêm chi tiết phiếu xuất hàng";
+                    btnThemChiTiet.Text = "Thêm Chi Tiết";
                     btnSua.Text = "Sửa";
                     btnXoa.Text = "Xóa";
                     //btnSua.Enabled = true;

@@ -184,7 +184,7 @@ namespace DAL
                     cmd.Parameters.AddWithValue("@gianhap", decimal.Parse(ldl.GiaNhap.ToString()));
                     cmd.Parameters.AddWithValue("@giaban", decimal.Parse(ldl.GiaBan.ToString()));
 
-                    //try
+                    try
                     {
                         con.Open();
                         if (cmd.ExecuteNonQuery() > 0)
@@ -199,7 +199,7 @@ namespace DAL
                             return false;
                         }
                     }
-                    //catch
+                    catch
                     {
                         con.Close();
                         return false;

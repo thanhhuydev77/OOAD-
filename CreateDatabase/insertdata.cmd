@@ -1,0 +1,1 @@
+SQLCMD -S .\sqlexpress -i data2.sql
